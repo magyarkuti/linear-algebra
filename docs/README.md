@@ -2,7 +2,7 @@
 
 for the Fall semester course of 2019-2020.
 
-The [Course Syllabus](http://www.uni-corvinus.hu/magyarkuti/LinearAlgebra-2019.pdf)  contains more detailed information.
+The [Course Syllabus](http://web.uni-corvinus.hu/magyarkuti/LinearAlgebra-2019.pdf)  contains more detailed information.
 The most important part is as follows:
 
 * The Office Hours is in S 208/b at Monday 4.30 pm. Registration via e-mail is required not later than 7 pm of the actual day before.
@@ -21,17 +21,17 @@ The most important part is as follows:
 * All rules and conditions are regulated by the 
 [University Code of Study and Exams](http://portal.uni-corvinus.hu/fileadmin/user_upload/hu/kozponti_szervezeti_egysegek/nemzetkozi_iroda/files/Regulations_NEW_NEW/TVSZ/III_1_TVSZ_2017_december_19.pdf).
 * Handouts compiled by the instructor are available here, after each classes.
-* The results [after Q1&Q2&Q3&Q4](http://www.uni-corvinus.hu/magyarkuti/LAResults.pdf)
+* The results [after Q1&Q2&Q3&Q4](http://web.uni-corvinus.hu/magyarkuti/LAResults.pdf)
 The week by week schedule is as follows.
 
-1. [Elements of Linear Algebra](http://www.uni-corvinus.hu/magyarkuti/1-LinearAlgebra.pdf)
+1. [Elements of Linear Algebra](http://web.uni-corvinus.hu/magyarkuti/1-LinearAlgebra.pdf)
    * Vectors
    * Linear Combination
    * Basis
    * Basis transformation
    * Applications
 
-1. [Matrix](http://www.uni-corvinus.hu/magyarkuti/2-LinearAlgebra.pdf)
+1. [Matrix](http://web.uni-corvinus.hu/magyarkuti/2-LinearAlgebra.pdf)
    * Inner product
    * Concept of Matrices
    * Operations on matrices
@@ -42,12 +42,12 @@ The week by week schedule is as follows.
    * Factoring matrices
    * Problems
 
-1. [Homogeneous system of linear equations](http://www.uni-corvinus.hu/magyarkuti/4-LinearAlgebra.pdf)
+1. [Homogeneous system of linear equations](http://web.uni-corvinus.hu/magyarkuti/4-LinearAlgebra.pdf)
    * Solution of homogeneous linear system of equations
    * Matrix equations
    * Inverse matrix
 
-1. [Quadratic forms](http://www.uni-corvinus.hu/magyarkuti/5-LinearAlgebra.pdf)
+1. [Quadratic forms](http://web.uni-corvinus.hu/magyarkuti/5-LinearAlgebra.pdf)
    * Definition of quadratic froms
    * Dyadic decomposition
       * Dyad is the matrix of a complete square
@@ -57,7 +57,7 @@ The week by week schedule is as follows.
    * Definiteness of a quadratic form
    * Summary
 
-1. [Derivative of a multivariable function](http://www.uni-corvinus.hu/magyarkuti/6-LinearAlgebra.pdf)
+1. [Derivative of a multivariable function](http://web.uni-corvinus.hu/magyarkuti/6-LinearAlgebra.pdf)
    * Partial derivative
    * Derivative
    * Higher order derivatives
@@ -65,13 +65,13 @@ The week by week schedule is as follows.
    * Problems
    * Review problems
 
-1. [Diagonalize a matrix](http://www.uni-corvinus.hu/magyarkuti/7-LinearAlgebra.pdf)
+1. [Diagonalize a matrix](http://web.uni-corvinus.hu/magyarkuti/7-LinearAlgebra.pdf)
    * Concept of eigenvalue and eigenvector
    * The G-J elimination to find the eigenvalues and the eigenvectors.
    * Diagonalizable matrices.
    * Problems
 
-1. [Preparation for the final exam](http://www.uni-corvinus.hu/magyarkuti/8-LinearAlgebra.pdf)
+1. [Preparation for the final exam](http://web.uni-corvinus.hu/magyarkuti/8-LinearAlgebra.pdf)
    * Mock exam
    * Quiz 4.
  
@@ -79,6 +79,6 @@ The week by week schedule is as follows.
 
 1. [Midterm ====
 Preparing to the Midterm 1 
-   *](http://www.uni-corvinus.hu/magyarkuti/mat1mid07A.pdf download]
-   *](http://www.uni-corvinus.hu/magyarkuti/midterm.pdf download]
+   *](http://web.uni-corvinus.hu/magyarkuti/mat1mid07A.pdf download]
+   *](http://web.uni-corvinus.hu/magyarkuti/midterm.pdf download]
 -->

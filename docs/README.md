@@ -10,9 +10,9 @@ The most important part is as follows:
 * Attendance is compulsory in the classes.
 * The exact date of the Mini Quizzes are as follows:
 ```
-    Week 3: 23 September,\
-    Week 6: 14 October,\
-    Week 9: 18 November,\
+    Week 3: 23 September,
+    Week 6: 14 October,
+    Week 9: 18 November,
     Week 12: 9 December.
 ```
 No reschedule or makeup of the midterm quizzes.

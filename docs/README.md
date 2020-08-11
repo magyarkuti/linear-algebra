@@ -24,14 +24,14 @@ The most important part is as follows:
 * The results [after Q1&Q2&Q3&Q4](http://www.uni-corvinus.hu/magyarkuti/LAResults.pdf)
 The week by week schedule is as follows.
 
-* [Elements of Linear Algebra](http://www.uni-corvinus.hu/magyarkuti/1-LinearAlgebra.pdf)
+1. [Elements of Linear Algebra](http://www.uni-corvinus.hu/magyarkuti/1-LinearAlgebra.pdf)
    * Vectors
    * Linear Combination
    * Basis
    * Basis transformation
    * Applications
 
-* [Matrix](http://www.uni-corvinus.hu/magyarkuti/2-LinearAlgebra.pdf)
+1. [Matrix](http://www.uni-corvinus.hu/magyarkuti/2-LinearAlgebra.pdf)
    * Inner product
    * Concept of Matrices
    * Operations on matrices
@@ -42,12 +42,12 @@ The week by week schedule is as follows.
    * Factoring matrices
    * Problems
 
-* [Homogeneous system of linear equations](http://www.uni-corvinus.hu/magyarkuti/4-LinearAlgebra.pdf)
+1. [Homogeneous system of linear equations](http://www.uni-corvinus.hu/magyarkuti/4-LinearAlgebra.pdf)
    * Solution of homogeneous linear system of equations
    * Matrix equations
    * Inverse matrix
 
-* [Quadratic forms](http://www.uni-corvinus.hu/magyarkuti/5-LinearAlgebra.pdf)
+1. [Quadratic forms](http://www.uni-corvinus.hu/magyarkuti/5-LinearAlgebra.pdf)
    * Definition of quadratic froms
    * Dyadic decomposition
       * Dyad is the matrix of a complete square
@@ -57,7 +57,7 @@ The week by week schedule is as follows.
    * Definiteness of a quadratic form
    * Summary
 
-* [Derivative of a multivariable function](http://www.uni-corvinus.hu/magyarkuti/6-LinearAlgebra.pdf)
+1. [Derivative of a multivariable function](http://www.uni-corvinus.hu/magyarkuti/6-LinearAlgebra.pdf)
    * Partial derivative
    * Derivative
    * Higher order derivatives
@@ -65,19 +65,19 @@ The week by week schedule is as follows.
    * Problems
    * Review problems
 
-* [Diagonalize a matrix](http://www.uni-corvinus.hu/magyarkuti/7-LinearAlgebra.pdf)
+1. [Diagonalize a matrix](http://www.uni-corvinus.hu/magyarkuti/7-LinearAlgebra.pdf)
    * Concept of eigenvalue and eigenvector
    * The G-J elimination to find the eigenvalues and the eigenvectors.
    * Diagonalizable matrices.
    * Problems
 
-* [Preparation for the final exam](http://www.uni-corvinus.hu/magyarkuti/8-LinearAlgebra.pdf)
+1. [Preparation for the final exam](http://www.uni-corvinus.hu/magyarkuti/8-LinearAlgebra.pdf)
    * Mock exam
    * Quiz 4.
  
 <!---
 
-* [Midterm ====
+1. [Midterm ====
 Preparing to the Midterm 1 
    *](http://www.uni-corvinus.hu/magyarkuti/mat1mid07A.pdf download]
    *](http://www.uni-corvinus.hu/magyarkuti/midterm.pdf download]

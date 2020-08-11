@@ -74,6 +74,7 @@ The week by week schedule is as follows.
 * [Preparation for the final exam](http://www.uni-corvinus.hu/magyarkuti/8-LinearAlgebra.pdf)
    * Mock exam
    * Quiz 4.
+ 
 <!---
 
 * [Midterm ====

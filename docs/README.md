@@ -1,6 +1,6 @@
 {% include head.html %}
 
-for the Fall semester course of 2019-2020.
+for the Fall semester of 2019-2020.
 
 The [Course Syllabus](http://web.uni-corvinus.hu/magyarkuti/LinearAlgebra-2019.pdf)  contains more detailed information.
 The most important part is as follows:
@@ -9,26 +9,23 @@ The most important part is as follows:
 * The Office Hours is in S 208/b at Monday 4.30 pm. Registration via e-mail is required not later than 7 pm of the actual day before.
 * Attendance is compulsory in the classes.
 * The exact date of the Mini Quizzes are as follows:
-
+```
     Week 3: 23 September,\
     Week 6: 14 October,\
     Week 9: 18 November,\
     Week 12: 9 December.
-
-* The date of the Final Exam is: 18 of December, 4pm.
-
-    No reschedule or makeup of the midterm quizzes.
+```
+No reschedule or makeup of the midterm quizzes.
+* The date of the Final Exam is: `18 of December, 4pm.`
 
 ### Grading
-You will receive 5-5 points at maximum for your 4 Mini quizzes and 30 points for the Final exam. Thus 50 points can be collected. 20 points is the limit to not to fail.
+- You will receive 5-5 points at maximum for your 4 Mini quizzes and 30 points for the Final exam. Thus 50 points can be collected. 20 points is the limit to not to fail.
 Those students who do not pass this way, may take any of the (repeat) exams, and must carry the scores of the mini quizzes. The maximum score in a repeat exam is 30 points and the above grading applies.
 The same rules and conditions apply to students who retake this course.
 All rules and conditions are regulated by the 
 [University Code of Study and Exams](http://portal.uni-corvinus.hu/fileadmin/user_upload/hu/kozponti_szervezeti_egysegek/nemzetkozi_iroda/files/Regulations_NEW_NEW/TVSZ/III_1_TVSZ_2017_december_19.pdf).
-
-* Handouts compiled by the instructor are available here, after each classes.
-
-* The results [after Q1&Q2&Q3&Q4](http://web.uni-corvinus.hu/magyarkuti/LAResults.pdf)
+- Handouts compiled by the instructor are available here, after each classes.
+- The results [after Q1&Q2&Q3&Q4](http://web.uni-corvinus.hu/magyarkuti/LAResults.pdf)
 
 ---
 The week by week schedule is as follows.

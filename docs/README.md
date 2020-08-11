@@ -1,4 +1,5 @@
 {% include head.html %}
+
 for the Fall semester course of 2019-2020.
 
 The [Course Syllabus](http://www.uni-corvinus.hu/magyarkuti/LinearAlgebra-2019.pdf)  contains more detailed information.
@@ -73,14 +74,10 @@ The week by week schedule is as follows.
 * [Preparation for the final exam](http://www.uni-corvinus.hu/magyarkuti/8-LinearAlgebra.pdf)
    * Mock exam
    * Quiz 4.
-<!--
+<!---
 
 * [Midterm ====
 Preparing to the Midterm 1 
    *](http://www.uni-corvinus.hu/magyarkuti/mat1mid07A.pdf download]
    *](http://www.uni-corvinus.hu/magyarkuti/midterm.pdf download]
--->
-
-
-
 -->

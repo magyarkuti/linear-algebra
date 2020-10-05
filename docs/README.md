@@ -44,7 +44,7 @@ The week by week schedule is as follows.
    * Powers of matrix
    * Rank theorem
 
-1. [Matrix](http://web.uni-corvinus.hu/magyarkuti/3-LinearAlgebra.pdf)
+1. [Factoring matrices and linear systems](http://web.uni-corvinus.hu/magyarkuti/3-LinearAlgebra.pdf)
    * System of linear equations
    * Factoring matrices
    * Problems

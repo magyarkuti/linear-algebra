@@ -1,6 +1,6 @@
 {% include head.html %}
 
-for the Fall semester of 2020-2021.
+for the Fall semester of 2021-2022.
 
 The [Course Syllabus](http://web.uni-corvinus.hu/magyarkuti/LinearAlgebra-2021.pdf)  contains more detailed information.
 The most important part is as follows:

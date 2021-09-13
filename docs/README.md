@@ -2,7 +2,7 @@
 
 for the Fall semester of 2021-2022.
 
-The [Course Syllabus](http://web.uni-corvinus.hu/magyarkuti/LinearAlgebra-2021.pdf)  contains more detailed information.
+The [Course Syllabus](https://mega.nz/file/NpIiwL5D#grs4kXvifc7GvkdRJ60sZ7UTea81TtnpIg7ZujSjLH0)  contains more detailed information.
 The most important part is as follows:
 
 ### Important information
@@ -29,14 +29,14 @@ All rules and conditions are regulated by the
 ---
 The week by week schedule is as follows.
 
-1. [Elements of Linear Algebra](https://mega.nz/file/kgJwET5C#sHWPZjQo5LZSQ5q2eIIh9-2cjObAjvOQVodM2r6YGjk)
+1. [Elements of Linear Algebra](http://web.uni-corvinus.hu/magyarkuti/1-LinearAlgebra.pdf)
    * Vectors
    * Linear Combination
    * Basis
    * Basis transformation
    * Applications
 
-1. [Matrix](https://mega.nz/file/t1YUBRbb#QaxBqRbAxrJeSZAf_9qASS0XsFfqC461PPDBxtDEzRM)
+1. [Matrix](http://web.uni-corvinus.hu/magyarkuti/2-LinearAlgebra.pdf)
    * Inner product
    * Concept of Matrices
    * Operations on matrices

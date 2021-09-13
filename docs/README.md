@@ -2,21 +2,21 @@
 
 for the Fall semester of 2020-2021.
 
-The [Course Syllabus](http://web.uni-corvinus.hu/magyarkuti/LinearAlgebra-2020.pdf)  contains more detailed information.
+The [Course Syllabus](http://web.uni-corvinus.hu/magyarkuti/LinearAlgebra-2021.pdf)  contains more detailed information.
 The most important part is as follows:
 
 ### Important information
-* The Office Hours is in S 208/b at Monday 60 pm. Registration via e-mail is required not later than 7 pm of the actual day before.
+* The Office Hours is in S 208/b at Monday 5pm. Registration via e-mail is required not later than 7pm of the actual day before.
 * Attendance is compulsory in the classes.
 * The exact date of the Mini Quizzes are as follows:
 ```
-    Week 3: 21 September,
-    Week 6: 12 October,
-    Week 9: 16 November,
-    Week 12: 7 December.
+    Week 3: 27 September,
+    Week 6: 18 October,
+    Week 9: 15 November,
+    Week 12: 6 December.
 ```
 No reschedule or makeup of the midterm quizzes.
-* The expcted date of the Final Exam is: `16 of December, 8am.`
+* The expcted date of the Final Exam is: `21 of December, 8am.`
 
 ### Grading
 - You will receive 5-5 points at maximum for your 4 Mini quizzes and 30 points for the Final exam. Thus 50 points can be collected. 20 points is the limit to not to fail.
@@ -43,7 +43,7 @@ The week by week schedule is as follows.
    * Multiplication of matrices
    * Powers of matrix
    * Rank theorem
-
+<!---
 1. [Factoring matrices and linear systems](http://web.uni-corvinus.hu/magyarkuti/3-LinearAlgebra.pdf)
    * System of linear equations
    * Factoring matrices
@@ -82,7 +82,7 @@ The week by week schedule is as follows.
    * Mock exam
    * Quiz 4.
  
-<!---
+
 
 1. [Midterm ====
 Preparing to the Midterm 1 

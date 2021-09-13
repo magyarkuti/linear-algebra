@@ -16,7 +16,7 @@ The most important part is as follows:
     Week 12: 6 December.
 ```
 No reschedule or makeup of the midterm quizzes.
-* The expcted date of the Final Exam is: `21 of December, 8am.`
+* The expected date of the Final Exam is: `21 of December, 8am.`
 
 ### Grading
 - You will receive 5-5 points at maximum for your 4 Mini quizzes and 30 points for the Final exam. Thus 50 points can be collected. 20 points is the limit to not to fail.

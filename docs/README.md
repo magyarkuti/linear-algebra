@@ -43,7 +43,8 @@ The week by week schedule is as follows.
    * Multiplication of matrices
    * Powers of matrix
    * Rank theorem
-<!---
+
+<!--
 1. [Factoring matrices and linear systems](http://web.uni-corvinus.hu/magyarkuti/3-LinearAlgebra.pdf)
    * System of linear equations
    * Factoring matrices
@@ -84,8 +85,8 @@ The week by week schedule is as follows.
  
 
 
-1. [Midterm ====
+1. [Midterm ==== 
 Preparing to the Midterm 1 
    *](http://web.uni-corvinus.hu/magyarkuti/mat1mid07A.pdf download]
    *](http://web.uni-corvinus.hu/magyarkuti/midterm.pdf download]
---!>
+-->

@@ -88,4 +88,4 @@ The week by week schedule is as follows.
 Preparing to the Midterm 1 
    *](http://web.uni-corvinus.hu/magyarkuti/mat1mid07A.pdf download]
    *](http://web.uni-corvinus.hu/magyarkuti/midterm.pdf download]
--->
+--!>

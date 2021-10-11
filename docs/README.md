@@ -57,6 +57,7 @@ The week by week schedule is as follows.
 1. [The concept of the inverse matrix](http://web.uni-corvinus.hu/magyarkuti/4-LinearAlgebra.pdf)
    * Matrix equations
    * Inverse matrix
+
 <!--
 1. [Quadratic forms](http://web.uni-corvinus.hu/magyarkuti/5-LinearAlgebra.pdf)
    * Definition of quadratic froms

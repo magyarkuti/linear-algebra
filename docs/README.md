@@ -25,6 +25,7 @@ The same rules and conditions apply to students who retake this course.
 All rules and conditions are regulated by the 
 [University Code of Study and Exams](http://portal.uni-corvinus.hu/fileadmin/user_upload/hu/kozponti_szervezeti_egysegek/nemzetkozi_iroda/files/Regulations_NEW_NEW/TVSZ/III_1_TVSZ_2017_december_19.pdf).
 - Handouts compiled by the instructor are available here, after each classes.
+- The [results](http://web.uni-corvinus.hu/magyarkuti/Results.pdf) after Q1.
 
 ---
 The week by week schedule is as follows.
@@ -44,17 +45,19 @@ The week by week schedule is as follows.
    * Powers of matrix
    * Rank theorem
 
-<!--
 1. [Factoring matrices and linear systems](http://web.uni-corvinus.hu/magyarkuti/3-LinearAlgebra.pdf)
    * System of linear equations
    * Factoring matrices
    * Problems
 
-1. [Homogeneous system of linear equations](http://web.uni-corvinus.hu/magyarkuti/4-LinearAlgebra.pdf)
+1. [System of linear equations](http://web.uni-corvinus.hu/magyarkuti/4-LinearAlgebra.pdf)
    * Solution of homogeneous linear system of equations
+   * Solution of nonhomogeneous linear system of equations
+
+1. [The concept of the inverse matrix](http://web.uni-corvinus.hu/magyarkuti/4-LinearAlgebra.pdf)
    * Matrix equations
    * Inverse matrix
-
+<!--
 1. [Quadratic forms](http://web.uni-corvinus.hu/magyarkuti/5-LinearAlgebra.pdf)
    * Definition of quadratic froms
    * Dyadic decomposition

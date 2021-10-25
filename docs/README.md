@@ -58,7 +58,6 @@ The week by week schedule is as follows.
    * Matrix equations
    * Inverse matrix
 
-<!--
 1. [Quadratic forms](http://web.uni-corvinus.hu/magyarkuti/5-LinearAlgebra.pdf)
    * Definition of quadratic froms
    * Dyadic decomposition
@@ -69,6 +68,7 @@ The week by week schedule is as follows.
    * Definiteness of a quadratic form
    * Summary
 
+<!--
 1. [Derivative of a multivariable function](http://web.uni-corvinus.hu/magyarkuti/6-LinearAlgebra.pdf)
    * Partial derivative
    * Derivative

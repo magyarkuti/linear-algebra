@@ -64,7 +64,7 @@ The week by week schedule is as follows.
       * Dyad is the matrix of a complete square
       * High school method for small size
       * Professional method with Gaussian Elimination
-   * Problems
+   * [Problems](http://web.uni-corvinus.hu/magyarkuti/5-LinearAlgebra-Problems.pdf)
    * Definiteness of a quadratic form
    * Summary
 

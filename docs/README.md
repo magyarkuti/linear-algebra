@@ -68,7 +68,6 @@ The week by week schedule is as follows.
    * Definiteness of a quadratic form
    * Summary
 
-<!--
 1. [Derivative of a multivariable function](http://web.uni-corvinus.hu/magyarkuti/6-LinearAlgebra.pdf)
    * Partial derivative
    * Derivative
@@ -83,6 +82,7 @@ The week by week schedule is as follows.
    * Diagonalizable matrices.
    * Problems
 
+<!--
 1. [Preparation for the final exam](http://web.uni-corvinus.hu/magyarkuti/8-LinearAlgebra.pdf)
    * Mock exam
    * Quiz 4.

@@ -25,7 +25,7 @@ The same rules and conditions apply to students who retake this course.
 All rules and conditions are regulated by the 
 [University Code of Study and Exams](http://portal.uni-corvinus.hu/fileadmin/user_upload/hu/kozponti_szervezeti_egysegek/nemzetkozi_iroda/files/Regulations_NEW_NEW/TVSZ/III_1_TVSZ_2017_december_19.pdf).
 - Handouts compiled by the instructor are available here, after each classes.
-- The [results](http://web.uni-corvinus.hu/magyarkuti/Results.pdf) after Q1.
+- The [results](http://web.uni-corvinus.hu/magyarkuti/Results.pdf) after Q1, Q2, and Q3.
 
 ---
 The week by week schedule is as follows.
@@ -81,6 +81,16 @@ The week by week schedule is as follows.
    * The G-J elimination to find the eigenvalues and the eigenvectors.
    * Diagonalizable matrices.
    * Problems
+
+1. [Determinant](http://web.uni-corvinus.hu/magyarkuti/8-LinearAlgebra.pdf)
+   * Parity of permutations
+   * The concept of determinant
+   * Special cases when the size is 1,2, or 3
+   * Properties
+   * Compute the determinnant using Gauss-Jordan elimination
+   * Expension by minors
+   * Characteristic polynomial
+
 
 <!--
 1. [Preparation for the final exam](http://web.uni-corvinus.hu/magyarkuti/8-LinearAlgebra.pdf)

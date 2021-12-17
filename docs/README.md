@@ -16,7 +16,7 @@ The most important part is as follows:
     Week 12: 6 December.
 ```
 No reschedule or makeup of the midterm quizzes.
-* The expected date of the Final Exam is: `21 of December, 8am.`
+* The first Final Exam: `20 of December, 2pm.`
 
 ### Grading
 - You will receive 5-5 points at maximum for your 4 Mini quizzes and 30 points for the Final exam. Thus 50 points can be collected. 20 points is the limit to not to fail.
@@ -91,13 +91,10 @@ The week by week schedule is as follows.
    * Expension by minors
    * Characteristic polynomial
 
+1. [Preparation for the final exam](http://web.uni-corvinus.hu/magyarkuti/9-LinearAlgebra.pdf)
+   * Mock exam
 
 <!--
-1. [Preparation for the final exam](http://web.uni-corvinus.hu/magyarkuti/8-LinearAlgebra.pdf)
-   * Mock exam
-   * Quiz 4.
- 
-
 
 1. [Midterm ==== 
 Preparing to the Midterm 1 

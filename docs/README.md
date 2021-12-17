@@ -25,7 +25,7 @@ The same rules and conditions apply to students who retake this course.
 All rules and conditions are regulated by the 
 [University Code of Study and Exams](http://portal.uni-corvinus.hu/fileadmin/user_upload/hu/kozponti_szervezeti_egysegek/nemzetkozi_iroda/files/Regulations_NEW_NEW/TVSZ/III_1_TVSZ_2017_december_19.pdf).
 - Handouts compiled by the instructor are available here, after each classes.
-- The [results](http://web.uni-corvinus.hu/magyarkuti/Results.pdf) after Q1, Q2, and Q3.
+- The [results](http://web.uni-corvinus.hu/magyarkuti/Results.pdf) after Q1, Q2, Q3, and Q4.
 
 ---
 The week by week schedule is as follows.

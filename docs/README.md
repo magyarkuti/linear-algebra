@@ -15,9 +15,8 @@ The most important part is as follows:
     Week 9: 14 November,
     Week 12: 5 December.
 ```
-No reschedule or makeup of the midterm quizzes.
-* The first Final Exam is scheduled to the first week of the examnination period, and the other two final exams are organizes at the 
-first and second week of the new year.
+No reschedule or makeup of the mini quizzes.
+* The first Final Exam is scheduled to the first week of the examination period, and the other two final exams are organized to the first and second week of the new year.
 
 ### Grading
 - You will receive 5-5 points at maximum for your 4 Mini quizzes and 30 points for the Final exam. Thus 50 points can be collected. 20 points is the limit to not to fail.

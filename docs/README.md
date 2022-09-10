@@ -2,7 +2,7 @@
 
 for the Fall semester of 2022-2023.
 
-The [Course Syllabus](https://github.com/magyarkuti/linear-algebra/gh-pages/docs/LinearAlgebra-2022.pdf) contains more detailed information.
+The [Course Syllabus](https://mega.nz/file/hlRhQAwL#rYVfznV_kxEDLRYHZeL8MsxsoV9bc1CR9Zb-J3-q1cI) contains more detailed information.
 The most important part is as follows:
 
 ### Important information

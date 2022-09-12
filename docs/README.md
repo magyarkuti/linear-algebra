@@ -28,7 +28,7 @@ All rules and conditions are regulated by the
 
 ---
 The week by week schedule is as follows.
-1. Elements of Linear Algebra 
+1. [Elements of Linear Algebra](https://unicorvinus.sharepoint.com/:b:/t/Section_1831179/ETCGreaqD0tIncFZZ9VYXFgBDZLd-4bChLy-ok8BoByfTg?e=7hkEl3)
    * Vectors
    * Linear Combination
    * Basis

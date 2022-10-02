@@ -25,6 +25,7 @@ The same rules and conditions apply to students who retake this course.
 All rules and conditions are regulated by the 
 [University Code of Study and Exams](http://portal.uni-corvinus.hu/fileadmin/user_upload/hu/kozponti_szervezeti_egysegek/nemzetkozi_iroda/files/Regulations_NEW_NEW/TVSZ/III_1_TVSZ_2017_december_19.pdf).
 - Handouts compiled by the instructor are available here, after each classes.
+- [Results, after Quiz1](https://unicorvinus.sharepoint.com/:b:/t/Section_1831179/EetjBBI5g0pOlGlrHAVwvCkBI0QHEjAt_VPA_QZIq6j7gg?e=3hybYG)
 
 ---
 The week by week schedule is as follows.

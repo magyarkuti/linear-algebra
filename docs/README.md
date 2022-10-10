@@ -44,12 +44,12 @@ The week by week schedule is as follows.
    * Powers of matrix
    * Rank theorem
 
-1. Factoring matrices and linear systems
+1. [Factoring matrices and linear systems](https://unicorvinus.sharepoint.com/:b:/t/Section_1831179/EbM2nL8Zkn1EotXD14Z6oIIBjd2qb49swReVZBsKMdCkXg?e=7YXHD9)
    * System of linear equations
    * Factoring matrices
    * Problems
 
-1. System of linear equations
+1. [System of linear equations](https://unicorvinus.sharepoint.com/:b:/t/Section_1831179/EXUTiWFKXR9JsGyjj5ZI5w4B9A-klLKNJSm1Q7zlUVJqYg?e=69Gidx)
    * Solution of homogeneous linear system of equations
    * Solution of nonhomogeneous linear system of equations
 

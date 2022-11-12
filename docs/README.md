@@ -53,11 +53,11 @@ The week by week schedule is as follows.
    * Solution of homogeneous linear system of equations
    * Solution of nonhomogeneous linear system of equations
 
-1. The concept of the inverse matrix
+1. [The concept of the inverse matrix](https://unicorvinus.sharepoint.com/:b:/t/Section_1831179/EXUTiWFKXR9JsGyjj5ZI5w4B9A-klLKNJSm1Q7zlUVJqYg?e=69Gidx)
    * Matrix equations
    * Inverse matrix
 
-1. Quadratic forms
+1. [Quadratic forms](https://unicorvinus.sharepoint.com/:b:/t/Section_1831179/EebTyT9Ik81CuobAYCttb9QBlltONRTyg-Caha1TCaZPTA?e=3EVh9L)
    * Definition of quadratic froms
    * Dyadic decomposition
       * Dyad is the matrix of a complete square

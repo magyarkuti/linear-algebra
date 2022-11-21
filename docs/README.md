@@ -57,7 +57,7 @@ The week by week schedule is as follows.
    * Matrix equations
    * Inverse matrix
 
-1. [Quadratic forms](https://unicorvinus.sharepoint.com/:b:/t/Section_1831179/EebTyT9Ik81CuobAYCttb9QBlltONRTyg-Caha1TCaZPTA?e=3EVh9L)
+1. [Quadratic forms](https://unicorvinus.sharepoint.com/:b:/t/Section_1831179/EebTyT9Ik81CuobAYCttb9QBmSU2km2fBvil7vRyoCqbXg?e=jy7eFs)
    * Definition of quadratic froms
    * Dyadic decomposition
       * Dyad is the matrix of a complete square
@@ -67,7 +67,7 @@ The week by week schedule is as follows.
    * Definiteness of a quadratic form
    * Summary
 
-1. Derivative of a multivariable function
+1. [Derivative of a multivariable function](https://unicorvinus.sharepoint.com/:b:/t/Section_1831179/EcEcOPRQPAVAnLI6UAJoxHgBQ43Y1M3b_Mmyp0o5mEMAXw?e=NUhBri)
    * Partial derivative
    * Derivative
    * Higher order derivatives

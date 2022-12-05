@@ -75,7 +75,7 @@ The week by week schedule is as follows.
    * Problems
    * Review problems
 
-1. Diagonalize a matrix
+1. [Diagonalize a matrix](https://unicorvinus.sharepoint.com/:b:/t/Section_1831179/ETgKLFMj0OVHlO1qMad5flQBNmb6h0lsiRbEIQi5t4witA?e=Ca7ArH)
    * Concept of eigenvalue and eigenvector
    * The G-J elimination to find the eigenvalues and the eigenvectors.
    * Diagonalizable matrices.

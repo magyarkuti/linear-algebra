@@ -35,7 +35,7 @@ The week by week schedule is as follows.
    * Basis transformation
    * Applications
 
-1. [Matrix](http://web.uni-corvinus.hu/magyarkuti/2-LinearAlgebra.pdf)(https://unicorvinus.sharepoint.com/:b:/t/Section_1831179/EXrCf5oD0StKnPhy5zNfTjYB8Nqs_CKZiiDXyNfy70Qp_w?e=cUya84)
+1. [Matrix](http://web.uni-corvinus.hu/magyarkuti/2-LinearAlgebra.pdf)
    * Inner product
    * Concept of Matrices
    * Operations on matrices

@@ -13,7 +13,7 @@ The most important part is as follows:
     Week 3,
     Week 6, 
     Week 10,
-    Week 13- 
+    Week 13.
 ```
 No reschedule or makeup of the mini quizzes.
 * The first Final Exam is scheduled to the first week of the examination period, and the other two final exams are organized to the first and second week of the new year.
@@ -35,7 +35,7 @@ The week by week schedule is as follows.
    * Basis transformation
    * Applications
 
-1. [Matrix](https://unicorvinus.sharepoint.com/:b:/t/Section_1831179/EXrCf5oD0StKnPhy5zNfTjYB8Nqs_CKZiiDXyNfy70Qp_w?e=cUya84)
+1. [Matrix](http://web.uni-corvinus.hu/magyarkuti/2-LinearAlgebra.pdf)(https://unicorvinus.sharepoint.com/:b:/t/Section_1831179/EXrCf5oD0StKnPhy5zNfTjYB8Nqs_CKZiiDXyNfy70Qp_w?e=cUya84)
    * Inner product
    * Concept of Matrices
    * Operations on matrices
@@ -43,20 +43,20 @@ The week by week schedule is as follows.
    * Powers of matrix
    * Rank theorem
 
-1. [Factoring matrices and linear systems](https://unicorvinus.sharepoint.com/:b:/t/Section_1831179/EbM2nL8Zkn1EotXD14Z6oIIBjd2qb49swReVZBsKMdCkXg?e=7YXHD9)
+1. [Factoring matrices](http://web.uni-corvinus.hu/magyarkuti/3-LinearAlgebra.pdf)
    * System of linear equations
    * Factoring matrices
    * Problems
 
-1. [System of linear equations](https://unicorvinus.sharepoint.com/:b:/t/Section_1831179/EXUTiWFKXR9JsGyjj5ZI5w4B9A-klLKNJSm1Q7zlUVJqYg?e=69Gidx)
+1. [System of linear equations](http://web.uni-corvinus.hu/magyarkuti/4-LinearAlgebra.pdf)
    * Solution of homogeneous linear system of equations
    * Solution of nonhomogeneous linear system of equations
 
-1. [The concept of the inverse matrix](https://unicorvinus.sharepoint.com/:b:/t/Section_1831179/EXUTiWFKXR9JsGyjj5ZI5w4B9A-klLKNJSm1Q7zlUVJqYg?e=69Gidx)
+1. [The concept of the inverse matrix](http://web.uni-corvinus.hu/magyarkuti/4-LinearAlgebra.pdf)
    * Matrix equations
    * Inverse matrix
 
-1. [Quadratic forms](https://unicorvinus.sharepoint.com/:b:/t/Section_1831179/EebTyT9Ik81CuobAYCttb9QBmSU2km2fBvil7vRyoCqbXg?e=jy7eFs)
+1. [Quadratic forms]
    * Definition of quadratic froms
    * Dyadic decomposition
       * Dyad is the matrix of a complete square
@@ -66,7 +66,7 @@ The week by week schedule is as follows.
    * Definiteness of a quadratic form
    * Summary
 
-1. [Derivative of a multivariable function](https://unicorvinus.sharepoint.com/:b:/t/Section_1831179/EcEcOPRQPAVAnLI6UAJoxHgBQ43Y1M3b_Mmyp0o5mEMAXw?e=NUhBri)
+1. [Derivative of a multivariable function]
    * Partial derivative
    * Derivative
    * Higher order derivatives
@@ -74,13 +74,13 @@ The week by week schedule is as follows.
    * Problems
    * Review problems
 
-1. [Diagonalize a matrix](https://unicorvinus.sharepoint.com/:b:/t/Section_1831179/ETgKLFMj0OVHlO1qMad5flQBNmb6h0lsiRbEIQi5t4witA?e=Ca7ArH)
+1. [Diagonalize a matrix]
    * Concept of eigenvalue and eigenvector
    * The G-J elimination to find the eigenvalues and the eigenvectors.
    * Diagonalizable matrices.
    * Problems
 
-1. Determinant
+1. [Determinant]
    * Parity of permutations
    * The concept of determinant
    * Special cases when the size is 1,2, or 3
@@ -89,7 +89,7 @@ The week by week schedule is as follows.
    * Expension by minors
    * Characteristic polynomial
 
-1. Preparation for the final exam
+1. [Preparation for the final exam]
    * Mock exam
 
 <!--

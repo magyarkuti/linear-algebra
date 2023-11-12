@@ -56,7 +56,7 @@ The week by week schedule is as follows.
    * Matrix equations
    * Inverse matrix
 
-1. [Quadratic forms]
+1. [Quadratic forms](http://web.uni-corvinus.hu/magyarkuti/5-LinearAlgebra.pdf)
    * Definition of quadratic froms
    * Dyadic decomposition
       * Dyad is the matrix of a complete square

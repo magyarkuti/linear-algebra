@@ -66,7 +66,7 @@ The week by week schedule is as follows.
    * Definiteness of a quadratic form
    * Summary
 
-1. [Determinant](http://web.uni-corvinus.hu/magyarkuti/6-LinearAlgebra.pdf)
+1. [Determinant](http://web.uni-corvinus.hu/magyarkuti/8-LinearAlgebra.pdf)
    * Parity of permutations
    * The concept of determinant
    * Special cases when the size is 1,2, or 3

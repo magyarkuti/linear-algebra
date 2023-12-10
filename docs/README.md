@@ -66,21 +66,7 @@ The week by week schedule is as follows.
    * Definiteness of a quadratic form
    * Summary
 
-1. [Derivative of a multivariable function]
-   * Partial derivative
-   * Derivative
-   * Higher order derivatives
-   * Extreme values
-   * Problems
-   * Review problems
-
-1. [Diagonalize a matrix]
-   * Concept of eigenvalue and eigenvector
-   * The G-J elimination to find the eigenvalues and the eigenvectors.
-   * Diagonalizable matrices.
-   * Problems
-
-1. [Determinant]
+1. [Determinant](http://web.uni-corvinus.hu/magyarkuti/6-LinearAlgebra.pdf)
    * Parity of permutations
    * The concept of determinant
    * Special cases when the size is 1,2, or 3
@@ -89,10 +75,25 @@ The week by week schedule is as follows.
    * Expension by minors
    * Characteristic polynomial
 
+1. [Diagonalize a matrix](http://web.uni-corvinus.hu/magyarkuti/7-LinearAlgebra.pdf)
+   * Concept of eigenvalue and eigenvector
+   * The G-J elimination to find the eigenvalues and the eigenvectors.
+   * Diagonalizable matrices.
+   * Problems
+
+<!--
+
 1. [Preparation for the final exam]
    * Mock exam
 
-<!--
+1. [Derivative of a multivariable function]
+   * Partial derivative
+   * Derivative
+   * Higher order derivatives
+   * Extreme values
+   * Problems
+   * Review problems
+
 
 1. [Elements of Linear Algebra](http://web.uni-corvinus.hu/magyarkuti/1-LinearAlgebra.pdf)
 

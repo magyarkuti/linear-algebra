@@ -19,11 +19,9 @@ No reschedule or makeup of the mini quizzes.
 * The first Final Exam is scheduled to the first week of the examination period, and the other two final exams are organized to the first and second week of the new year.
 
 ### Grading
-- You will receive 5-5 points at maximum for your 4 Mini quizzes and 30 points for the Final exam. Thus 50 points can be collected. 20 points is the limit to not to fail.
-Those students who do not pass this way, may take any of the (repeat) exams, and must carry the scores of the mini quizzes. The maximum score in a repeat exam is 30 points and the above grading applies.
-The same rules and conditions apply to students who retake this course.
-All rules and conditions are regulated by the 
-[University Code of Study and Exams](http://portal.uni-corvinus.hu/fileadmin/user_upload/hu/kozponti_szervezeti_egysegek/nemzetkozi_iroda/files/Regulations_NEW_NEW/TVSZ/III_1_TVSZ_2017_december_19.pdf).
+- You will receive 5-5 points at maximum for your 4 Mini quizzes and 30 points for the Final exam. Thus 50 points can be collected during the written part of examination.
+- You have oral exams at the examination periode. The final grade is the mean of the grade of the two parts.
+All rules and conditions are regulated by the University Code of Study and Exams.
 - Handouts compiled by the instructor are available here, after each classes.
 
 ---

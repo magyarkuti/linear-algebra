@@ -79,10 +79,11 @@ The week by week schedule is as follows.
    * Diagonalizable matrices.
    * Problems
 
-<!--
-
-1. [Preparation for the final exam]
+1. [Preparation for the final exam](http://web.uni-corvinus.hu/magyarkuti/Mock.pdf)
    * Mock exam
+
+
+<!--
 
 1. [Derivative of a multivariable function]
    * Partial derivative

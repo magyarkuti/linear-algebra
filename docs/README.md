@@ -1,7 +1,6 @@
 {% include head.html %}
 
-for the Fall semester of 2024-2025.
-
+for the Fall semester of 2024-2025. The Linear Algebra part of Mathematics I. (ADIN001NABB)
 The Course Syllabus contains more detailed information.
 The most important part is as follows:
 

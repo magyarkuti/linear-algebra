@@ -2,7 +2,7 @@
 
 for the Fall semester of 2024-2025.
 
-This is the Linear Algebra classes of Mathematics I -- ADIN001NABB.
+The Linear Algebra classes of Mathematics I -- ADIN001NABB.
 The Course Syllabus contains more detailed information, the most important part is as follows:
 
 ### Important information
@@ -22,7 +22,7 @@ No reschedule or makeup of the mini quizzes.
 - You will receive 5-5 points at maximum for your 4 Mini quizzes and 30 points for the Final exam. Thus 50 points can be collected during the written part of examination.
 - You have oral exams at the examination periode. The final grade is the mean of the grade of the two parts.
 All rules and conditions are regulated by the University Code of Study and Exams.
-- Handouts compiled by the instructor are available here, after each classes.
+- Handouts compiled by the instructor [are available here](https://drive.google.com/file/d/1HA3ykDZn5RcQR4Mj9J8bixvM42_HJ46T/view?usp=sharing), after each classes.
 
 ---
 The week by week schedule is as follows.

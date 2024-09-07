@@ -1,22 +1,22 @@
 {% include head.html %}
 
-for the Fall semester of 2023-2024.
+for the Fall semester of 2024-2025.
 
-The [Course Syllabus](https://mega.nz/file/hlRhQAwL#rYVfznV_kxEDLRYHZeL8MsxsoV9bc1CR9Zb-J3-q1cI) contains more detailed information.
+The Course Syllabus contains more detailed information.
 The most important part is as follows:
 
 ### Important information
-* The Office Hours is in S 208/b at Wednesday 13.40. Registration via e-mail is required not later than 7pm of the actual day before.
+* The Office Hours is in S 208/b at Monday 17.20. Registration via e-mail is required not later than 7pm of the actual day before.
 * Attendance is compulsory in the classes.
 * The exact date of the Mini Quizzes are as follows:
 ```
-    Week 3,
-    Week 6, 
+    Week 4,
+    Week 7, 
     Week 10,
     Week 13.
 ```
 No reschedule or makeup of the mini quizzes.
-* The first Final Exam is scheduled to the first week of the examination period, and the other two final exams are organized to the first and second week of the new year.
+* The Final Exam is scheduled to the first week of the examination period.
 
 ### Grading
 - You will receive 5-5 points at maximum for your 4 Mini quizzes and 30 points for the Final exam. Thus 50 points can be collected during the written part of examination.
@@ -26,14 +26,14 @@ All rules and conditions are regulated by the University Code of Study and Exams
 
 ---
 The week by week schedule is as follows.
-1. [Elements of Linear Algebra](http://web.uni-corvinus.hu/magyarkuti/1-LinearAlgebra.pdf)
+1. Elements of Linear Algebra
    * Vectors
    * Linear Combination
    * Basis
    * Basis transformation
    * Applications
 
-1. [Matrix](http://web.uni-corvinus.hu/magyarkuti/2-LinearAlgebra.pdf)
+1. Matrix
    * Inner product
    * Concept of Matrices
    * Operations on matrices
@@ -41,20 +41,20 @@ The week by week schedule is as follows.
    * Powers of matrix
    * Rank theorem
 
-1. [Factoring matrices](http://web.uni-corvinus.hu/magyarkuti/3-LinearAlgebra.pdf)
+1. Factoring matrices
    * System of linear equations
    * Factoring matrices
    * Problems
 
-1. [System of linear equations](http://web.uni-corvinus.hu/magyarkuti/4-LinearAlgebra.pdf)
+1. System of linear equations
    * Solution of homogeneous linear system of equations
    * Solution of nonhomogeneous linear system of equations
 
-1. [The concept of the inverse matrix](http://web.uni-corvinus.hu/magyarkuti/4-LinearAlgebra.pdf)
+1. The concept of the inverse matrix
    * Matrix equations
    * Inverse matrix
 
-1. [Quadratic forms](http://web.uni-corvinus.hu/magyarkuti/5-LinearAlgebra.pdf)
+1. Quadratic forms
    * Definition of quadratic froms
    * Dyadic decomposition
       * Dyad is the matrix of a complete square
@@ -64,7 +64,7 @@ The week by week schedule is as follows.
    * Definiteness of a quadratic form
    * Summary
 
-1. [Determinant](http://web.uni-corvinus.hu/magyarkuti/8-LinearAlgebra.pdf)
+1. Determinant
    * Parity of permutations
    * The concept of determinant
    * Special cases when the size is 1,2, or 3
@@ -73,13 +73,13 @@ The week by week schedule is as follows.
    * Expension by minors
    * Characteristic polynomial
 
-1. [Diagonalize a matrix](http://web.uni-corvinus.hu/magyarkuti/7-LinearAlgebra.pdf)
+1. Diagonalize a matrix
    * Concept of eigenvalue and eigenvector
    * The G-J elimination to find the eigenvalues and the eigenvectors.
    * Diagonalizable matrices.
    * Problems
 
-1. [Preparation for the final exam](http://web.uni-corvinus.hu/magyarkuti/Mock.pdf)
+1. Preparation for the final exam
    * Mock exam
 
 

@@ -10,17 +10,17 @@ The Course Syllabus contains more detailed information, the most important part 
 * Attendance is compulsory in the classes.
 * The exact date of the Mini Quizzes are as follows:
 ```
-    Week 4,
-    Week 7, 
-    Week 10,
-    Week 13.
+    Week 3,
+    Week 6, 
+    Week 9,
+    Week 12.
 ```
-No reschedule or makeup of the mini quizzes.
+No reschedule or makeup of the mini quizzes. 
 * The Final Exam is scheduled to the first week of the examination period.
 
 ### Grading
-- You will receive 5-5 points at maximum for your 4 Mini quizzes and 30 points for the Final exam. Thus 50 points can be collected during the written part of examination.
-- You have oral exams at the examination periode. The final grade is the mean of the grade of the two parts.
+- You will receive 5-5 points at maximum for your 4 Mini quizzes, but the best 3 is form 15 points. 25 points for the Final exam. Thus 40 points can be collected during the written part of examination.
+- You have optional oral exams at the examination periode for 10 points.
 All rules and conditions are regulated by the University Code of Study and Exams.
 - Handouts compiled by the instructor [are available here](https://drive.google.com/file/d/1HA3ykDZn5RcQR4Mj9J8bixvM42_HJ46T/view?usp=sharing), after each classes.
 

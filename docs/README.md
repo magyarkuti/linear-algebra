@@ -22,10 +22,10 @@ No reschedule or makeup of the mini quizzes.
 - You will receive 5-5 points at maximum for your 4 Mini quizzes, but the best 3 is form 15 points. 25 points for the Final exam. Thus 40 points can be collected during the written part of examination.
 - You have optional oral exams at the examination periode for 10 points.
 All rules and conditions are regulated by the University Code of Study and Exams.
-- Handouts compiled by the instructor [are available here](https://drive.google.com/file/d/1HA3ykDZn5RcQR4Mj9J8bixvM42_HJ46T/view?usp=sharing), after each classes.
 
 ---
 The week by week schedule is as follows.
+Handouts compiled by the instructor [are available here](https://drive.google.com/file/d/1HA3ykDZn5RcQR4Mj9J8bixvM42_HJ46T/view?usp=sharing), after each classes.
 1. Elements of Linear Algebra
    * Vectors
    * Linear Combination

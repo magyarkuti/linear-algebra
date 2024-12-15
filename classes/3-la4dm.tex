@@ -1,0 +1,245 @@
+\input{la4dm.tex}
+\title{Matrix factorization}
+\subtitle{The rank of a matrix}
+\date{October 7, 2024}
+
+\begin{document}
+
+\frame{\titlepage}
+%\section*{Outline:}
+\frame{\frametitle{Outline}
+\tableofcontents}
+
+
+\section{System of linear equations}
+\frame{\frametitle{System of linear equations}
+\begin{definition}\label{lsystem}
+The general form of a system of linear equations is
+\begin{eqnarray*}
+\alpha_{11}x_1+\alpha_{12}x_2+\cdots +\alpha_{1n}x_n&=&\beta_1\\
+\alpha_{21}x_1+\alpha_{22}x_2+\cdots +\alpha_{2n}x_n&=&\beta_2\\
+\vdots & & \\
+\alpha_{m1}x_1+\alpha_{m2}x_2+\cdots +\alpha_{mn}x_n&=&\beta_m
+\end{eqnarray*}
+where $\alpha_{ij}\ i=1,2,\ldots m,\ j=1,2,\ldots ,n$ and $\beta_i\ i=1,2\ldots ,m$ are given scalars and $x_j\ j=1,2,\ldots ,n$ are the unknowns.
+\end{definition}
+The system of linear equations is said to be \alert{homogeneous} if $\beta_i=0$ for all $i=1,\ldots ,m,$ otherwise it is called \alert{nonhomogeneous}.
+
+}
+\frame{\frametitle{}
+Collecting the coefficients in the matrix $\mathbf{A}=[\alpha_{ij}]$ the unknowns and the right-side scalars in the column vectors 
+$$\mathbf{x}=\left[\begin{array}{c}
+x_1\\
+x_2\\
+\vdots \\
+x_n
+\end{array}\right]\quad \mbox{and}\quad \mathbf{b}=\left[\begin{array}{c}
+\beta_1\\
+\beta_2\\
+\vdots \\
+\beta_m
+\end{array}\right]$$
+respectively, the matrix equation $\mathbf{Ax}=\mathbf{b}$ can be obtained.\\
+Since the left side of the above matrix equation is a linear combination of the columns of $\mathbf{A}$ the following statement can be obtained:\\
+\begin{theorem}
+The (\ref{lsystem}) linear system of equations is solvable if and only if $\mathbf{b}$ is the linear combination of columns of the coefficient matrix $\mathbf{A}$, that is, $\mathbf{b}$ is in the subspace spanned by the columns of $\mathbf{A}$.
+\end{theorem}
+
+}
+
+
+\frame{\frametitle{}
+\bigskip
+
+A solution of the system of linear equations $\mathbf{Ax}=\mathbf{b}$ is an $n$-tuple (a vector) $\mathbf{s}=(s_1,s_2,\ldots ,s_n),$ such that substituting $s_i\mbox{ for }x_i\ i=1,2,\ldots ,n$ each equation of the system (\ref{lsystem}) becomes true numerical statement. The solution set of (\ref{lsystem}) is the set of all solution vectors.
+\bigskip
+
+To provide an effective method for solution of systems of linear equation first we show a process for factoring matrices.
+}
+\section{Factoring matrices}
+\frame{\frametitle{Basis factoring matrices}
+Let $\mathbf{A}=[\mathbf{a}_1,\mathbf{a}_2,\ldots ,\mathbf{a}_n]$ be a matrix having rank $r.$ Then there is an $r$ element linearly independent set of vectors $\mathbf{a}_{i_1},\ldots,\mathbf{a}_{i_r}$ such that any vector of the subspace spanned by the columns of $\mathbf{A}$ -- which is called the {\em column space} of $\mathbf{A}$ -- can be expressed as a linear combination of the vectors $\mathbf{a}_{i_1},\ldots,\mathbf{a}_{i_r},$ that is, $\mathbf{a}_{i_1},\ldots,\mathbf{a}_{i_r}$ is a basis of the column space of $\mathbf{A}.$ Therefore
+\begin{block}{}
+\begin{eqnarray*}
+\mathbf{a}_1&=&d_{11}\mathbf{a}_{i_1}+d_{21}\mathbf{a}_{i_2}+\cdots +d_{r1}\mathbf{a}_{i_r}\\
+\mathbf{a}_2&=&d_{12}\mathbf{a}_{i_1}+d_{22}\mathbf{a}_{i_2}+\cdots +d_{r2}\mathbf{a}_{i_r}\\
+&\vdots& \\
+\mathbf{a}_n&=&d_{1n}\mathbf{a}_{i_1}+d_{2n}\mathbf{a}_{i_2}+\cdots +d_{rn}\mathbf{a}_{i_r}.
+\end{eqnarray*}
+\end{block}
+}
+
+\frame{\frametitle{Basis factoring matrices}
+Form the matrices 
+\begin{block}{}
+\[
+\mathbf{A}_1=[\mathbf{a}_{i1},\ldots,\mathbf{a}_{ir}] \text{ and } 
+\mathbf{A}_2=\left[\begin{array}{cccc}
+d_{11}&d_{12}&\ldots &d_{1n}\\
+d_{21}&d_{22}&\ldots &d_{2n}\\
+\vdots \\
+d_{r1}&d_{r2}&\ldots &d_{rn}\\
+\end{array}\right],
+\]
+\end{block}
+then the above equation can be written in the form: 
+\begin{block}{}
+$$\mathbf{A}=\mathbf{A}_1\cdot \mathbf{A}_2.$$
+\end{block}
+Notice that the $j$th column of the matrix $\mathbf{A}_2$ is just the coordinate vector of $\mathbf{a}_j$ with respect to the basis $\{\mathbf{a}_{i1},\ldots,\mathbf{a}_{ir}\}.$
+}
+
+\frame{\frametitle{}
+\begin{example}
+Factor the matrix $\mathbf{A}=\left[\begin{array}{rrrr}
+1&2&0&3\\
+2&1&3&3\\
+-1&1&-3&0
+\end{array}\right].$
+\end{example}
+
+Using elementary basis transformation we find the rank of $\mathbf{A}$ and
+a basis of its column space, starting with the standard basis
+$\{\mathbf{e}_1,\mathbf{e}_2,\mathbf{e}_3\}$ of $\R^3.$
+$$\begin{array}{c|rrrr}
+&\mathbf{a}_1&\mathbf{a}_2&\mathbf{a}_3&\mathbf{a}_4\\ \hline
+\mathbf{e}_1&\fbox{$1$}&2&0&3\\
+\mathbf{e}_2&2&1&3&3\\
+\mathbf{e}_3&-1&1&-3&0
+\end{array}\longrightarrow \begin{array}{c|rrr}
+&\mathbf{a}_2&\mathbf{a}_3&\mathbf{a}_4\\ \hline
+\mathbf{a}_1&2&0&3\\
+\mathbf{e}_2&\fbox{$-3$}&3&-3\\
+\mathbf{e}_3&3&-3&3
+\end{array}\longrightarrow \begin{array}{c|rr}
+&\mathbf{a}_3&\mathbf{a}_4\\ \hline
+\mathbf{a}_1&2&1\\
+\mathbf{a}_2&-1&1\\
+\mathbf{e}_3&0&0
+\end{array}$$
+It can be red off from the last table, that the first and second column of $\mathbf{A}$ form a basis of its column space and $\mathbf{a}_3=2\mathbf{a}_1-\mathbf{a}_2$ and $\mathbf{a}_4=\mathbf{a}_1+\mathbf{a}_2.$ 
+}
+\frame{\frametitle{}
+Remember that $j$-th column of the matrix $\mathbf{A_2}$ is the coordinate vector of $\mathbf{a_j}$ with respect to the 
+basis $\left\{ \mathbf{a_1},\mathbf{a_2} \right\}$.
+Therefore
+\begin{exampleblock}{}
+$$\mathbf{A}_1=[\mathbf{a}_1,\mathbf{a}_2]=\left[\begin{array}{rr}
+1&2\\
+2&1\\
+-1&1
+\end{array}\right]\quad\text{ and }\quad \mathbf{A}_2=\left[\begin{array}{rrrr}
+1&0&2&1\\
+0&1&-1&1
+\end{array}\right],$$
+\end{exampleblock}
+where we used the obvious fact that $\left[\begin{array}{c}
+1\\
+0
+\end{array}\right]$ and $\left[\begin{array}{c}
+0\\
+1
+\end{array}\right]$ are the coordinate vectors of $\mathbf{a}_1$ respectively $\mathbf{a}_2$ with respect to the basis $\{\mathbf{a}_1,\mathbf{a}_2\}.$
+
+}
+
+\section{The rank theorem}
+\begin{frame}
+Let $A$ be an $m\times n$ matrix, and consider the factorization $A=B\cdot C$ as before.
+Here $B$ includes a maximal linearly independent system of columns of $A$. 
+Because of the maximal property the span of columns of $B$ coincides with the column space of $A$.
+It means that the columns of $B$ form a basis of the column space of $A$.
+
+We know that $C$ is the last elimination table after dropping the zero rows.
+The system of rows of $C$ is linearly independent, because every row has pivot position $1$,
+and at that position the rest of the rows includes $0$. 
+Thus none of the rows can be obtained as the linear combination of the rest.
+One can see that the row space is not changing during the elimination.
+It means that the rows of $C$ form a basis of the column space of $A$.
+
+Thus we proved the 
+    \begin{theorem}[Rank theorem]
+        The dimensions of the column space and the row space of a matrix are equal.
+        This common dimension is called the \alert{rank of the matrix}.
+        The rank is the same as the number of the pivot terms of the Gauss-Jordan elimination of the matrix.
+    \end{theorem}
+\end{frame}
+\section{Problems}
+\begin{frame}
+    \frametitle{Problems}
+
+    \begin{exampleblock}{Factorize the matrices below}
+    \begin{columns}[t]
+    \column{.5\textwidth}
+    \begin{itemize}[<+|alert@+>]
+        \item
+            \(
+            \left[
+            \begin{array}{rrr}
+                1&3&5\\
+                2&4&6\\
+                3&5&7
+            \end{array}
+            \right]
+            \)
+        \item
+            \(
+            \left[
+            \begin{array}{rrr}
+                1&-3&2\\
+                2&-5&5\\
+                1&-2&3
+            \end{array}
+            \right]
+            \)
+        \item
+            \(
+            \left[
+            \begin{array}{rrr}
+                -3&-5&36\\
+                -1&0&7\\
+                1&1&-10
+            \end{array}
+            \right]
+            \)
+    \end{itemize}
+    \column{.5\textwidth}
+    \begin{itemize}[<+|alert@+>]
+        \item
+            \(
+            \left[
+            \begin{array}{rrrr}
+                1&2&-3&-4\\
+                1&3&-3&-4\\
+                2&2&-6&-8
+            \end{array}
+            \right]
+            \)
+        \item
+            \(
+            \left[
+            \begin{array}{rrrr}
+                4&8&-4&4\\
+                3&8&5&-11\\
+                -2&1&12&-17
+            \end{array}
+            \right]
+            \)
+    \end{itemize}
+    \end{columns}
+    \end{exampleblock}
+\end{frame}
+\end{document}
+Created:        Sun 27 Apr 2008 11:32:30 PM CEST
+Last Modified:  Tue 30 Mar 2010 07:30:19 AM CEST
+\frame{\frametitle{Polytope}
+The {\em polytope} is the convex hull of a finite set of vectors can be considered as the generalization of convex polygons and solids like triangle, rectangle, tetrahedron and so forth.
+
+The generalization of the plane is given as follows:
+\begin{definition}
+Let $\mathbf{n}\in \R^n$ and $\alpha\in \R$ such that $\mathbf{n}\neq \mathbf{0}.$ Then the hyperplane $S(\mathbf{n},\alpha )$ is the set of all vectors $\mathbf{x}\in \R^n$ satisfying the equation $\left\langle \mathbf{n};\mathbf{x}\right\rangle =\alpha .$
+\end{definition}
+
+For any two points $\mathbf{x}_1,\mathbf{x}_2\in S(\mathbf{n},\alpha )$ the vector $\mathbf{x}_1-\mathbf{x}_2$ is orthogonal to the vector $\mathbf{n},$ therefore it is often called the normal vector of the hyperplane.
+
+}

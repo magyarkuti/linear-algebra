@@ -1,0 +1,509 @@
+\input{la4dm.tex}
+\title[Solution of linear systems]
+{Solution of system of linear equations}
+\subtitle{Inverse of a matrix}
+\date{October 14, 2024}
+\begin{document}
+\metroset{outer/numbering=none, outer/progressbar=foot}
+\frame{\titlepage}
+%\section*{Outline:}
+\frame{\frametitle{Outline}
+\tableofcontents}
+\metroset{outer/numbering=counter, outer/progressbar=foot}
+\metroset{block=fill}
+\section{Solution of homogeneous linear system of equations}
+\frame{\frametitle{Solution of homogeneous linear system of equations}
+
+A homogeneous linear system of equation $\mathbf{Ax}=\mathbf{0}$ always has a solution, namely the vector $\mathbf{0}.$ 
+By the concept of the linearly independent set of vectors it is obvious, that $\mathbf{0}$ is the only solution if the columns of the coefficient matrix $\mathbf{A}$ are linearly independent. 
+
+In the general case there are non-zero solutions as well. 
+For if the basis factored form of the coefficient matrix is 
+\[
+    \mathbf{A}=\mathbf{A}_1\mathbf{A}_2,
+\]
+then the equation takes the form $\mathbf{A}_1\mathbf{A}_2\mathbf{x}=\mathbf{0}$ and taking into account, that the columns of
+$\mathbf{A}_1$ are linearly independent, a vector satisfies the original system of equations if and only if it satisfies the equation 
+\[
+    \mathbf{A}_2\mathbf{x}=\mathbf{0}.
+\]
+
+}
+\frame{\frametitle{}
+Just for the sake of simplicity let us assume, that the rank of $\mathbf{A}$ is $r$ and its first $r$ column is linearly independent and these columns form the matrix $\mathbf{A}_1.$ 
+Then the $\mathbf{A}_2$ factor contains the identity matrix $\mathbf{I}$ of order $r$, that is, it has the form $\mathbf{A}_2=[\mathbf{I},\mathbf{D}].$ 
+Collecting the first $r$ unknowns to the vector $\mathbf{u}$, 
+and the rest of the unknowns to the vector $\mathbf{v}$, 
+we obtain a partition of the vector $\mathbf{x}$ of unknowns $\mathbf{x}=\left[\begin{array}{c}
+\mathbf{u}\\
+\mathbf{v}
+\end{array}\right].$ Our equation is equivalent to
+$$\mathbf{A}_2\mathbf{x}=[\mathbf{I},\mathbf{D}]\cdot \left[\begin{array}{c}
+\mathbf{u}\\
+\mathbf{v}
+\end{array}\right]=\mathbf{u}+\mathbf{D}\mathbf{v}=\mathbf{0}.$$
+It follows that the components of $\mathbf{v}$ can be chosen arbitrarily, 
+while the components of $\mathbf{u}$ must be given 
+by $\mathbf{u}=-\mathbf{D}\mathbf{v}$.
+}
+\frame{
+Thus $\mathbf{x}$ belongs to the set of the general solutions if and only if
+$$\mathbf{x}=\left[\begin{array}{c}
+\mathbf{u}\\
+\mathbf{v}
+\end{array}\right]=\left[\begin{array}{c}
+-\mathbf{D}\mathbf{v}\\
+\mathbf{v}
+\end{array}\right]=\left[\begin{array}{c}
+-\mathbf{D}\\
+\mathbf{E}
+\end{array}\right]\mathbf{v}.$$
+We proved that the solution set of homogeneous linear equations coincides to the column space of the matrix 
+$\begin{pmatrix}
+    \mathbf{-D}\\
+    \mathbf{E}
+\end{pmatrix}.
+$
+Here $\mathbf{E}$ is an $n-r\times n-r$ type identity matrix. 
+The number of components in $\mathbf{v}$, which is $n-r$ is called the \alert{degree of freedom} of the linear system of equations.
+
+The columns of the matrix above form a base of the subspace of the general solution.
+
+Observe the fact, that the rank and the degree of freedom is always the number of the unknowns.
+}
+
+\frame{\frametitle{}
+\begin{example}
+Solve the homogeneous linear system of equations:
+\begin{eqnarray*}
+x_1+2x_2+3x_4&=&0\\
+2x_1+x_2+3x_3+3x_4&=&0\\
+-x_1+x_2-3x_3&=&0
+\end{eqnarray*}
+\end{example}
+
+The process is similar to the one performed at basis factoring matrices, the only change is that the columns of the matrix are labelled by the corresponding variables and the starting basis is usually not denoted in the left heading.
+$$\begin{array}{c|rrrr}
+&a_1&a_2&x_3&a_4\\ \hline
+&\fbox{$1$}&2&0&3\\
+&2&1&3&3\\
+&-1&1&-3&0
+\end{array}\longrightarrow \begin{array}{c|rrr}
+&a_2&a_3&a_4\\ \hline
+a_1&2&0&3\\
+&\fbox{$-3$}&3&-3\\
+&3&-3&3
+\end{array}\longrightarrow \begin{array}{c|rr}
+&a_3&a_4\\ \hline
+a_1&2&1\\
+a_2&-1&1\\
+&0&0
+\end{array}$$
+}
+\frame{\frametitle{}
+The last table shows, that the rank of the coefficient matrix is $2$ and its first two columns form a basis in the column space, the corresponding variables $x_1$ and $x_2$ are the components of the vector $\mathbf{u}$ and the free variables are $x_3$ and $x_4$ form the vector $\mathbf{v}.$ 
+The coordinate vectors of the third and fourth column of the matrix with respect to the basis of the column space are the columns of the matrix $\mathbf{D}.$ 
+
+The connection between the free and non-free variables is
+$$\left[\begin{array}{c}
+x_1\\
+x_2
+\end{array}\right]=-\left[\begin{array}{rr}
+2&1\\
+-1&1
+\end{array}\right]\cdot \left[\begin{array}{c}
+x_3\\
+x_4
+\end{array}\right],$$
+therefore the solutions are
+$$\mathbf{x}=\left[\begin{array}{c}
+x_1\\
+x_2\\
+x_3\\
+x_4
+\end{array}\right]=\left[\begin{array}{rr}
+-2&-1\\
+1&-1\\
+1&0\\
+0&1
+\end{array}\right]\cdot \left[\begin{array}{c}
+t_1\\
+t_2
+\end{array}\right],\quad \forall t_1,t_2\in \R\ .$$ 
+}
+
+\frame{
+Find all solutions of homogeneous linear systems of equations!
+\begin{example}
+$
+\begin{array}{rcrcrcl}
+2x_{1} &-&2x_{2}&- &4x_{3}  &=&0\\
+-5x_{1}&-&x_{2} &+ &16x_{3} &=&0\\
+       &-&4x_{2}&+ &4x_{3}  &=&0\\
+\hline
+\end{array}
+$
+\end{example}
+}
+\section{The rank--nullity theorem}
+\begin{frame}\frametitle{Kernel and nullity}
+    Assume that a matrix $A\in\mathbb{R}^{m\times n}$ is given.
+    This matrix has three important subspaces.
+    The column space which the range of $A$ is a subset of $\mathbb{R^m}$; 
+    the row space is the subspace of $\mathbb{R}^n$; 
+    and the kernel of $A$ which is a subspace of $\mathbb{R}^n$.
+    \begin{definition}[kernel of a matrix]
+        Let $A$ be an $m\times n$ matrix.
+        The \alert{kernel of }$A$ is defined as
+        \[
+            \ker{A}=\left\{ x\in\mathbb{R}^n: Ax=0 \right\}
+        \]
+        The \alert{nullity} of a matrix is the dimension of the kernel.
+    \end{definition}
+    Obviously, if matrix $A$ is considered as the coefficient matrix of a homogeneous system of linear equations,
+    then the kernel is the same as the solution set of the linear system.
+\end{frame}
+\begin{frame}\frametitle{Rank--Nullity theorem}
+    Remember that the rank of a matrix is the dimension of the range,
+    which is the same as the number of pivot terms of the elimination tables of the matrix.
+
+    The degree of freedom is the same as the nullity, 
+    which is the same as the number of those columns the final 
+    elimination table of the matrix which have no pivot terms.
+
+    The Rank--Nullity theorem is proven.
+    \begin{theorem}
+        The number of columns of a matrix is the sum of the rank and the nullity of the matrix.
+    \end{theorem}
+\end{frame}
+
+
+\frame{
+Find the rank, the nullity and all solutions of homogeneous linear systems of equations!
+\begin{example}
+$\displaystyle\begin{array}{rcrcrcrcl}
+-3x_{1} & &&+&9x_{3}&=&0\\
+-3x_{1}&-&4x_{2}&+&13x_{3}&=&0\\
+3x_{1}&+&x_{2}&-&10x_{3}&=&0\\
+-5x_{1}&+&5x_{2}&+&10x_{3}&=&0\\
+\hline
+\end{array}$
+\end{example}
+}
+
+\frame{
+Find the rank, the nullity and all solutions of homogeneous linear systems of equations!
+\begin{example}
+$\displaystyle\begin{array}{rcrcrcrcl}
+-x_{1}&+&4x_{2}&-&2x_{3}&=&0\\
+-4x_{1} & &&+&8x_{3}&=&0\\
+x_{1}&-&x_{2}&-&x_{3}&=&0\\
+\hline
+\end{array} $
+\end{example}
+}
+
+\frame{
+Find the rank, the nullity and all solutions of homogeneous linear systems of equations!
+\begin{example}
+$\displaystyle\begin{array}{rcrcrcrcrcrcl}
+-x_{1}&+&4x_{2}&-&x_{3}&+&x_{4}&=&0\\
+-4x_{1}&+&15x_{2}&-&3x_{3}&+&3x_{4}&=&0\\
+-5x_{1}&+&10x_{2}&+&5x_{3}&-&5x_{4}&=&0\\
+\hline
+\end{array}$
+\end{example}
+}
+
+\frame{
+Find the rank, the nullity and all solutions of homogeneous linear systems of equations!
+\begin{example}
+$\displaystyle\begin{array}{rcrcrcrcl}
+&-&x_{2}&-&2x_{3}&=&0\\
+-14x_{1}&+&5x_{2}&-&4x_{3}&=&0\\
+2x_{1}&+&x_{2}&+&4x_{3}&=&0\\
+-6x_{1}&+&4x_{2}&+&2x_{3}&=&0\\
+\hline
+\end{array}$
+\end{example}
+}
+
+\frame{
+Find the rank, the nullity and all solutions of homogeneous linear systems of equations!
+\begin{example}
+$\displaystyle\begin{array}{rcrcrcrcl}
+-5x_{1}&+&5x_{2}&+&10x_{3}&=&0\\
+2x_{1}&-&4x_{2}&-&2x_{3}&=&0\\
+x_{1}&-&x_{2}&-&2x_{3}&=&0\\
+3x_{1}&+&3x_{2}&-&12x_{3}&=&0\\
+\hline
+\end{array}$
+\end{example}
+}
+
+\frame{
+Find the rank, the nullity and all solutions of homogeneous linear systems of equations!
+\begin{example}
+$\displaystyle\begin{array}{rcrcrcrcl}
+-x_{1}&+&2x_{2}&-&8x_{3}&=&0\\
+-2x_{1}&-&3x_{2}&+&5x_{3}&=&0\\
+-3x_{1}&-&3x_{2}&+&3x_{3}&=&0\\
+x_{1}&+&x_{2}&-&x_{3}&=&0\\
+\hline
+\end{array}$
+\end{example}
+}
+
+\frame{
+Find the rank, the nullity and all solutions of homogeneous linear systems of equations!
+\begin{example}
+$\displaystyle\begin{array}{rcrcrcrcrcrcl}
+3x_{1}&-&6x_{2}&-&3x_{3}&-&15x_{4}&=&0\\
+-3x_{1}&+&4x_{2}&+&x_{3}&+&9x_{4}&=&0\\
+-5x_{1}&+&8x_{2}&+&3x_{3}&+&19x_{4}&=&0\\
+&-&x_{2}&-&x_{3}&-&3x_{4}&=&0\\
+\hline
+\end{array}$
+\end{example}
+}
+
+\frame{
+Find the rank, the nullity and all solutions of homogeneous linear systems of equations!
+\begin{example}
+$\displaystyle\begin{array}{rcrcrcrcl}
+-x_{1}&+&5x_{2}&-&12x_{3}&=&0\\
+-3x_{1}&+&4x_{2}&-&14x_{3}&=&0\\
+-2x_{1} & &&-&4x_{3}&=&0\\
+-4x_{1}&-&5x_{2}&+&2x_{3}&=&0\\
+\hline
+\end{array}$
+\end{example}
+}
+
+\frame{
+Find the rank, the nullity and all solutions of homogeneous linear systems of equations!
+\begin{example}
+$\displaystyle\begin{array}{rcrcrcrcrcrcl}
+-2x_{1} & &&+&2x_{3}&+&4x_{4}&=&0\\
+5x_{1}&-&3x_{2}&+&x_{3}&-&16x_{4}&=&0\\
+-2x_{1}&+&3x_{2}&-&3x_{3}&+&10x_{4}&=&0\\
+-4x_{1}&+&5x_{2}&+&2x_{3}&+&18x_{4}&=&0\\
+\hline
+\end{array}$
+\end{example}
+}
+
+\frame{
+Find the rank, the nullity and all solutions of homogeneous linear systems of equations!
+\begin{example}
+$\displaystyle\begin{array}{rcrcrcrcl}
+-x_{1}&-&3x_{2}&-&4x_{3}&=&0\\
+2x_{1}&+&2x_{2}&+&4x_{3}&=&0\\
+&-&2x_{2}&-&2x_{3}&=&0\\
+\hline
+\end{array}$
+\end{example}
+}
+\section{Solution of the non-homogeneous system of linear equations}
+\frame{
+    \frametitle{The non-homogeneous case}
+    The $\mathbf{Ax}=\mathbf{b}$ linear system is called non-homogeneous if the vector $\mathbf{b}\neq \mathbf{0}$.
+    The system has a solution iff $\mathbf{b}$ is a linear combination of the columns of $\mathbf{A}$, 
+    that is $\rho[\mathbf{A},\mathbf{b}]=\rho[\mathbf{A}]$.
+
+    \begin{proposition}
+        Let $\mathbf{x_0}$ be an arbitrary solution of the system $\mathbf{Ax}=\mathbf{b}$.
+        For any vector $\mathbf{x}$ the equation $\mathbf{Ax}=\mathbf{b}$ holds if and only if
+        there exists a vector $\mathbf{y}$ for which $\mathbf{x}=\mathbf{y+x_0}$ and $\mathbf{Ay}=\mathbf{0}$.
+    \end{proposition}
+As a summary: the general solution of the non-homogeneous system is the general solution of the homogeneous system shifted by a particular solution.
+}
+
+\frame{\frametitle{Solve the linear system}
+\begin{eqnarray*}
+    x_1+4x_2+x_3&=& 1\\
+    2x_1+3x_2+x_4&=& 1\\
+    3x_1+2x_2+x_3&=& 3\\
+    4x_1+x_2+3x_4&=& 1\\
+    \hline
+\end{eqnarray*}
+}
+
+\frame{\frametitle{Solve the linear system}
+\begin{eqnarray*}
+    4x_2+x_3+x_4&=& 0\\
+    x_1+3x_2+2x_4&=& 1\\
+    2x_2+x_3+3x_4&=& 0\\
+    x_1+x_2+4x_4&=& 3\\
+    \hline
+\end{eqnarray*}
+}
+
+\frame{\frametitle{Solve the linear system}
+\begin{eqnarray*}
+    x_1+3x_2+4x_3+5x_4-x_5&=& 6\\
+    -2x_1+x_2-x_3+4x_4-5x_5&=& -5\\
+    2x_1+x_2+3x_3+3x_5&=& 7\\
+    3x_1+x_2+4x_3-x_4+5x_5&=& 10\\
+    \hline
+\end{eqnarray*}
+}
+\section{Matrix equations}
+\frame{\frametitle{Matrix equations}
+
+\begin{definition}
+Let $\mathbf{A}$ and $\mathbf{B}$ be given matrices. The equations of the form
+$$\mathbf{AX}=\mathbf{B}\qquad\mbox{or}\qquad\mathbf{YA}=\mathbf{B}$$
+are called matrix equations.
+\end{definition}
+
+Since $\mathbf{YA}=\mathbf{B}\Longleftrightarrow \mathbf{A}^\top \mathbf{Y}^\top=\mathbf{B}^\top$ it is enough to deal with the first type equations.
+}
+
+\frame{\frametitle{}
+Remembering the partitions of a matrix product $\mathbf{AX}=[\mathbf{Ax_1},\mathbf{Ax_2},\ldots ,\mathbf{Ax_p}],$ where $\mathbf{x_i}\ i=1,2,\ldots ,p$ are the column vectors of the unknown matrix $\mathbf{X}$ it can be recognized that a matrix equation is equivalent to linear systems of equations having the same coefficient matrix:
+$$\mathbf{Ax_1}=\mathbf{b}_1,\mathbf{Ax_2}=\mathbf{b}_2,\ldots ,\mathbf{Ax_p}=\mathbf{b}_p.$$
+\begin{theorem}
+The matrix equation $\mathbf{AX}=\mathbf{B}$ is solvable if and only if each column of $\mathbf{B}$ is a linear combination of columns of $\mathbf{A},$ that is, $\rho(\mathbf{A})=\rho([\mathbf{A},\mathbf{B}]).$
+\end{theorem}
+}
+\begin{frame}\frametitle{Two-sidedness}
+    The special case of this theorem becomes ipmortant soon, when we discuss the concept of the inverse matrix.
+    \begin{theorem}
+        Assume that $A$ is an $n\times n$ square matrix and let $E$ be the identity matrix having the same size.
+        Then 
+        \(
+            A\cdot X = E
+        \)
+        is solvable if and only if the rank of $A$ is $n$.
+    \end{theorem}
+    \begin{theorem}[Two-sidedness theorem]
+        Assume that $A,B$ are $n\times n$ matrices, and the identity matrix is denoted by $E$.
+        If $AB=E$, then $BA=E$.
+        \label{}
+    \end{theorem}
+One can see that if the matrix equation $A\cdot X=E$ is solvable then the solution matrix is the unique solution.
+\end{frame}
+
+\section{Inverse of matrices}
+\frame{\frametitle{Inverse of matrices}
+
+\begin{definition}
+The inverse of a square matrix $\mathbf{A}$ is the solution of the matrix equation $\mathbf{AX}=\mathbf{E}$, where $\mathbf{E}$ is the identity matrix. The inverse of $\mathbf{A}$ is denoted by $\mathbf{A}^{-1}.$
+\end{definition}
+
+\begin{proposition}
+A square matrix has an inverse if and only if its rank equals to its order.
+\end{proposition}
+
+The invertible matrices are called \alert{regular} or \alert{nonsingular};
+while the matrices having no inverse are said to be \alert{singular}.
+
+The inverse $\mathbf{A}^{-1}$ of a regular matrix $\mathbf{A}$ is unique and
+$$\mathbf{A}^{-1}\mathbf{A}=\mathbf{A}\mathbf{A}^{-1}=\mathbf{E}.$$ 
+}
+\frame{\frametitle{}
+\begin{theorem}
+The product of regular matrices is regular and $$(\mathbf{AB})^{-1}=\mathbf{B}^{-1}\mathbf{A}^{-1}.$$
+The transpose of a regular matrix is regular and $$(\mathbf{A}^\top)^{-1}=(\mathbf{A}^{-1})^\top .$$
+\end{theorem}
+}
+\frame{\frametitle{Determining matrix inverse}
+To find the inverse of a given square matrix $\mathbf{A}$ the solution method of inhomogeneous linear system of equations can be used, because the columns of the inverse matrix are the solutions of the equations $\mathbf{Ax}=\mathbf{e}_1,\ldots ,\mathbf{Ax}\mathbf{e}_n.$ Since the coefficient matrix of these equations is the same the solutions can be performed together as the following example illustrates it.
+\begin{example}
+Find the inverse of the matrix $\displaystyle \mathbf{A}=\left[\begin{array}{ccc}
+1&0&1\\
+1&1&1\\
+0&1&1
+\end{array}\right].$
+\end{example}
+}
+\frame{\frametitle{}
+We solve three linear system of equations at the same time as they have common coefficient matrix:
+$$\begin{array}{c|ccc|ccc}
+&\mathbf{a}_1&\mathbf{a}_2&\mathbf{a}_3&\mathbf{e}_1&\mathbf{e}_2&\mathbf{e}_3\\ \hline
+&\fbox{$1$}&0&1&1&0&0\\
+&1&1&1&0&1&0\\
+&0&1&1&0&0&1
+\end{array}\rightarrow \begin{array}{c|cc|rrr}
+&\mathbf{a}_2&\mathbf{a}_3&\mathbf{e}_1&\mathbf{e}_2&\mathbf{e}_3\\ \hline
+\mathbf{a}_1&0&1&1&0&0\\
+&\fbox{$1$}&0&-1&1&0\\
+&1&1&0&0&1
+\end{array}\rightarrow $$
+$$\rightarrow \begin{array}{c|c|rrr}
+&\mathbf{a}_3&\mathbf{e}_1&\mathbf{e}_2&\mathbf{e}_3\\ \hline
+\mathbf{a}_1&1&1&0&0\\
+\mathbf{a}_2&0&-1&1&0\\
+&\fbox{$1$}&1&-1&1
+\end{array}\rightarrow \begin{array}{c|rrr}
+&\mathbf{e}_1&\mathbf{e}_2&\mathbf{e}_3\\ \hline
+\mathbf{a}_1&0&1&-1\\
+\mathbf{a}_2&-1&1&0\\
+\mathbf{a}_3&1&-1&1
+\end{array}$$
+from which the inverse matrix is
+$$\mathbf{A}^{-1}=\left[\begin{array}{rrr}
+0&1&-1\\
+-1&1&0\\
+1&-1&1
+\end{array}\right]$$ 
+}
+\begin{frame}\frametitle{Summary}
+    We demonstrated that the following assumptions are equivalent for a square matrix $A$.
+    \begin{itemize}
+        \item $A$ is invertible,
+        \item $A$ is row-equivalent to the identity matrix,
+        \item $Ax=b$ is solvable for every vector $b$,
+        \item The columns of $A$ are linearly independent,
+        \item $Ax=0$ homogeneous system has only the trivial solution,
+        \item The columns if $A$ span $\mathbb{R}^n$,
+        \item The columns of $A$ form a bases of $\mathbb{R}^n$.
+    \end{itemize}
+\end{frame}
+\frame{\frametitle{}
+\begin{example}
+Find the inverse of the given matrices!
+
+a)\quad $\displaystyle {\mathbf A} =\left[\begin{array}{rrr}
+-1 & -1 & -3\\
+1 & 2 & 2\\
+0 & 5 & -4\\
+\end{array}\right]$\qquad b)\quad 
+$\displaystyle {\mathbf A} =\left[\begin{array}{rrr}
+1 & 3 & 3\\
+-1 & -4 & -4\\
+-1 & 3 & 2\\
+\end{array}\right]$
+
+c)\quad 
+$\displaystyle {\mathbf A} =\left[\begin{array}{rrr}
+-1 & -3 & -4\\
+1 & 4 & -3\\
+1 & 4 & -4\\
+\end{array}\right]$\qquad d) \quad
+$\displaystyle {\mathbf A} =\left[\begin{array}{rrr}
+0 & 1 & -4\\
+-1 & -1 & 1\\
+-2 & -1 & -1\\
+\end{array}\right]$
+
+e)\quad 
+$\displaystyle {\mathbf A} =\left[\begin{array}{rrr}
+1 & 1 & 1\\
+-3 & -4 & -1\\
+2 & 4 & -3\\
+\end{array}\right]$\qquad f)\quad 
+$\displaystyle {\mathbf A} =\left[\begin{array}{rrr}
+1 & -2 & -2\\
+3 & -5 & -5\\
+1 & 0 & 1\\
+\end{array}\right]$
+\end{example}
+}
+
+\begin{frame}
+    
+\end{frame}
+\end{document}
+

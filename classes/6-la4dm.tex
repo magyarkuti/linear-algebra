@@ -1,0 +1,491 @@
+\input{la4dm.tex}
+\title{The determinant}
+\subtitle{of matrices}
+\date{18 November, 2024}
+\begin{document}
+
+\frame{\titlepage}
+%\section*{Outline:}
+\frame{\frametitle{Outline}
+\tableofcontents}
+\section{On the parity of permutations}
+\frame{\frametitle{On the parity of permutations}
+\begin{definition}
+Let $H$ be a nonempty set. A bijective map $\pi :H\longrightarrow H$ is said to be a permutation of the elements of $H.$
+\end{definition}
+
+If  $H$ is an $n$ element set say $H=\left\{ 1,2,\ldots ,n\right\} $ then the number of permutations defined on $H$ is $n!$ (read $n$ factorial, that is $1\cdot 2\cdot \cdot n$.)
+
+The set of all permutations of the set $\left\{ 1,2,\ldots ,n\right\}$ is denoted by  $S_n.$ 
+
+A permutation $\pi:H\to H$ can be represented by a $2\times n$ table of the form $\pi=\left(\begin{array}{cccc}
+1&2&\ldots &n\\
+i_1&i_2&\ldots&i_n
+\end{array}\right),$
+where $i_j$ is the element of $H$ corresponded to $j$ by the map $\pi.$
+
+The alternative presentation of a permutation is a set of $n$ rooks of an $n\times n$
+chessboard without capture.
+}
+\frame{\frametitle{}
+\begin{definition}
+Let $\pi=\left(\begin{array}{cccc}
+1&2&\ldots &n\\
+i_1&i_2&\ldots&i_n
+\end{array}\right)$ be a permutation of the set $H=\{1,2,\ldots ,n\}.$ A pair of elements $(i_j,i_k)$ is called an inversion in permutation $\pi$ if $j<k,$ but $i_j>i_k.$
+\end{definition}
+
+\noindent For instance, the number of inversions in the permutation $$\left(\begin{array}{ccccc}
+1&2&3&4&5\\
+5&1&4&2&3
+\end{array}\right)$$ is $6,$ namely $(5,1),(5,4),(5,2),(5,3),(4,2)$ and $(4,3).$
+
+\begin{definition}
+A permutation is said to be even if the number of its inversions is even number, otherwise it is an odd permutation.
+\end{definition}
+}
+\frame{\frametitle{}
+\begin{definition}
+The function $\sgn :\pi \to \{-1,1\}$ defined on the set of permutations as follows:
+$$\sgn (\pi)=\left\{\begin{array}{rcc}
+1&\mbox{if}& \pi \mbox{ is even,}\\
+-1&\mbox{if}& \pi \mbox{ is odd.}
+\end{array}\right.$$
+\end{definition}
+
+}
+\section{Determinants}
+\frame{\frametitle{Determinants}
+\begin{definition}
+Let $\mathbf{A}=\left[ a_{ij}\right] \in \R^{n\times n}$ be a square matrix. Its determinant $\det \mathbf{A}$ denoted by
+$$\left|\begin{array}{cccc}
+a_{11} & a_{12} & \ldots  & a_{1n} \\
+a_{21} & a_{22} & \ldots  & a_{2n} \\
+\vdots  & \vdots  &  & \vdots  \\
+a_{n1} & a_{n2} & \ldots  & a_{nn}
+\end{array}\right|$$  
+equals 
+$$\sum_{\pi \in S_n}\sgn (\pi)a_{1\pi(1)}a_{2\pi(2)}\cdots a_{n\pi(n)}.$$
+$n$ is called the order of the determinant.
+\end{definition}
+
+}
+\frame{\frametitle{}
+The determinant of a matrix of order $n$ is the sum of $n!$ terms, where each term is a product of $n$ factors. The factors of a term is entries of the matrix chosen exactly one from each row and each column. The sign of the term is the sign of the permutation that maps the row indices onto the column indices.
+
+To calculate the determinant using the definition is getting more difficult as the order is increasing. For instance, the determinant of a matrix of order $4$ is the sum of $24$ terms. On the other hand if the matrix has a special form, then to find its determinant can be very simple.
+
+For example, if the matrix is an upper triangle matrix, then 
+$$\left|\begin{array}{cccc}
+a_{11} & a_{12} & \ldots & a_{1n} \\
+0 & a_{22} & \ldots & a_{2n} \\
+\vdots & \vdots &  & \vdots \\
+0 & 0 & \ldots & a_{nn}
+\end{array}\right| =a_{11}a_{22}\ldots a_{nn}\,.$$
+}
+
+\frame{\frametitle{Special cases}
+\begin{example}
+Determine the determinant of matrices $\mathbf{A}=\left[ a_{ij}\right]$ of order $n=1,2,3.$
+\end{example}
+\noindent $n=1$ case:
+\begin{equation*}
+\det (a)=a.
+\end{equation*}
+
+\noindent $n=2$ case:
+\begin{equation*}
+\det \mathbf{A=}\left|\begin{array}{cc}
+a_{11} & a_{12} \\
+a_{21} & a_{22}
+\end{array}\right| =a_{11}a_{22}-a_{12}a_{21}
+\end{equation*}
+
+\noindent $n=3$ case:
+\begin{equation*}
+\left|\begin{array}{ccc}
+a_{11} & a_{12} & a_{13} \\
+a_{21} & a_{22} & a_{23} \\
+a_{31} & a_{32} & a_{33}
+\end{array}\right| =
+\begin{array}{l}
+a_{11}a_{22}a_{33}+ a_{12}a_{23}a_{31}+a_{13}a_{21}a_{32} \\
+-a_{11}a_{23}a_{32}-a_{12}a_{21}a_{33}-a_{13}a_{22}a_{31}
+\end{array}
+\end{equation*}
+}
+
+\frame{\frametitle{}
+\begin{example}
+By the general rule find the following determinant:
+\begin{enumerate}
+\item
+\begin{equation*}
+\left|\begin{array}{cc}
+4 & 2 \\
+3 & 5
+\end{array}\right| =4\cdot 5-2\cdot 3=14
+\end{equation*}
+\item
+\begin{eqnarray*}
+\left|\begin{array}{ccc}
+1 & 2 & 3 \\
+4 & 1 & 2 \\
+1 & 2 & 4
+\end{array}\right|  &=&1\cdot 1\cdot 4+2\cdot 2\cdot 1+3\cdot 4\cdot 2- \\
+&-&3\cdot 1\cdot 1-1\cdot 2\cdot 2-2\cdot 4\cdot 4 =\allowbreak -7
+\end{eqnarray*}
+\end{enumerate}
+\end{example}
+}
+\section{Properties of determinant}
+\frame{\frametitle{}
+If each entry of the $i$th row of the matrix $\mathbf{A}$ is the sum of two terms, then its determinant is the sum of two determinants, namely:
+\begin{gather*}
+\det \mathbf{A=}\left|\begin{array}{cccc}
+a_{11} & a_{12} & \cdots  & a_{1n} \\
+\vdots  & \vdots  &  & \vdots  \\
+b_{i1}+c_{i1} & b_{i2}+c_{i2} & \cdots  & b_{in}+c_{in} \\
+\vdots  & \vdots  &  & \vdots  \\
+a_{n1} & a_{n2} & \cdots  & a_{nn}
+\end{array}\right| = \\
+=\left|\begin{array}{cccc}
+a_{11} & a_{12} & \cdots  & a_{1n} \\
+\vdots  & \vdots  &  & \vdots  \\
+b_{i1} & b_{i2} & \cdots  & b_{in} \\
+\vdots  & \vdots  &  & \vdots  \\
+a_{n1} & a_{n2} & \cdots  & a_{nn}
+\end{array}\right| +\left|\begin{array}{cccc}
+a_{11} & a_{12} & \cdots  & a_{1n} \\
+\vdots  & \vdots  &  & \vdots  \\
+c_{i1} & c_{i2} & \cdots  & c_{in} \\
+\vdots  & \vdots  &  & \vdots  \\
+a_{n1} & a_{n2} & \cdots  & a_{nn}
+\end{array}\right|
+\end{gather*}
+Notice that the entries which are not in the $i$th row are the same in both determinants as in the original one.
+}
+\frame{
+If each entry of a row of the matrix $\mathbf{A}$ has a common factor, then it can be factored out from its determinant, more accurately:
+\begin{align*}
+\det \mathbf{A}& \mathbf{=}\left|\begin{array}{cccc}
+a_{11} & a_{12} & \cdots  & a_{1n} \\
+\vdots  & \vdots  &  & \vdots  \\
+\gamma \cdot a_{i1} & \gamma \cdot a_{i2} & \cdots  & \gamma \cdot a_{in} \\
+\vdots  & \vdots  &  & \vdots  \\
+a_{n1} & a_{n2} & \cdots  & a_{nn}
+\end{array}\right| = \\
+& =\gamma \cdot \left|\begin{array}{cccc}
+a_{11} & a_{12} & \cdots  & a_{1n} \\
+\vdots  & \vdots  &  & \vdots  \\
+a_{i1} & a_{i2} & \cdots  & a_{in} \\
+\vdots  & \vdots  &  & \vdots  \\
+a_{n1} & a_{n2} & \cdots  & a_{nn}
+\end{array}\right|.
+\end{align*}
+}
+\frame{
+\begin{enumerate}
+\item  \alert{The determinant of a matrix equals the determinant of its transpose: $\left|
+        \mathbf{A}\right| =\left| \mathbf{A}^{\top}\right| $.}
+%\pause
+\item  If each entry of a column (or row) vector of a matrix is zero, then its determinant is $0$.
+%\pause
+\item  \alert{If two rows of a matrix $\mathbf{A}$ is interchanged, then the sign of its determinant is changing.}
+%\pause
+\item  The determinant of a matrix $\mathbf{A}$ having two equal rows is zero.
+%\pause
+\item If a scalar multiple of a row of $\mathbf{A}$ is added to its another row then its determinant is not changing.
+%\pause
+\item If the system of row vectors of a matrix is a linear dependent set, then the determinant equals $0$.
+\end{enumerate}
+}
+
+\frame{\frametitle{}
+\begin{example}
+Using the above properties find the following determinant:
+\(
+\begin{vmatrix}
+1 & 1 & 1 & 1 \\
+2 & 4 & 5 & 1 \\
+1 & 2 & 1 & -1 \\
+3 & 2 & 0 & 5
+\end{vmatrix}
+\)
+\end{example}
+
+$$\left|\begin{array}{rrrr}
+1 & 1 & 1 & 1 \\
+2 & 4 & 5 & 1 \\
+1 & 2 & 1 & -1 \\
+3 & 2 & 0 & 5
+\end{array}\right| =\left|\begin{array}{rrrr}
+1 & 1 & 1 & 1 \\
+0 & 2 & 3 & -1 \\
+0 & 1 & 0 & -2 \\
+0 & -1 & -3 & 2
+\end{array}\right| =-\left|\begin{array}{rrrr}
+1 & 1 & 1 & 1 \\
+0 & 1 & 0 & -2 \\
+0 & 2 & 3 & -1 \\
+0 & -1 & -3 & 2
+\end{array}\right| =$$
+$$= -\left|\begin{array}{rrrr}
+1 & 1 & 1 & 1 \\
+0 & 1 & 0 & -2 \\
+0 & 0 & 3 & 3 \\
+0 & 0 & -3 & 0
+\end{array}\right| =-\left|\begin{array}{rrrr}
+1 & 1 & 1 & 1 \\
+0 & 1 & 0 & -2 \\
+0 & 0 & 3 & 3 \\
+0 & 0 & 0 & 3
+\end{array}\right| =-9$$
+}
+\frame{\frametitle{}
+First $\left( -2\right) $ times, $\left( -1\right) $ times and $\left( -3\right) $ times the first row was added to the $2$nd, $3$rd and $4$th row respectively to achieve that the $2$nd, $3$rd and $4$th entry in the first column become zero. Then we interchanged the second and third row therefore the determinant changed its sign. Using similar row operations the third and fourth entry of the second column and the fourth entry of the third column could be converted to zero to obtain an upper triangular matrix. Finally we used the fact that the determinant of an upper triangular matrix is the product of the diagonal entries.
+\pause
+
+\bigskip
+In the previous example using elementary row operations we converted the given matrix to an upper triangular one and its determinant is simple the product of the entries in the main diagonal.
+}
+\frame{\frametitle{}
+Let us summarize the elementary row/column operations and their effect to the determinant of the matrix:
+
+\begin{definition}
+The elementary row/column operation of matrices are:
+
+\begin{description}
+\item[-]  Interchanging two rows or columns; determinant changes its sign,
+
+\item[-]  Adding a multiple of one row or column to another; determinant is unchanged,
+
+\item[-]  Multiplying any row or column by a nonzero scalar; determinant is multiplied by the scalar. 
+\end{description}
+
+\end{definition}
+
+\begin{theorem}
+Using elementary row operations any square matrix can be converted into an upper triangular matrix.
+\end{theorem}
+
+}
+
+\frame{\frametitle{}
+\begin{theorem}[Determinant of matrix product]
+Let $\mathbf{A}$ and $\mathbf{B}$ be matrices of the same order. Then
+$$\left| \mathbf{A\cdot B}\right| =\left| \mathbf{A}\right| \cdot
+\left| \mathbf{B}\right| \ .$$
+\end{theorem}
+
+It immediately follows from the definition of the determinant, that the determinant of the identity matrix of any order is $1.$ Therefore it follows from the previous theorem and the properties of the determinant that
+
+\begin{theorem}
+The determinant of a square matrix $\mathbf{A}$ is zero if and only if $\mathbf{A}$ is singular.
+\end{theorem}
+
+}
+\frame{\frametitle{}
+\begin{theorem}
+If $\mathbf{A}$ is a regular matrix, then 
+$$\det \mathbf{A}^{-1}=\frac{1}{\det \mathbf{A}}.$$
+\end{theorem}
+
+\begin{definition}
+Two matrices $\mathbf{A}$ and $\mathbf{B}$ are said to be similar if there exists an invertible matrix $\mathbf{C},$ such that $\mathbf{B}=\mathbf{C}^{-1}\mathbf{A}\mathbf{C}.$
+\end{definition}
+
+\begin{theorem}
+The determinants of similar matices are equal to each other.
+\end{theorem}
+}
+
+\section{Determinant expansion by minors}
+\frame{\frametitle{Determinant expansion by minors}
+\noindent Let us consider again the determinant of a matrix of order $3$
+\begin{eqnarray*}
+\left| \mathbf{A}\right|
+=
+\begin{vmatrix}
+a_{11} & a_{12} & a_{13} \\
+a_{21} & a_{22} & a_{23} \\
+a_{31} & a_{32} & a_{33}
+\end{vmatrix}
+=
+\begin{array}{l}
+a_{11}a_{22}a_{33}+\allowbreak a_{12}a_{23}a_{31}+a_{13}a_{21}a_{32} \\
+-a_{11}a_{23}a_{32}-a_{12}a_{21}a_{33}-a_{13}a_{22}a_{31}
+\end{array}
+\end{eqnarray*}
+
+\noindent At first sight it seems to be difficult but it becomes more simple using the concepts of minors. Notice that the determinant can be written in the form
+\[
+\left| \mathbf{A}\right|  
+=
+a_{11}\left(a_{22}a_{33}-a_{23}a_{32}\right)
+-a_{12}\left( a_{21}a_{33}-a_{23}a_{31}\right)
++
+a_{13}\left( a_{21}a_{32}-a_{22}a_{31}\right),
+\]
+where determinants of order $2$ appears as factors:
+}
+\frame{\frametitle{}
+\[
+\left| \mathbf{A}\right|  
+=
+a_{11}\left|
+\begin{array}{cc}
+a_{22} & a_{23} \\
+a_{32} & a_{33}
+\end{array}
+\right| 
+-a_{12}\left|
+\begin{array}{cc}
+a_{21} & a_{23} \\
+a_{31} & a_{33}
+\end{array}
+\right| 
++a_{13}\left|
+\begin{array}{cc}
+a_{21} & a_{22} \\
+a_{31} & a_{32}
+\end{array}
+\right| .
+\]
+Thus, to determine the determinant of order $3$ can be led back to the calculation of determinants of order $2.$ In general to find the determinant can be led back to the calculation of determinants having smaller order.
+}
+\frame{\frametitle{}
+\begin{definition}
+Let $\mathbf{A}=\left[ a_{ij}\right]$ be $n\times n$ matrix and denote by $\mathbf{A}_{ij}$
+the matrix that can be obtained from $\mathbf{A}$ by omitting its $i$th row and $j$th column. The determinant of the $(n-1)\times (n-1)$ matrix $\mathbf{A}_{ij}$ is called the minor $M_{ij}$ corresponding to the entry $a_{ij}$ in the $i$th row and $j$th column.
+The cofactor corresponding to the entry $a_{ij}$ is
+$
+C_{ij}=(-1)^{i+j}M_{ij}
+$.
+
+\noindent In details: \footnotesize{
+$$C_{ij}=(-1)^{i+j}\left|\begin{array}{cccccc}
+a_{11} & \cdots  & a_{1,j-1} & a_{1,j+1} & \cdots  & a_{1n} \\
+\vdots  &  & \vdots  &  &  & \vdots  \\
+a_{i-1,1} & \cdots  & a_{i-1,j-1} & a_{i-1,j+1} & \cdots  & a_{i-1,n} \\
+a_{i+1,1} & \cdots  & a_{i+1,j-1} & a_{i+1,j+1} & \cdots  & a_{i+1,n} \\
+\vdots  &  & \vdots  &  &  & \vdots  \\
+a_{n1} & \cdots  & a_{n,j-1} & a_{n,j+1} & \cdots  & a_{nn}
+\end{array}\right| $$}
+\end{definition}
+
+}
+
+\frame{\frametitle{Determinant expansion by minors}
+\begin{theorem}
+\begin{equation*}
+\left| \mathbf{A}\right| =\sum_{k=1}^{n}a_{ik}C_{ik}
+\end{equation*}
+\end{theorem}
+
+In the previous theorem the expansion of the determinant was given according to the $i$th row. Similar expansion of the determinant is possible according to any column as well.
+
+\begin{theorem}
+If the entries of the $i$th row are multiplied by the cofactors corresponding to a different $j$th row, then $0$ is obtained:
+\begin{equation*}
+\sum_{k=1}^{n}a_{ik}C_{jk}=0.
+\end{equation*}
+\end{theorem}
+
+}
+\frame{\frametitle{}
+\begin{example}
+Calculate the determinant of the matrix:
+$$\mathbf{A}=\left[\begin{array}{cccc}
+1&0&1&0\\
+1&1&1&1\\
+2&1&3&1\\
+1&3&2&1
+\end{array}\right]$$
+\end{example}
+
+$$\begin{array}{cccc}
+\fbox{$1$}&0&1&0\\
+1&1&1&1\\
+2&1&3&1\\
+1&3&2&1
+\end{array}\rightarrow \begin{array}{ccc}
+0&1&0\\
+1&0&\fbox{$1$}\\
+1&1&1\\
+3&1&1
+\end{array}\rightarrow \begin{array}{cc}
+0&1\\
+1&0\\
+0&\fbox{$1$}\\
+2&1
+\end{array}\rightarrow \begin{array}{c}
+0\\
+1\\
+0\\
+\fbox{$2$}
+\end{array}$$
+The product of pivot elements is $2,$ the corresponding permutation is $\pi=\left(\begin{array}{cccc}
+1&2&3&4\\
+1&4&3&2
+\end{array}\right)$
+and $\sgn (\pi)=-1,$ because the number of inversions is $3,$ therefore the determinant of the given matrix is $|\mathbf{A}|= -2.$ 
+
+}
+
+
+\frame{\frametitle{}
+\begin{example}
+Find the determinant of the subsequent matrices:\\
+$\left[\begin{array}{rrr}
+1 & -5 & -2\\
+0 & 5 & -3\\
+0 & -1 & 0\\
+\end{array}\right]
+$
+$\left[\begin{array}{rrr}
+-5 & -2 & 2\\
+3 & 1 & -3\\
+0 & 0 & -4\\
+\end{array}\right]
+$
+$\left[\begin{array}{rrr}
+1 & 1 & 2\\
+-4 & 4 & -4\\
+-4 & 4 & -4\\
+\end{array}\right]
+$
+$\left[\begin{array}{rrr}
+1 & 4 & -3\\
+-1 & -4 & -2\\
+0 & -1 & 1\\
+\end{array}\right]
+$
+$\left[\begin{array}{rrr}
+-5 & 4 & 0\\
+3 & -2 & 2\\
+-3 & 3 & 3\\
+\end{array}\right]
+$
+$\left[\begin{array}{rrr}
+5 & 0 & 5\\
+-4 & 1 & -1\\
+3 & -2 & -3\\
+\end{array}\right]
+$
+$\left[\begin{array}{rrr}
+0 & -4 & 3\\
+0 & -1 & -2\\
+1 & 1 & 2\\
+\end{array}\right]
+$
+$\left[\begin{array}{rrr}
+1 & 3 & -3\\
+-5 & 5 & 5\\
+1 & 5 & -4\\
+\end{array}\right]$
+\end{example}
+}
+\closingframes{Thank you for your attention}
+\end{document}
+

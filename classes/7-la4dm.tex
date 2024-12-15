@@ -1,0 +1,746 @@
+\input la4dm.tex
+\title{Diagonal matrices}
+\subtitle{The eignevalues of a matrix}
+\date{December 2, 2024}
+\begin{document}
+
+\frame{\titlepage}
+%\section*{Outline:}
+\frame{\frametitle{Outline}
+\tableofcontents}
+
+\frame{\frametitle{Important}
+Taking part on the written exam at \alert{10.00 am. of December 19, 2024} is compulsory!
+}
+\section{Notion of Eigenvalue and Eigenvector}
+\subsection{Definition}
+\frame{\frametitle{Eigenvalue and Eigenvector}
+\begin{definition}
+    The scalar $\lambda \in \mathbb{R}$ is called an \alert{eigenvalue} of the matrix 
+    $\mathbf{A}\in \R^{n\times n}$, 
+    if there exists a nonzero vector $\mathbf{s}\in\R^{n}$ for which
+    \begin{equation*}
+    \mathbf{As}=\lambda \mathbf{s}
+    \end{equation*}
+    holds. 
+    The vector $\mathbf{s}$ is said to be the \alert{eigenvector} corresponding to the eigenvalue $\lambda $
+    of matrix $\mathbf{A}.$ 
+\end{definition}
+}
+
+\frame{\frametitle{The set of eigenvectors form a subspace}
+If both $\mathbf{s}$ and $\mathbf{t}$ are eigenvectors corresponding to the eigenvalue $\lambda $ then their any nontrivial linear combination $\alpha \mathbf{s}+\beta \mathbf{t}$ is also an eigenvector with the same eigenvalue  $\lambda $:
+\begin{equation*}
+    \mathbf{A}\left( \alpha \mathbf{s}+\beta \mathbf{t}\right) =
+    \alpha \mathbf{As}+\beta  \mathbf{At}=\alpha \lambda \mathbf{s}+\beta \lambda \mathbf{t}=
+    \lambda \left( \alpha \mathbf{s}+\beta \mathbf{t}\right) .
+\end{equation*}
+}
+
+\begin{frame}
+    \frametitle{Dependendent system}
+    The eigenvectors corresponding to the eigenvalue $\lambda $ are the nonzero solutions of the homogeneous system of linear equations 
+$$\left( \mathbf{A}-\lambda \mathbf{E}\right) \mathbf{x}=\mathbf{0}.$$
+
+A homogeneous system of linear equations with a square coefficient matrix has nonzero solution 
+if and only if its columns form a dependent system.
+
+It follows that $\lambda$ is an eigenvalue of $\mathbf{A}$ if and only if 
+the columns of matrix
+\[
+\mathbf{A}-\lambda\mathbf{E}
+\]
+is a linearly dependent system.
+\end{frame}
+
+
+
+\section{Determine the eigenvalues and the eigenvectors}
+
+\begin{frame}
+\begin{example} Find the eigenvalues and the corresponding eigenvectors of the following matrix:
+\begin{equation*}
+\mathbf{A}=\left[\begin{array}{rrr}
+1 & 0 & -1 \\
+0 & 1 & 1 \\
+2 & 0 & -2
+\end{array}\right]
+\end{equation*}
+\end{example}
+We find the values of the parameter $t$ for which the matrix $\mathbf{A}-t\mathbf{E}$ is singular and with the obtained values we find the nonzero solutions of the homogeneous system of linear equations $(\mathbf{A}-t\mathbf{E})\mathbf{x}=\mathbf{0}.$
+\end{frame}
+
+\subsection{Basis transformation}
+\frame{\frametitle{Find the eigenvalues and the eigenvector with basis transformation}
+Using elementary basis transformation we solve the homogeneous system of linear equations $(\mathbf{A}-t\mathbf{E})\mathbf{x}=\mathbf{0}$ for each value of the parameter $t$ for which the coefficient matrix is singular:
+$$ 
+\begin{array}{c|ccc}
+&x_1&x_2&x_3 \\ \hline
+&1-t&0&\fbox{$-1$}\\
+&0&1-t&1\\
+&2&0&-2-t
+\end{array}\rightarrow \begin{array}{c|cc}
+&x_1&x_2 \\ \hline
+x_3&t-1&0\\
+&1-t&1-t\\
+&t^2+t&0
+\end{array}$$
+}
+
+\frame{\frametitle{}
+If $t=1$ then we can continue as follows:
+$$\begin{array}{c|cc}
+&x_1&x_2 \\ \hline
+x_3&0&0\\
+&0&0\\
+&\fbox{$2$}&0
+\end{array}\rightarrow \begin{array}{c|cc}
+&x_2 \\ \hline
+x_3&0\\
+&0\\
+x_1&0
+\end{array}$$
+From this table we obtain that at $t=1$ the coefficient matrix is singular and the solution of the homogeneous system of linear equations $(\mathbf{A}-\mathbf{E})\mathbf{x}=\mathbf{0}$
+$$\left[\begin{array}{c}
+x_1\\
+x_2\\
+x_3
+\end{array}\right]=\left[\begin{array}{c}
+0\\
+1\\
+0
+\end{array}\right]\tau\quad \tau\in \R\ ,$$
+that is $1$ is an eigenvalue and the above vectors are the corresponding eigenvectors for all $\tau \neq 0.$
+}
+\frame{\frametitle{}
+If $t\neq 1$ then 
+$$\begin{array}{c|cc}
+&x_1&x_2 \\ \hline
+x_3&t-1&0\\
+&1-t&\fbox{$1-t$}\\
+&t^2+t&0
+\end{array}\rightarrow \begin{array}{c|cc}
+&x_1 \\ \hline
+x_3&t-1\\
+x_2&1\\
+&t^2+t
+\end{array}$$
+and we obtain that the coefficient matrix is also singular if $t=0$ or $t=-1.$
+
+One can see, from the table, that the eigenvectors corresponding to the eigenvalue $0$
+are 
+$$\left[\begin{array}{c}
+x_1\\
+x_2\\
+x_3
+\end{array}\right]=\left[\begin{array}{c}
+1\\
+-1\\
+1
+\end{array}\right]\tau\quad \tau\in \R\ \tau\neq 0$$
+and the eigenvectors corresponding to the eigenvalue $-1$ are 
+$$\left[\begin{array}{c}
+x_1\\
+x_2\\
+x_3
+\end{array}\right]=\left[\begin{array}{c}
+1\\
+-1\\
+2
+\end{array}\right]\tau\quad \tau\in \R\ \tau\neq 0.$$
+
+}
+\frame{\frametitle{Alert}
+There are real matrices which has no real eigenvalue, for instance the matrix
+\begin{alertblock}{Matrix having no real eigenvalue}
+\begin{equation*}
+\mathbf{A}=\left[\begin{array}{rr}
+0 & 1 \\
+-1 & 0
+\end{array}\right]
+\end{equation*}
+has no real eigenvalue,
+because the columns of matrix $A-tE$ always form an independent system.
+\end{alertblock}}
+
+\section{Characteristic polynomial}
+
+\frame{
+    \begin{definition}
+        If $A$ is a square matrix then the polynomial
+        \[
+            k\left( t \right)=
+            \det\left( A-tI \right)
+        \]
+        is called the \emph{characteristic polynomial} of the matrix $A$.
+    \end{definition}
+\begin{theorem}
+    Let $A$ be a square matrix and consider a real number $\lambda$.
+    The number $\lambda$ is an eigenvalue of matrix $A$ if and only if $k\left( \lambda \right)=0$.
+\end{theorem}
+Verify that similar matrices have the same characteristic polynomial.
+}
+\frame{\frametitle{Two alternatives looking for eigenvalues and eigenvectors}
+
+Now there are two ways to find the eigenvalues and the corresponding eigenvectors:
+\begin{description}[<+->]
+\item[First]
+We find the values of the parameter $t$ for which the matrix $\mathbf{A}-t\mathbf{E}$ is singular and with the obtained values we find the nonzero solutions of the homogeneous system of linear equations $(\mathbf{A}-t\mathbf{E})\mathbf{x}=\mathbf{0},$ or
+\item[Second]
+We determine the roots of the characteristic polynomial of $\mathbf{A},$ those are the eigenvalues of $\mathbf{A}$ and then solving the homogeneous system of linear equations
+$\left( \mathbf{A}-\lambda \mathbf{E}\right) \mathbf{x}=\mathbf{0}$ for each root we obtain the corresponding eigenvectors.
+\end{description}
+}
+\frame{\frametitle{2nd method to find the eigenvalues of a matrix}
+The characteristic equation:
+\begin{equation*}
+\left| \mathbf{A}-t \mathbf{E}\right| =\left|
+\begin{array}{ccc}
+1-t & 0 & -1 \\
+0 & 1-t & 1 \\
+2 & 0 & -2-t
+\end{array}
+\right| =-t ^{3}+t =0
+\end{equation*}
+Its solutions: $t_{1}=0$, $t_{2}=-1$ and $t_{3}=1$ are the eigenvalues of the matrix $\mathbf{A}.$
+}
+
+\frame{\frametitle{}
+The eigenvectors belonging to the eigenvalue $0$ are the nonzero solutions of the homogeneous system of linear equations $\left( A-0\cdot \mathbf{E}\right)
+\mathbf{x}=\mathbf{0}.$ Thus the system to be solved:
+\begin{equation*}
+\left[\begin{array}{rrr}
+1 & 0 & -1 \\
+0 & 1 & 1 \\
+2 & 0 & -2
+\end{array}\right] \left[\begin{array}{c}
+x_{1} \\
+x_{2} \\
+x_{3}
+\end{array}\right] =\left[\begin{array}{c}
+0 \\
+0 \\
+0
+\end{array}\right] .
+\end{equation*}
+The solutions: $x_{1}=\tau,$ $x_{2}=-\tau,$ $x_{3}=\tau $\quad
+$\left( \tau \in \R\right) .$ Therefore the eigenvectors belonging to the eigenvalue $t_{1}=0$ are
+\begin{equation*}
+\left[\begin{array}{r}
+1 \\
+-1 \\
+1
+\end{array}\right] \tau,\quad \left( \tau\in \R\setminus \{ 0\}\right)
+\end{equation*}
+}
+\frame{\frametitle{}
+The eigenvectors belonging to the eigenvalue $-1$ are the nonzero solutions of the homogeneous system of linear equations $\left( A+1\cdot \mathbf{E}\right)
+\mathbf{x}=\mathbf{0}.$ Thus the system to be solved:
+\begin{equation*}
+\left[\begin{array}{rrr}
+2 & 0 & -1 \\
+0 & 2 & 1 \\
+2 & 0 & -1
+\end{array}
+\right] \left[\begin{array}{c}
+x_{1} \\
+x_{2} \\
+x_{3}
+\end{array}\right] =\left[\begin{array}{c}
+0 \\
+0 \\
+0
+\end{array}\right].
+\end{equation*}
+The solutions: $x_{1}=\tau,$ $x_{2}=-\tau,$ $x_{3}=2\tau$\quad
+$\left( \tau\in \R\right).$ Therefore the eigenvectors belonging to the eigenvalue $t_{2}=-1$:
+\begin{equation*}
+\left[\begin{array}{r}
+1 \\
+-1 \\
+2
+\end{array}\right] \tau,\quad \left( \tau\in \R\setminus \{ 0\}\right) .
+\end{equation*}
+}
+
+\frame{\frametitle{}
+The eigenvectors belonging to the eigenvalue $1$ are the nonzero solutions of the homogeneous system of linear equations $\left( A-1\cdot \mathbf{E}\right)
+\mathbf{x}=\mathbf{0},$ that is,
+\begin{equation*}
+\left[\begin{array}{rrr}
+0 & 0 & -1 \\
+0 & 0 & 1 \\
+2 & 0 & -3
+\end{array}\right] \left[\begin{array}{c}
+x_{1} \\
+x_{2} \\
+x_{3}
+\end{array}
+\right] =\left[\begin{array}{c}
+0 \\
+0 \\
+0
+\end{array}\right] .
+\end{equation*}
+Solving the system the eigenvectors :
+\begin{equation*}
+\left[\begin{array}{c}
+0 \\
+1 \\
+0
+\end{array}\right] \tau,\quad \left( \tau\in \R\setminus \{ 0\}\right) .
+\end{equation*} 
+}
+
+\frame{\frametitle{Alert}
+There are real matrices which has no real eigenvalue, for instance the matrix
+\begin{alertblock}{Matrix having no real eigenvalue}
+\begin{equation*}
+\mathbf{A}=\left[\begin{array}{rr}
+0 & 1 \\
+-1 & 0
+\end{array}\right]
+\end{equation*}
+has the characteristic polynomial $t^2+1,$ therefore it has no real root.
+\end{alertblock}
+}
+\section{Diagonal matrix}
+
+\frame{\frametitle{Diagonal matrix}
+\begin{definition}
+A diagonal matrix is a square matrix, whose entries outside of the main diagonal are zeros. They will be denoted by
+\begin{equation*}
+\mathbf{D}=\text{diag}\left< d_{1},\ldots ,d_{n}\right>,
+\end{equation*}
+$d_{1},\ldots ,d_{n}$ are the entries in the main diagonal. 
+\end{definition}
+The eigenvalues of a diagonal matrix are just the entries in the main diagonal.
+}
+
+\frame{\frametitle{Diagonalizable matrix}
+\begin{definition}
+A square matrix $\mathbf{A}$ of order $n$ is said to be diagonalizable if there exists a regular matrix  $\mathbf{P}$ and a diagonal matrix $\mathbf{D}$ such that
+\begin{equation*}
+\mathbf{P}^{-1}\mathbf{AP}=\mathbf{D}=\text{diag}\left< d_{1},\ldots ,d_{n}\right> .
+\end{equation*}
+\end{definition}
+For example the matrix 
+\begin{equation*}
+\mathbf{A}=\left(
+\begin{array}{cc}
+3 & 1 \\
+2 & 4
+\end{array}
+\right)
+\end{equation*}
+is diagonalizable, because
+\begin{eqnarray*}
+\mathbf{P}^{-1}\mathbf{AP} =-\dfrac{1}{3}\left[
+\begin{array}{rr}
+2 & -1 \\
+-1 & -1
+\end{array}\right] \left[\begin{array}{cc}
+3 & 1 \\
+2 & 4
+\end{array}\right] \left[\begin{array}{rr}
+-1 & 1 \\
+1 & 2
+\end{array}\right] 
+=\left[\begin{array}{cc}
+2 & 0 \\
+0 & 5
+\end{array}\right]
+\end{eqnarray*}
+\pause
+It is fascinating. \alert{:)} How can we find the matrix $\mathbf{P}$, above?
+}
+
+\frame{\frametitle{A necessary and sufficient condition}
+\begin{theorem} \label{diag}
+A square matrix $\mathbf{A}$ of order $n$ is diagonalizable if and only if it has $n$ linearly independent eigenvectors $\mathbf{x}_{1},\ldots ,\mathbf{x}_{n}.$ In this case
+\begin{equation*}
+\mathbf{P}^{-1}\mathbf{AP}=\left[\begin{array}{cccc}
+\lambda _{1} & 0 & \ldots & 0 \\
+0 & \lambda _{2} & \ldots & 0 \\
+\vdots & \vdots &  & \vdots \\
+0 & 0 & \ldots & \lambda _{n}
+\end{array}\right],
+\end{equation*}
+where the columns of $\mathbf{P}$ are $\mathbf{x}_{1},\ldots ,\mathbf{x}_{n},$ and 
+$\lambda _{1},\ldots ,\lambda _{n}$ scalars are the corresponding eigenvalues. 
+\end{theorem}
+}
+
+\frame{\frametitle{Proof}
+If $\mathbf{x}_{1},\ldots ,\mathbf{x}_{n}$ are linearly independent eigenvectors of
+$\mathbf{A}$ and $\lambda _{1},\ldots ,\lambda _{n}$ are the corresponding eigenvalues, that is,
+\[
+\mathbf{Ax}_{1} =\lambda_{1}\mathbf{x}_{1},\quad
+\mathbf{Ax}_{2} =\lambda_{2}\mathbf{x}_{2},\quad
+\dots,\quad
+\mathbf{Ax}_{n} =\lambda_{n}\mathbf{x}_{n}.
+\]
+then let $\mathbf{P=}\left[ \mathbf{x}_{1},\ldots,\mathbf{x}_{n}\right].$ 
+Thus
+\begin{multline*}
+\mathbf{AP} =
+\mathbf{A}\left[ \mathbf{x}_{1},\ldots
+,\mathbf{x}_{n}\right]
+=
+\left[ \mathbf{Ax}_{1},\ldots ,\mathbf{Ax}_{n}\right]
+=
+\left[ \lambda _{1}\mathbf{x}_{1},\ldots ,\lambda _{n}\mathbf{x}_{n}\right]
+=\\
+\left[ \mathbf{x}_{1},\ldots ,\mathbf{x}_{n}\right] \text{diag}\left<\lambda _{1},\ldots ,\lambda _{n}\right>
+=
+\mathbf{P}\text{diag}\left< \lambda _{1},\ldots ,\lambda_{n}\right>,
+\end{multline*}
+therefore multiplying both sides by the inverse of $\mathbf{P}$, we obtain the identity required:
+\begin{equation*}
+\mathbf{P}^{-1}\mathbf{AP}=\text{diag}\left< \lambda _{1},\ldots ,\lambda _{n}\right> .
+\end{equation*}
+}
+
+\frame{\frametitle{Proof}
+Conversely, if 
+\begin{equation*}
+\mathbf{P}^{-1}\mathbf{AP}=\text{diag}\left< \lambda _{1},\ldots ,\lambda _{n}\right> ,
+\end{equation*}
+then
+$$\mathbf{AP}=\mathbf{P}\text{diag}\left< \lambda _{1},\ldots ,\lambda _{n}\right>,$$
+that is, for each column $\mathbf{x}_i$ $(i=1,\ldots ,n)$ of $\mathbf{P}$ the equation
+$\mathbf{Ax}_i=\lambda_i\mathbf{x}_i$ holds, verifying that $\lambda_i$ is an eigenvalue of
+$\mathbf{A}$ and a corresponding eigenvector is $\mathbf{x}_i .$ 
+}
+
+\frame{\frametitle{}
+\begin{example}
+Decide if the matrix $
+%\begin{equation*}
+\mathbf{A}=\left(
+\begin{array}{cc}
+3 & 1 \\
+2 & 4
+\end{array}
+\right)$
+%\end{equation*}
+is diagonalizable! If it is diagonalizable then give an invertible matrix $\mathbf{P}$ for which $\mathbf{P}^{-1}\mathbf{AP}$ is a diagonal matrix.
+\end{example}
+\pause
+The eigenvalues of $\mathbf{A}$ are $\lambda_{1}=2$  and $\,\lambda _{2}=5,$ furthermore the corresponding linearly independent eigenvectors:
+\begin{equation*}
+\mathbf{v}_{1}=\left[\begin{array}{r}
+-1 \\
+1
+\end{array}\right] \quad \mbox{and}\quad \mathbf{v}_{2}=\left[\begin{array}{c}
+1 \\
+2
+\end{array}\right]
+\end{equation*}\pause
+Hence by the previous theorem $\mathbf{A}$ is a diagonalizable matrix.
+
+If $\mathbf{P}=\left[\begin{array}{rr}
+-1 & 1 \\
+1 & 2
+\end{array}\right], $ then
+\begin{eqnarray*}
+\mathbf{P}^{-1}\mathbf{AP} =-\dfrac{1}{3}\left[
+\begin{array}{rr}
+2 & -1 \\
+-1 & -1
+\end{array}\right] \left[\begin{array}{cc}
+3 & 1 \\
+2 & 4
+\end{array}\right] \left[\begin{array}{rr}
+-1 & 1 \\
+1 & 2
+\end{array}\right]  
+=\left[\begin{array}{cc}
+2 & 0 \\
+0 & 5
+\end{array}\right]
+\end{eqnarray*}
+
+}
+
+\frame{\frametitle{An important special case}
+The necessary and sufficient condition for a matrix is being diagonalizable in theorem (\ref{diag}) can not be easily checked. Therefore it is an important result -- can be proved using mathematical induction -- that eigenvectors of a square matrix $\mathbf{A}$ corresponding to different eigenvalues are linearly independent, from which it immediately follows that an 
+$n\times n$ real matrix $\mathbf{A}$ having $n$ different real eigenvalues is diagonalizable.
+Of course the above condition is not necessary one.
+}
+\frame{\frametitle{Example}
+Consider the matrix:
+\begin{equation*}
+\mathbf{A}=\left[\begin{array}{ccc}
+2 & 1 & 0 \\
+0 & 1 & 0 \\
+0 & 1 & 2
+\end{array}\right]
+\end{equation*}
+This matrix has only two different eigenvalues $\lambda _{1}=2$ and $\lambda_{2}=1$.
+%(where  $\lambda _{1}=2$ is a root of the characteristic polynomial with multiplicity two).
+
+The linearly independent eigenvectors corresponding to the eigenvalue $\lambda _{1}=2$ are: $\mathbf{v}_{1}=\left[\begin{array}{c}
+1 \\
+0 \\
+0
+\end{array}\right]$\quad\mbox{and}\quad $\mathbf{v}_{2}=\left[\begin{array}{c}
+0 \\
+0 \\
+1
+\end{array}\right], $
+while the eigenvector belonging to the eigenvalue $\lambda _{2}=1$ is 
+$\mathbf{v}_{3}=\left[\begin{array}{r}
+1 \\
+-1 \\
+1
+\end{array}\right] .$
+Thus the matrix has three linearly independent eigenvectors, therefore it is diagonalizable.
+}
+
+\section{Symmetric matrices}
+\frame{\frametitle{Symmetric matrices}
+The square matrices occurring in economical applications are often symmetric, therefore it seems to be reasonable to study the question if the symmetric matrices are diagonalizable.
+
+Recall that a real matrix $\mathbf{A}$ is said to be symmetric if $\mathbf{A}^\top=\mathbf{A}$ and it is  orthogonal if $\mathbf{A}^\top=\mathbf{A}^{-1}$.
+
+
+\begin{theorem}
+
+\begin{description}
+\item[-]   The characteristic equation of an $n\times n$ symmetric matrix has $n$ real roots counting their multiplicity as well.
+
+\item[-]   The eigenvectors corresponding to different eigenvalues of a symmetric matrix are orthogonal.
+\end{description}
+\end{theorem}
+}
+
+\frame{\frametitle{The spectral theorem of symmetric matrices}
+\begin{theorem}
+The symmetric matrices are diagonalizable, furthermore to each symmetric matrix $\mathbf{A}$ there exists an orthogonal matrix $\mathbf{U},$ such that
+\begin{equation*}
+\mathbf{U}^{-1}\mathbf{AU}=\mbox{diag}\left< \lambda _{1},\ldots ,\lambda_{n}\right> ,
+\end{equation*}
+where $\lambda _{1},\ldots ,\lambda _{n}$ are the eigenvalues of $\mathbf{A}.$
+\end{theorem}
+\begin{example}
+Find the orthogonal matrix  $\mathbf{U}$ to the symmetric matrix $\mathbf{A}$ for which the matrix $\mathbf{U}^\top\mathbf{AU}$ is a diagonal one.
+\begin{equation*}
+\mathbf{A}=\left[\begin{array}{ccc}
+3 & 0 & 0 \\
+0 & 0 & 1 \\
+0 & 1 & 0
+\end{array}\right]
+\end{equation*}
+\end{example}
+}
+
+\frame{\frametitle{}
+The eigenvalues of the matrix are $\lambda _{1}=-1,\,\lambda _{2}=1$
+and $\lambda _{3}=3, $ and the corresponding eigenvectors are
+\begin{equation*}
+\mathbf{v}_{1}=\left[\begin{array}{c}
+0 \\
+-1 \\
+1
+\end{array}\right] \,,\mathbf{v}_{2}=\left[\begin{array}{c}
+0 \\
+1 \\
+1
+\end{array}\right]\quad \mbox{and}\quad\mathbf{v}_{3}=\left[\begin{array}{c}
+1 \\
+0 \\
+0
+\end{array}\right] .
+\end{equation*}
+The normed eigenvectors are the columns of the orthogonal matrix $\mathbf{U}.$ Thus 
+\begin{equation*}
+\mathbf{U}=\left[
+\begin{array}{ccc}
+0 & 0 & 1 \\
+-\frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} & 0 \\
+\frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} & 0
+\end{array}\right]
+\end{equation*}
+and $\mathbf{U}^\top\mathbf{AU}=\mbox{diag}\left< -1,1,3\right>.$ 
+}
+\section{Back to the quadratic forms}
+\frame{\frametitle{Classificiation with eigenvalues}
+\begin{theorem}
+    Consider the quadratic form $Q$, and let $B$ denote the corresponding symmetric matrix, i.e.
+$Q(x) = ⟨x, Bx⟩$
+for every $x ∈ \mathbb{R}^N$
+n. Examine the eigenvalues of $B$.
+    \begin{itemize}
+    \item
+     If all eigenvalues are positive, then $Q$ is positive denite.
+     \item
+     If all eigenvalues are nonnegative and at least one of them is zero, then $Q$
+    is positive semidenite.
+     \item
+     If all eigenvalues are negative, then $Q$ is negative denite.
+     \item
+     If all eigenvalues are nonpositive and at least one of them is zero, then $Q$
+    is negative semidenite.
+     \item
+     If there are both positive and negative eigenvalues, then $Q$ is indenite.
+     \end{itemize}
+\end{theorem}
+}
+\frame{\frametitle{Classification with leading principal minors}
+    Let $B$ denote an $n \times n$ real matrix. 
+    The determinant of the top left $k \times k$ matrices ($k=1,\cdots,n$) are called \alert{leading principal minors}.
+    \begin{theorem}[Sylvester]
+    Consider the quadratic form $Q$, and let $B$ denote the corresponding symmetric matrix, i.e.
+    $Q(x) = ⟨x, Bx⟩$
+    for every $x ∈ \mathbb{R}^N$.
+
+    The quadratic form is positive definite if and only if all of the leading principal minors of $B$ is positive.
+    \end{theorem}
+}
+\frame{\frametitle{Proof}
+    Assume first, that $Q$ is positive definite.
+    If $\lambda$ is an eigenvalue, and $x$ is an eigenvector such that $Bx=\lambda x$,
+    then 
+    \[
+    0<Q\left( x \right)
+    =⟨x, Bx⟩
+    =⟨x, \lambda x⟩
+    =\lambda ⟨x, x⟩
+    =\lambda \|x\|^2
+    \]
+    which means that all of the eigenvales of $B$ is positive. 
+
+    Realize, that the determinant of a symmetric matrix is the product of all of the eigenvalues.
+    We obtained that the determinant of any positive definite matrix is positive.
+
+    Obviously, the top left $k\times k$ submatrix of a positive definite matrix is also positive definite.
+    Thus we proved, that all of the principal minors of $B$ is a positive number.
+}
+\frame{\frametitle{Proof}
+Vice versa, assume now that the sequence of the principal minors $\Delta_1,\cdots,\Delta_n$ are all positive numbers.
+At this case all of the top left $k\times k$ submatrix is regular, thus all of the columns of any $k \times k$ submatrix
+form a linear independent system.
+This fact implicates, that during the dyadic decomposition process all of the top left pivot terms are nonzero numbers.
+
+If $\alpha_1,\cdots,\alpha_n$ is the sequence of the pivot terms, then the dyadic decompositon is
+\[
+    B=\sum_{k=1}^n\alpha_kd_k\cdot d_k^T
+\]
+We know that the derminant can be computed as the product of the pivot terms (at this case)
+thus $\Delta_1=\alpha_1$, and $\Delta_k=\alpha_k\Delta_{k-1}$ if $k>1$.
+This fact implicates that all of the pivot terms $\alpha_k$ are positive numbers, thus the quadratic form is positive definite,
+which was to be demonstrated.
+}
+\section{Problems}
+\begin{frame}
+    \frametitle{Problem 1}
+    Diagonalize the matrix
+    \[
+        A=
+        \begin{pmatrix}
+            0&1&1\\1&0&1\\1&1&0
+        \end{pmatrix}
+    \]
+\end{frame}
+
+\begin{frame}
+    \frametitle{Problem 2}
+    Diagonalize the matrix
+    \[
+        A=
+        \begin{pmatrix}
+            4&-3&-3\\3&-2&-3\\-1&1&2
+        \end{pmatrix}
+    \]
+    Compute the matrix $A^{10}$.
+\end{frame}
+\begin{frame}
+    \frametitle{Problem 3}
+    Diagonalize the matrix
+    \[
+        A=
+        \begin{pmatrix}
+            1&1\\0&1
+        \end{pmatrix}
+    \]
+\end{frame}
+\begin{frame}
+    \frametitle{Problem 4}
+    Consider the matrix
+    \[
+        A=
+        \begin{pmatrix}
+            1&2\\4&3
+        \end{pmatrix}
+    \]
+
+    Compute $A^{10}$. 
+
+    Write $A^{10}$ as a linear combination of dyads.
+\end{frame}
+\begin{frame}
+    \frametitle{Problem 5}
+    Diagonalize the matrix
+    \[
+        A=
+        \begin{pmatrix}
+            0&1&0\\-1&0&0\\0&0&2
+        \end{pmatrix}
+    \]
+\end{frame}
+
+\begin{frame}
+    \frametitle{Problem 6}
+    Diagonalize the matrix
+    \[
+        A=
+        \begin{pmatrix}
+            2&-1&-1\\-1&2&-1\\-1&-1&2
+        \end{pmatrix}
+    \]
+\end{frame}
+
+\begin{frame}{Trace of a matrix}
+    \begin{definition}
+        If $A$ is a square matrix, then the sum of the diagonal terms of $A$ is called the \emph{trace}
+        of matrix $A$.
+        Notation: $\tr{A}$.
+    \end{definition}
+
+    Prove that the trace of similar matrices are the same. 
+    That is for any regular matrix $P$
+    \[
+        \tr{(P^{-1}AP)}=\tr{A}.
+    \]
+    Hint: Let us prove first, that $\tr\left( AB \right)=\tr(BA)$ for any square matrices $A$ and $B$.
+\end{frame}
+
+\begin{frame}
+    \frametitle{Problem 7}
+    Diagonalize the matrix
+    \[
+        A=
+        \begin{pmatrix}
+            1&1&1\\1&1&1\\1&1&1
+        \end{pmatrix}
+    \]
+\end{frame}
+
+\begin{frame}
+    \frametitle{Problem 8}
+    Diagonalize the matrix
+    \[
+        A=
+        \begin{pmatrix}
+            0&0&0&0\\1&1&1&1\\0&0&0&0\\1&1&1&1
+        \end{pmatrix}
+    \]
+\end{frame}
+
+\begin{frame}{Upper triangular matrices}
+    Prove that an upper triangular matrix is regular if and only if the diagonal terms are non zero numbers.
+
+    Prove that $\lambda$ is an eigenvalue of an upper triangular matrix if and only if $\lambda$ is one of the terms of the diagonal of the matrix.
+\end{frame}
+\end{document}

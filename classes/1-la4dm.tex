@@ -1,0 +1,559 @@
+\input{la4dm.tex}
+\title[Elements]
+      {Elements of Linear Algebra}
+      \subtitle{Vectors, Linear combination}
+\date[Linear Algebra Fall week 1-2-3]{September 9, 2024}
+\begin{document}
+%\renewcommand{\mathbf}{\relax}
+\frame{\titlepage}
+
+\frame{\frametitle{Outline}
+\tableofcontents}
+
+\section{References}
+\frame{
+\frametitle{References}
+\bibliographystyle{plain}
+\begin{thebibliography}{10}
+
+\bibitem{Fostel}
+  Peter Tallos,
+  \newblock  Lectures on Mathematics
+  \newblock \url{http://web.uni-corvinus.hu/~tallos/EMat.pdf}
+
+\bibitem{Fostel}
+ Knuth Sydseater \& Peter Hammond,
+ \newblock  Essential Mathematics for Economic Analysis
+ \newblock  {\it Prentice Hall}, ISBN-10: 027368180X, ISBN-13: 978-0273681809; September 30. 2005.
+
+\bibitem{MGy}
+ Gyula Magyarkuti,
+ \newblock  Linear Algebra lecture notes.
+     \newblock \url{https://magyarkuti.github.io/linear-algebra}
+
+% \bibitem{Syllabus}
+%     Syllabus
+%     \newblock \url{http://web.uni-corvinus.hu/magyarkuti/LinearAlgebra-2022.pdf}
+\end{thebibliography}
+}
+\section{Vectors}
+\frame{\frametitle{}
+It is well known, 
+that there is a one-to-one correspondence between the elements of the set of the real numbers and the points of a straight line. 
+It is also known, 
+that we can make a similar one-to-one correspondence between the points of the plane and the elements of set of the of ordered pairs of real numbers $\R^2$.
+Similarly, we can identify the points of the $3$-dimensional space and the elements of ordered real number triples $\R^3$. 
+
+We generalize and introduce the $n$-dimensional space as the set $\R^n$ containing all the ordered real $n$-tuples, 
+that is, 
+$n$-element real sequences.
+
+\begin{definition}
+The elements of $\R^n$ will be written in the form
+$ {\mathbf x}=(x_1,x_2,\ldots ,x_n)$ $x_i\in \R,\ i=1,\ldots ,n$ and are said to be vectors. The real numbers $x_1,\ldots ,x_n$  are the {\em components} of ${\mathbf x}.$
+\end{definition}
+
+{\em Remark:} The zero vector in $\R^n$ is obviously the vector ${\mathbf 0},$ all of whose components are zero, and the opposite of a vector is obtained if each of its component is replaced with its opposite. 
+}
+
+\frame{\frametitle{}
+If ${\mathbf y}=(y_1,y_2,\ldots ,y_n)$ is another vector in $\R^n$ then we define the sum:
+$${\mathbf x}+{\mathbf y}=(x_1+y_1,x_2+y_2,\ldots ,x_n+y_n)$$
+and if $\lambda $ is a real number we also define the scalar multiplication:
+$$\lambda {\mathbf x}=(\lambda x_1,\lambda x_2,\ldots ,\lambda x_n).$$
+Thus  ${\mathbf x}+{\mathbf y}\in \R^n$ and also $\lambda {\mathbf x}\in \R^n.$
+
+\begin{example}
+Let $\mathbf{a}=( 2,3,4,1)$ and $\mathbf{b}=( -1,0,1,2)$ be two vectors in $\R^4$.
+Determine the vector $\mathbf{a+}2\mathbf{b}$. 
+\end{example}
+
+\begin{eqnarray*}
+\mathbf{a}+2\mathbf{b} &=&( 2,3,4,1) +( 2\cdot (-1) ,2\cdot 0,2\cdot 1,2\cdot 2) = \\
+&=&( 2-2,3+0,4+2,1+4) =( 0,3,6,5)
+\end{eqnarray*}
+}
+
+\frame{\frametitle{}
+Since the addition of vectors is led back to the addition of their coordinates, which are real numbers, the following properties hold true.
+\begin{theorem}\label{addprop}\label{scmultprop}
+Let ${\mathbf x},{\mathbf y}$ and ${\mathbf z}$ be arbitrary vectors in $\R^n$, then \\
+$1.\quad{\mathbf x}+{\mathbf y}={\mathbf y}+{\mathbf x}$, (the addition is commutative,)\\
+$2.\quad({\mathbf x}+{\mathbf y})+{\mathbf z}={\mathbf x}+({\mathbf y}+{\mathbf z})$ (associative,)\\
+$3.\quad\exists {\mathbf 0}\in \R^n: \forall {\mathbf x}\in \R^n: {\mathbf 0}+{\mathbf x}={\mathbf x}$, (there exists zero vector,)\\
+$4.\quad\forall {\mathbf x}\in\R^n: \exists (-{\mathbf x})\in\R^n: {\mathbf x}+(-{\mathbf x})={\mathbf 0}$. (each element has an opposite.)
+
+Furthermore, if $\lambda ,\mu \in\R,$ then \\
+$1.\quad\lambda ({\mathbf x}+{\mathbf y})=\lambda {\mathbf x} + \lambda {\mathbf y}$,\\
+$2.\quad (\lambda +\mu ){\mathbf x} =\lambda {\mathbf x} +\mu {\mathbf x}$,\\
+$3.\quad (\lambda \cdot \mu){\mathbf x}=\lambda (\mu {\mathbf x})$,\\
+$4.\quad 1\cdot {\mathbf x}={\mathbf x}.$
+\end{theorem}
+}
+\frame{\frametitle{}
+\begin{definition}
+Let  an addition be defined on a set $V$ satisfying  the first four properties above and for any real number $\alpha $ let a map $\alpha :V\longrightarrow V$ -- called scalar multiplication -- be defined satisfying the second four properties above. 
+Then $V$ is called a real \alert{vector space}.
+\end{definition}
+\begin{itemize}
+\item The directed line segments in the plane with fixed initial point form a real vector space, with the addition according to the parallelogram rule and scalar multiplication defined as follows: multiply the length of the vector by the absolute value of the number and change  its direction  to the opposite if the number is negative.
+\item $\R^n$ is a real vector space with the addition and scalar multiplication defined above.
+\item The set of all functions of the form $f:X\longrightarrow \R$ is a real vector space, where the addition of two functions $f$ and $g$ is defined by $(f+g)(x):=f(x)+g(x)\ \forall x\in X,$ and for any $\lambda \in \R,$ $(\lambda f)(x):= \lambda \cdot f(x)$ defines the scalar multiplication.
+\end{itemize}
+}
+
+\frame{\frametitle{Subspace}
+\begin{definition}
+    A non-empty subset $M$ of a vector space  $V$ is called to be a \alert{subspace} of $V$ if
+    \begin{itemize}
+        \item $x+y\in M$ for all $x,y\in M$;
+        \item $\alpha x\in M$ for all $x\in M$ and $\alpha\in\mathbb{R}$.
+    \end{itemize}
+\end{definition}
+}
+
+\section{Linear combination}
+
+\frame{\frametitle{Linearly independent vector set}
+Let ${\mathbf x}_1,\ldots ,{\mathbf x}_k$ be arbitrary vectors in $\R^n$ and $\lambda_1,\ldots ,\lambda_k$ be real numbers. Then the vector
+$$\lambda_1 {\mathbf x}_1+\cdots +\lambda_k {\mathbf x}_k$$
+is called a {\em linear combination} of the vectors ${\mathbf x}_1,\ldots ,{\mathbf x}_k.$
+
+\begin{definition}
+The set of vectors ${\mathbf x}_1,\ldots ,{\mathbf x}_k$ is said to be linearly independent if
+$\displaystyle \lambda_1 {\mathbf x}_1+\cdots +\lambda_k {\mathbf x}_k={\mathbf 0} \Longrightarrow \lambda_1=\ldots =\lambda_k=0.$
+\end{definition}
+
+The only way to obtain the zero vector as a linear combination of a linearly independent set of vectors is the trivial one, that is, if we choose all the scalar coefficients equal zero. 
+\begin{definition}
+The system of vectors ${\mathbf v}_1,\ldots ,{\mathbf v}_k$ is called linearly dependent if it is not independent.
+\end{definition}
+
+}
+
+
+\frame{\frametitle{}
+\begin{example}
+Decide if the system of vectors $\{{\mathbf a}=(1,2,3), {\mathbf b}=(-1,0,1), {\mathbf c}=(-2,-1,0)\}$ is linearly independent or dependent. 
+\end{example}
+\pause
+We have to find out if the equation $\alpha {\mathbf a}+\beta {\mathbf b}+\gamma {\mathbf c}={\mathbf 0}$ implies that each of the coefficients $\alpha ,\beta ,\gamma $ are zero.
+Comparing the coordinates of both sides of the equation we obtain the system of linear equations:
+\begin{eqnarray*}
+\alpha -\beta -2\gamma &=& 0\\
+2\alpha -\gamma &=& 0 \\
+3\alpha +\beta  &=&0
+\end{eqnarray*}
+
+From the second equation it follows that $\gamma = 2\alpha$ and from the third one we have that $\beta = -3\alpha $ and the first equation is a consequence of these.
+Thus for any real number $\tau $ the triple $\alpha =\tau, \beta =-3\tau, \gamma =2\tau$  satisfies the system of equations, therefore the vector system $\{{\mathbf a}=(1,2,3), {\mathbf b}=(-1,0,1), {\mathbf c}=(-2,0,2)\}$ is linearly dependent.
+}
+
+\frame{\frametitle{Problems}
+Decide if the systems of the following vectors form a linear independent or a dependent set
+\begin{itemize}
+    \item \[\left\{ 
+        {\mathbf b_1}=\left( 1,0,0 \right),
+        {\mathbf b_2}=\left( 0,1,0 \right),
+        {\mathbf b_3}=\left( 0,0,1 \right)
+        \right\}\]
+    \item \[\left\{ 
+        {\mathbf b_1}=\left( 1,1,0 \right),
+        {\mathbf b_2}=\left( 0,1,1 \right),
+        {\mathbf b_3}=\left( 1,0,1 \right)
+        \right\}\]
+    \item \[\left\{ 
+        {\mathbf b_1}=\left( 1,1,1 \right),
+        {\mathbf b_2}=\left( 0,1,1 \right),
+        {\mathbf b_3}=\left( 1,1,0 \right)
+        \right\}\]
+    \item \[\left\{ 
+        {\mathbf a_1}=\left( 1,2,3 \right),
+        {\mathbf a_2}=\left( 3,4,5 \right),
+        {\mathbf a_3}=\left( 5,6,7 \right)
+        \right\}\]
+    \item \[\left\{ 
+        {\mathbf a_1}=\left( 2,1,3 \right),
+        {\mathbf a_2}=\left( 4,1,5 \right),
+        {\mathbf a_3}=\left( 6,1,7 \right)
+        \right\}\]
+\end{itemize}
+}
+\frame{\frametitle{Important properties of system of vectors}
+
+The subsequent statements are easily verified:
+
+\begin{itemize}
+\item A set of vectors containing the zero vector is linearly dependent.
+\item A system of vectors having two equal vectors is linearly dependent.
+\item Any one element set containing only a non-zero vector is linearly independent.\pause
+\item Any non-empty subset of a linearly independent set of vectors is linearly independent. \pause
+\item A system of vectors is linearly dependent if and only if one of its vector is the linear combination of the other vectors in the system.\pause
+\item If ${\mathbf v}=\lambda_1{\mathbf x}_1+\cdots +\lambda_k{\mathbf x}_k$ and $\{{\mathbf x}_1,\ldots ,{\mathbf x}_k\}$ is linearly independent, then the scalars $\lambda_1,\ldots ,\lambda_k$ are unique.
+\end{itemize}
+}
+
+\section{Linear span}
+\begin{frame}\frametitle{Span}
+    \begin{definition}
+    Let $S$ be a subset of a vector space.
+    The \alert{span} of $S$ is defined as the set of all of linear combinations of the vectors of $S$.
+    \[
+        \spn\left( S \right)
+        =
+        \left\{ \sum_{i=1}^k\lambda_ix_i:k\in\mathbb{N},\lambda_i\in\mathbb{R}, x_i\in S \right\}.
+    \]
+    Assume that $M$ is a subspace of the vector space and $S\subseteq M$ is a subset.
+    If $\spn(S)=M$, then $S$ is a \alert{spanning set of } $M$.
+    \end{definition}
+    The commonly used terminologies are as follow.
+    $S$ spans $M$; $S$ generates $M$; $S$ is a spanning set of $M$; $S$ is a generating set of $M$.
+    Sometimes, the set $\spn(S)$ is denoted by $\lin(S)$ and the spans of $S$ is called \alert{the linear hull} of $S$.
+
+    Observe that $\spn\left( S \right)$ is always a subspace.
+\end{frame}
+\begin{frame}
+    \begin{example}
+        Consider the vector space $\mathbb{R}^3$.
+        Decide if the set $S$ is a spanning set of the vector space or not.
+        $S=\left\{ a,b,c \right\}$.
+        \begin{enumerate}
+            \item $a=(-1,0,0); b=\left( 0,1,0 \right); c=\left( 0,0,-1 \right)$.
+            \item $a=(1,0,0); b=\left( 0,1,0 \right); c=\left( 1,1,0 \right)$.
+            \item $a=(1,0,0); b=\left( 0,1,0 \right); c=\left( 1,1,1 \right)$.
+        \end{enumerate}
+    \end{example}
+\end{frame}
+\begin{frame}
+\begin{example}
+Decide if the vector $\mathbf{x}=(1,0,3)$ is in the linear hull of vector system $\{\mathbf{a}_1=(1,1,-1),\mathbf{a}_2=(2,1,2),\mathbf{a}_3=(0,1,-4)\}.$
+\end{example}
+\end{frame}
+\section{Basis}
+\frame{\frametitle{Rank}
+
+\begin{definition}
+The rank of a system of vectors $\{{\mathbf x}_1,\ldots ,{\mathbf x}_k\}$ is the integer $r$ if it has an $r$ element linearly independent subset, but any at least $r+1$ element subsystem is linearly dependent.
+\end{definition}
+}
+
+\subsection{Minimal spanning set and maximal independent set}
+\frame{\frametitle{Minimal spanning set}
+Consider a vector space including a finite spanning set $\left\{ x_1,\ldots,x_s \right\}$.
+It is clear that 
+if one of the vectors--for example $x_1$--is a linear combination of the rest of the vectors $\left\{ x_2,\ldots,x_s \right\}$,
+then after dropping this vector from the system,
+the set $\left\{ x_2,\ldots,x_s \right\}$ remains a spanning set.
+
+Let us call a spanning set  $H$ \alert{minimal} iff there is no proper spannig subset of the set of $H$.
+
+Thus we proved that \alert{every minimal spanning set is an independent set.}
+}
+
+\frame{\frametitle{Maximal independent set}
+Assume that we have an $\left\{ x_1,\ldots,x_s \right\}$ independent set
+for which $y\notin\spn\left\{ x_1,\ldots,x_s \right\}$.
+One can see that only the trivial linear combinations of the system
+\[
+    \left\{ x_1,\ldots,x_s,y \right\}
+\]
+provides $0$, thus it is a linearly independent set.
+
+Let us call a linear independent set $H$ \alert{maximal} iff there is no proper independent superset of $H$.
+
+Thus we proved that \alert{every maximal linear independent set is a spanning set.}
+}
+
+\frame{\frametitle{The existence of a minimal spanning set}
+\begin{definition}
+    A vector space having finite spanning set is called \alert{finite dimensional} or \emph{finitely generated} vector space.
+\end{definition}
+
+Assume that the vector space has a finite spanning set $H_1$.
+If it is minimal then, the set $H_1$ is linearly independent. 
+Otherwise we are able to find a proper subset $H_2\subseteq H_1$ which remains spanning set.
+
+If the system $H_2$ is minimal then, the set $H_2$ is linearly independent. 
+Otherwise we are able to find a proper subset $H_3\subseteq H_2$ which remains spanning set.
+
+Using this process--after finite steps--we obtain a minimal spanning set:
+It is a subset of the original system 
+$\left\{ x_1,\ldots,x_n \right\}$ which is spanning set and linearly independent together.
+}
+
+\frame{\frametitle{The existence of a minimal spanning set}
+Thus the following proposition is proven.
+\begin{proposition}
+    Every finitely generated vector space does have a linearly independent spanning set.
+\end{proposition}
+}
+
+\frame{\frametitle{Basis}
+\begin{definition}
+A set of vectors $\{v_1,\ldots ,v_n\}$ is called a basis of the vector space $V$, if
+\begin{itemize}
+\item it is linearly independent and
+\item it is a spanning set of $V$.
+\end{itemize}
+\end{definition}
+We have just proved that every finitely generated vector space has a basis.
+
+Verify that the set of vectors $\{\mathbf{e}_1,\ldots ,\mathbf{e}_n\},$ where $\mathbf{e}_i$ is the vector with all $0$s except for a $1$ in the $i$th component, is a basis of the vector space $\R^n.$
+
+1) The linear combination $\lambda_1\mathbf{e}_1+\cdots +\lambda_n\mathbf{e}_n=(\lambda_1,\ldots ,\lambda_n)=\mathbf{0}$ implies that $\lambda_1=\ldots =\lambda_n=0,$ that is, $\{\mathbf{e}_1,\ldots ,\mathbf{e}_n\}$ is linearly independent.\\
+2) If $\mathbf{x}=(x_1,\ldots,x_n)$ is an arbitrary vector in $\R^n,$ then obviously
+$\mathbf{x}=x_1\mathbf{e}_1+\cdots +x_n\mathbf{e}_n,$ therefore $\lin (\mathbf{e}_1,\ldots ,\mathbf{e}_n)=\R^n.$ 
+}
+
+
+\frame{\frametitle{}
+It is important to emphasize that there are many bases in the vector spaces.
+
+But if we have two bases in a vector space then the number of the vectors of the two systems are the same.
+We are going to prove this fact.
+
+First, 
+we realize that the number of the vectors of an independent system can not be greater than the number of the vectors of a spanning set.
+}
+\begin{frame}
+\begin{lemma}[Steinitz]
+    Assume that a vector space has a finite spanning set having exactly $n$ vectors.
+    Then every system of vectors including more than $n$ vector is linearly dependent.
+\end{lemma}
+    Let $\left\{ y_1,\ldots,y_n \right\}$ be a spanning set
+    and assume that the system  $\left\{ x_1,\ldots,x_m \right\}$ has more vector than the spanning set has.
+    Thus $m>n$.
+%    It is enough to prove that the $m$ element system is dependent.
+    By the definition of the spanning set: for all $1\leq k\leq m$ there exist coefficients 
+    $\alpha_{j,k}, 1\leq j\leq n$, such that
+    \[
+        x_k=\sum_{j=1}^n\alpha_{j,k}y_j.
+    \]
+    Write a linear combination of the system $\left\{ x_1,\dots,x_m \right\}$ using the multipliers $\xi_1,\ldots,\xi_m$ specified later.
+    \begin{eqnarray}
+        \sum_{k=1}^m\xi_kx_k=
+        \sum_{k=1}^m\sum_{j=1}^n\xi_k\alpha_{j,k}y_j=
+        \sum_{j=1}^n\left( \sum_{k=1}^m\alpha_{j,k}\xi_k \right)y_j
+        \label{eq:sys}
+    \end{eqnarray}
+\end{frame}
+\begin{frame}
+    Consider the homogeneous system of linear equations belonging to the coefficients $\left( \alpha_{j,k} \right)$.
+    Here $j=1,\ldots,n$ and $k=1,\ldots,m$.
+    The assumption $m>n$ indicates the number of unknowns is greater than the number of equations of this linear system.
+    Remember: this fact implicates the existence of a nontrivial solution of this system.
+    Thus there exist numbers $\xi_1,\ldots,\xi_m$, for which not all of them is zero
+    and at the same time for every $j=1,\ldots,n$ the equations
+    \[
+        \sum_{k=1}^m\alpha_{j,k}\xi_k=0
+    \]
+    hold.
+    Thus if we use the above found unknowns ($\xi_k$) for the multipliers of (\ref{eq:sys}), then the right hand side of (\ref{eq:sys}) becomes zero.
+    Consider now the left hand side of (\ref{eq:sys}). 
+    It is a non trivial linear combination of the system $\left\{ x_1,\ldots,x_m \right\}$.
+
+    It was to be proved.
+\end{frame}
+
+\begin{frame}\frametitle{Basis}
+\begin{definition}
+The dimension of a vector space is $m$ if it has an $m$ element basis.
+\end{definition}
+The above concept of dimension is well defined.
+
+Assume that systems $\left\{ x_1,\ldots,x_m \right\}$ and $\left\{ y_1,\ldots,y_n \right\}$ form bases.
+
+On the one hand, $m\leq n$ because $\left\{ x_1,\ldots,x_m \right\}$ is independent and $\left\{ y_1,\ldots,y_n \right\}$ is a spanning set.
+
+On the other hand, $n\leq m$ because $\left\{ y_1,\ldots,x_n \right\}$ is independent and $\left\{ x_1,\ldots,x_m \right\}$ is a spanning set.
+
+Thus we proved, that 
+\alert{any two bases have the same number of terms in a vector space}
+(in which there exist finitely many vectors forming a spanning set).
+\end{frame}
+
+\begin{frame}\frametitle{Basis}
+    The other consequence of the Steinitz lemma is as follows.
+    \begin{proposition}
+        Let $V$ be an $n$ dimensional vector space.
+        \begin{enumerate}
+            \item If the system $\left\{x_1,\cdots,x_n \right\}$ is an exactly $n$ element independent set
+                then it is a maximal independent set, thus it is a basis.
+            \item If the system $\left\{x_1,\cdots,x_n \right\}$ is an exactly $n$ element spanning set
+                then it is a minimal spanning set, thus it is a basis.
+        \end{enumerate}
+    \end{proposition}
+\end{frame}
+%\end{document}
+
+\begin{frame}\frametitle{Coordinate of a vector with respect to a basis}
+\begin{definition}
+Let ${\cal V}=\{v_1,\ldots ,v_k\}$ be a basis of the vector space $V$ and $x\in V.$ Then the scalars in the linear combination $x=\xi_1v_1+\cdots +\xi_kv_k$ are called the coordinates of the vector $x.$ In particular, $\xi_j$ is the coordinate of $x$ with respect to the basis vector $v_j.$ The column vector 
+$$\mathbf{x}_{\cal V}=\left[\begin{array}{c}
+\xi_1\\
+\vdots \\
+\xi_k
+\end{array}\right]$$
+is said to be the coordinate vector of $x$ with respect to the basis ${\cal V}.$
+\end{definition}
+
+The coordinate vector depends on the basis. The same vector has different coordinate vectors with respect to different bases.
+\end{frame}
+\section{Basis transformation}
+
+\frame{\frametitle{Elementary basis transformation}
+The problem is to find out how the coordinate vector is changing if the basis is changed.
+Let ${\cal V}=\{v_1,\ldots ,v_i,\ldots ,v_k\}$ be a basis of the vector space $V$ and $w\in V$ a nonzero vector, $w=\alpha_1v_1+\cdots +\alpha_iv_i+\cdots +\alpha_kv_k$ such that $\alpha_i\neq 0.$ Then we have
+$v_i=-\frac{\alpha_1}{\alpha_i}v_1-\cdots +\frac{1}{\alpha_i}w-\cdots -\frac{\alpha_k}{\alpha_i}v_k,$
+Therefore if the vector $x$ as a linear combination of basis vectors in ${\cal V}$ is
+$$x=\xi_1v_1+\cdots +\xi_iv_i+\cdots +\xi_kv_k,$$
+then it can be written as the linear combination of the system ${\cal V}'=\{v_1,\ldots ,w,\ldots ,v_k\}$ as follows
+\begin{eqnarray*}
+x&=&\xi_1v_1+\cdots +\xi_iv_i+\cdots +\xi_kv_k=\\
+&=&\xi_1v_1+\cdots +\xi_i(-\frac{\alpha_1}{\alpha_i}v_1-\cdots +\frac{1}{\alpha_i}w-\cdots -\frac{\alpha_k}{\alpha_i}v_k)+\cdots +\xi_kv_k= \\
+&=&(\xi_1-\alpha_1\frac{\xi_i}{\alpha_i})v_1+\cdots +\frac{\xi_i}{\alpha_i}w+\cdots +(\xi_k-\alpha_k\frac{\xi_i}{\alpha_i})v_k \ .
+\end{eqnarray*}
+}
+\frame{\frametitle{Summary}
+We started from a basis $\left\{ v_1,\ldots,v_k \right\}$ and a vector $w$
+for which the $i$-th coordinate of $w$ (with respect to the basis above) is non zero.
+We proved that any vector $x\in\spn\left\{ v_1,\cdots,v_k \right\}$ can be expressed 
+as a linear combination of the system $\{v_1,\ldots ,w,\ldots ,v_k\}.$
+It means that the new system $\{v_1,\ldots ,w,\ldots ,v_k\}$ is also a spanning set.
+
+Realize that this new system is a $k$ element spanning set of a $k$ dimensional space,
+thus it becomes a new basis.
+\begin{proposition}
+    Let the system $\left\{ v_1,\ldots,v_k \right\}$ be a basis and assume that the $i$-th coordinate of the vector $w$--%
+    with respect to the basis above--is non zero.
+    Then the changed system 
+    \[
+        \left\{ v_1,\ldots,w,\ldots v_k \right\}
+    \]
+    is also a basis.
+\end{proposition}
+}
+
+\frame{\frametitle{New coordinates}
+The change can be better followed in the subsequent tables:
+$$\begin{array}{c|c|c}
+&w&x \\ \hline
+v_1&\alpha_1&\xi_1\\
+\vdots&\vdots&\vdots\\
+v_i&\fbox{$\alpha_i$}&\xi_i\\
+\vdots&\vdots&\vdots\\
+v_k&\alpha_k&\xi_k
+\end{array}\longrightarrow \begin{array}{c|c}
+&x \\ \hline
+v_1&\xi_1-\alpha_1\frac{\xi_i}{\alpha_i}\\
+\vdots&\vdots\\
+w&\frac{\xi_i}{\alpha_i}\\
+\vdots&\vdots\\
+v_k&\xi_k-\alpha_k\frac{\xi_i}{\alpha_i}
+\end{array}$$
+In the left heading of the tables the base vectors and in the top heading the vectors are listed and below in the $j$th row of the tables the coordinate of the corresponding vector with respect to the $j$th base vector. Replacing the $i$th basis vector by the vector $w$ is denoted by the frame around the $i$th coordinate of $w$. This coordinate is called pivot element. Notice that the pivot element is nonzero, this makes possible to exchange the $v_i$ basis vector with the vector $w$.
+}
+\frame{\frametitle{Some applications} 
+In the second table the coordinates of the $x$ vector is shown with respect to the new basis ${\cal V}'=\{v_1,\ldots ,w,\ldots v_k\}.$ The coordinate of $x$ with respect to the new basis vector $w$ is the quotient of its original coordinate and the pivot element, while any other coordinate is obtained if from the original coordinate we subtract the product of this quotient and the corresponding coordinate of $w.$ Thus the coordinate vectors of the $x$ vector are
+$$\mathbf{x}_{\cal V}=\left[\begin{array}{c}
+\xi_1\\
+\vdots \\
+\xi_i\\
+\vdots\\
+\xi_k
+\end{array}\right]\qquad\mbox{and}\qquad \mathbf{x}_{{\cal V}'}=\left[\begin{array}{c}
+\xi_1-\alpha_1\frac{\xi_i}{\alpha_i}\\
+\vdots\\
+\frac{\xi_i}{\alpha_i}\\
+\vdots\\
+\xi_k-\alpha_k\frac{\xi_i}{\alpha_i}
+\end{array}\right]$$
+with respect to the basiss ${\cal V}$ and ${\cal V}'$ respectively.
+}
+
+\section{Some applications}
+
+\frame{\frametitle{}
+Using elementary basis transformation actally any problem arising in linear algebra can be solved, that is, the linear algebra problems are easily solvable in appropriate coordinate system. To illustrate this statement we provide some example.
+
+\begin{example}
+Decide if the system of vectors $$\{\mathbf{y}_{1}=(1,-1,2,0),\mathbf{y}_{2}=(-1,2,-2,3),\mathbf{y}_{3}=(3,-4,6,-3)\}$$ in $\R^4$ is linearly independent or dependent!
+\end{example}
+}
+\frame{\frametitle{}
+The set of vectors ${\cal E}=\{\mathbf{e}_1,\mathbf{e}_2,\mathbf{e}_3,\mathbf{e}_4\}$ is a basis in $\R^4.$ The coordinate vectors of $\mathbf{y}_{1}=(1,-1,2,0),\mathbf{y}_{2}=(-1,2,-2,3),\mathbf{y}_{3}=(3,-4,6,-3)$ with respect to the basis ${\cal E}$ are
+\[{\mathbf y_{1}}_{\cal E}=\left[\begin{array}{r}
+1 \\[0.5mm]
+-1 \\[0.5mm]
+2 \\[0.5mm]
+0
+\end{array}\right],\quad
+{\mathbf y_{2}}_{\cal E}=\left[\begin{array}{r}
+-1 \\[0.5mm]
+2 \\[0.5mm]
+-2 \\[0.5mm]
+3
+\end{array}\right]\quad \mbox{and}\quad
+{\mathbf y_{3}}_{\cal E}=\left[\begin{array}{r}
+3 \\[0.5mm]
+-4 \\[0.5mm]
+6 \\[0.5mm]
+-3
+\end{array}\right] \]
+Using a sequence of elementary basis transformations we change the original ${\cal E}$ basis taking as many $\mathbf{y}_i$ vectors as we can into the new basis. 
+}
+\frame{\frametitle{}
+The calculation is shown by the subsequent tables:
+\[\begin{array}{c|rrr}
+ &{\mathbf y}_{1}&{\mathbf y}_{2}&{\mathbf y}_{3} \\[0.5mm] \hline
+\mathbf{e}_{1}&\fbox{1}&-1&3 \\[0.5mm]
+\mathbf{e}_{2}&-1&2&-4 \\[0.5mm]
+\mathbf{e}_{3}&2&-2&6 \\[0.5mm]
+\mathbf{e}_{4}&0&3&-3 \\[0.5mm] \hline
+\end{array} \longrightarrow\begin{array}{c|rr}
+ &{\mathbf y}_{2}&{\mathbf y}_{3} \\[0.5mm] \hline
+\mathbf{y}_{1}&-1&3 \\[0.5mm]
+\mathbf{e}_{2}&\fbox{1}&-1 \\[0.5mm]
+\mathbf{e}_{3}&0&0 \\[0.5mm]
+\mathbf{e}_{4}&3&-3 \\[0.5mm] \hline
+\end{array}\longrightarrow \begin{array}{c|r}
+ &{\mathbf y}_{3} \\[0.5mm] \hline
+\mathbf{y}_{1}&2 \\[0.5mm]
+\mathbf{y}_{2}&-1 \\[0.5mm]
+\mathbf{e}_{3}&0 \\[0.5mm]
+\mathbf{e}_{4}&0 \\[0.5mm] \hline
+\end{array}\]
+The last table shows, that the new basis is $\{\mathbf{y}_1,\mathbf{y}_2,\mathbf{e}_3,\mathbf{e}_4\}$ and the $\mathbf{y}_3$ can be expressed as a linear combination of $\mathbf{y}_1\quad\mbox{and}\quad\mathbf{y}_2,$ namely
+$\mathbf{y}_3=2\mathbf{y}_1-1\mathbf{y}_2.$ Therefore the system 
+$\{\mathbf{y}_{1},\mathbf{y}_{2},\mathbf{y}_{3}\}$ is linearly dependent.
+}
+
+\frame{\frametitle{}
+\begin{example}
+Decide if the vector $\mathbf{x}=(1,0,3)$ is in the linear hull of vector system $\{\mathbf{a}_1=(1,1,-1),\mathbf{a}_2=(2,1,2),\mathbf{a}_3=(0,1,-4)\}.$
+\end{example}
+\pause
+Again begin with the basis of unit vectors $\{\mathbf{e}_1,\mathbf{e}_2,\mathbf{e}_3\}$ of $\R^3$ because the coordinates of the vectors in $\R^3$ with respect to this basis is the same as their components. Now the calculations are:
+$$\begin{array}{c|rrr|r}
+&\mathbf{a}_1&\mathbf{a}_2&\mathbf{a}_3&\mathbf{x} \\ \hline
+\mathbf{e}_1&\fbox{$1$}&2&0&1\\
+\mathbf{e}_2&1&1&1&0\\
+\mathbf{e}_3&-1&2&-4&3
+\end{array}\longrightarrow \begin{array}{c|rr|r}
+&\mathbf{a}_2&\mathbf{a}_3&\mathbf{x} \\ \hline
+\mathbf{a}_1&2&0&1\\
+\mathbf{e}_2&\fbox{$-1$}&1&-1\\
+\mathbf{e}_3&4&-4&4
+\end{array}\longrightarrow \begin{array}{c|r|r}
+&\mathbf{a}_3&\mathbf{x} \\ \hline
+\mathbf{a}_1&2&-1\\
+\mathbf{a}_2&-1&1\\
+\mathbf{e}_3&0&0
+\end{array}$$
+From the last table it can be concluded that $\mathbf{x}=-1\mathbf{a}_1+1\mathbf{a}_2,$ that is $\mathbf{x}\in \lin (\mathbf{a}_1,\mathbf{a}_2,\mathbf{a}_3)$ Notice that the subspace 
+$\lin (\mathbf{a}_1,\mathbf{a}_2,\mathbf{a}_3)$ is already spanned by the vectors $\mathbf{a}_1$ and $\mathbf{a}_2$ as well, since $\mathbf{a}_3$ is linear combination of them, that is, $\{\mathbf{a}_1,\mathbf{a}_2\}$ is a basis of $\lin (\mathbf{a}_1,\mathbf{a}_2,\mathbf{a}_3)$ and therefore it is a $2$-dimensional subspace of $\R^3.$
+}
+\begin{frame}
+    \frametitle{}
+\end{frame}
+\end{document}

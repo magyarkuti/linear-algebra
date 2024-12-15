@@ -1,0 +1,261 @@
+\input la4dm.tex
+\title{Quadratic forms}
+\subtitle{The Gauss--Jordan elimination completes the square}
+\date[Linear Algebra Fall week 8]{November 4, 2024}
+\begin{document}
+\openingframes{Outline}
+\section{Definition of quadratic forms}
+\frame{
+A quadratic form is a special multi-variable function.
+\begin{definition}
+    Let $A\in\mathbb{R}^{n\times n}$ be a symmetric matrix.
+    Assume that $a_{k,j}$ denotes the appropriate element of that matrix.
+    The function $Q:\mathbb{R}^n\to\mathbb{R}$
+    \[
+    Q\left( x_{1},x_2,\cdots,x_n \right)=
+    \sum_{k=1}^n\sum_{j=1}^na_{k,j}x_kx_j
+    \]
+    is called $n$ variables quadratic function.
+\end{definition}
+If $n=1$ then $Q(x_1)=ax_1^2$.\\
+If $n=2$ then
+$$
+Q\left( x_1,x_2 \right)=a_{1,1}x_1^2+a_{1,2}x_1x_2+a_{2,1}x_2x_1+a_{2,2}x_2^2.
+$$
+Compute the case when $n=3$.
+}
+\begin{frame}
+    \begin{theorem}
+        If $A\in\mathbb{R}^{n\times n}$ is a symmetric matrix then the quadratic form determined by 
+        $A$ is
+        \[
+            Q(x)=x\cdot Ax
+        \]
+        for every $x\in\mathbb{R}^n.$
+    \end{theorem}
+    \begin{example}
+        Write the symmetric matrix of quadratic form given before.
+        Write the quadratic form of a symmetric matrix given before.
+    \end{example}
+    \begin{theorem}
+        The quadratic form determined by $A+B$ is the same as the sum of quadratic forms determined by $A$ and $B$ respectively.
+        Similarly,
+        the quadratic form determined by $\alpha A$ is the same as the form determined by $A$ multiplied by $\alpha$.
+    \end{theorem}
+\end{frame}
+\begin{frame}
+    \frametitle{Definiteness}
+    Our goal is to classify a quadratic form with respect to its range!
+    \begin{definition}
+        Let $Q:\mathbb{R}^n\to\mathbb{R}$ be a non-zero quadratic form. It is called
+        \begin{description}
+            \item[\emph{positive definite,}] if $Q\left( x \right)>0$ for every $x\in\mathbb{R}^n,x\neq 0$;
+        \item[\emph{positive semidefinite,}] if $ Q\left( x \right)\geq 0$ for every $x\in\mathbb{R}^n$,
+                but there exists a $z\in\mathbb{R}^n, z\neq 0$ such that $Q\left( z \right)=0$;
+            \item[\emph{negative definite,}] if $ Q\left( x \right)<0$ for every $x\in\mathbb{R}^n,x\neq 0;$
+            \item[\emph{negative semidefinite,}] if $ Q\left( x \right)\leq 0$ for every $x\in\mathbb{R}^n$,
+                but there exists a $z\in\mathbb{R}^n, z\neq 0$ such that $Q\left( z \right)=0$;
+            \item[\emph{indefinite,}] if there exist two vectors $x,y\in\mathbb{R}^n$ for which
+                $Q\left( x \right)>0$ but $Q\left( y \right)<0$.
+        \end{description}
+    \end{definition}
+\end{frame}
+\section{Dyadic decomposition}
+\subsection{Dyad and completing the square}
+\begin{frame}
+    The dyad is a special symmetric matrix representing the perfect squares.
+    \begin{definition}
+        A symmetric matrix $A\in\mathbb{R}^{n\times n}$ is called \alert{\emph{dyad}}, 
+        if there exists a vector
+        $a\in\mathbb{R}^{n\times 1}$ for which
+%        \metroset{block=fill}
+%        \begin{block}{}
+        \(
+            A=a\cdot a^T
+        \)
+%        \end{block}
+%        \metroset{block=transparent}
+    \end{definition}
+    \begin{theorem}
+        A quadratic form is a complete square if and only if it is determined by a dyad.
+        If $A=a\cdot a^T$ where $a=\left( a_1,a_2,\cdots,a_n \right)$, then
+%        \metroset{block=fill}
+%        \begin{block}{}
+          \(
+             Q\left( x_1,x_2,\cdots,x_n \right)=
+              \left( a_1x_1+a_2x_2+\cdots+a_nx_n \right)^2,
+          \)
+%        \end{block}
+%        \metroset{block=transparent}
+        here $Q$ is the quadratic form determined by the dyad $A$.
+    \end{theorem}
+\end{frame}
+\subsection{High school method for a few variable only}
+\begin{frame}
+    \frametitle{Decomposition}
+    \metroset{block=fill}
+    \begin{theorem}
+        Every symmetric matrix is a linear combination of dyads. Thus
+        every quadratic form is a linear combination of complete squares.
+    \end{theorem}
+    \metroset{block=transparent}
+\begin{example}
+    Completing the square, rewrite the following quadratic forms as a linear combination of perfect squares.\\
+    $Q\left( x_1,x_2 \right)=x_1^2+4x_1x_2-5x_2^2,$\\
+    $Q\left( x_1,x_2 \right)=4x_1^2+6x_1x_2+9x_2^2,$\\
+    $Q\left( x_1,x_2 \right)=5x_1^2-6x_1x_2+x_2^2,$\\
+    $Q\left( x_1,x_2,x_3 \right)=5x_1^2-6x_1x_2+x_1x_3,$\\
+\end{example}
+\end{frame}
+\subsection{Professional method}
+\begin{frame}
+    \frametitle{Dyadic decomposition using Gauss--Jordan elimination}
+    Every $n$-variable quadratic form can be decreased by a multiply of a dyad such that
+    the remainder quadratic form has one variable less:
+    \metroset{block=fill}
+    \begin{theorem}
+        Consider a symmetric matrix $A\in\mathbb{R}^{n\times n}$.
+        Assume, that $a_{1,1}\neq 0$ and denote $d=\frac{1}{a_{1,1}}a_1$,
+        where $a_1$ is the first column of matrix $A$.
+        Then 
+        \[
+            R=A-a_{1,1}d\cdot d^T
+        \]
+        is a symmetric matrix, where the first row (and column) is the zero vector.
+    \end{theorem}
+    \metroset{block=transparent}
+    \begin{proof}
+        The sum of symmetric matrices is a symmetric matrix.
+        If $\delta_k$ denotes the $k$-th coordinate of $d$, then
+        \(
+            r_{k,j}=
+            a_{k,j}-a_{1,1}\delta_{k}\delta_j.
+        \)
+        If $k=1$ we obtain $r_{1,j}=a_{1,j}-a_{1,1}\cdot 1\cdot\frac{a_{1,j}}{a_{1,1}}=0$.
+    \end{proof}
+\end{frame}
+\begin{frame}
+    The $k,j$ term of the matrix of the remainder quadratic form is
+    \metroset{block=fill}
+    \begin{block}{}
+    \[
+        r_{k,j}=
+        a_{k,j}-a_{1,1}\delta_k\delta_j=
+        a_{k,j}-a_{1,1}\frac{a_{k,1}}{a_{1,1}}\delta_j=
+        a_{k,j}-a_{k,1}\delta_j.
+    \]
+    \end{block}
+    If $k>1$ and $j>1$, then the above formula just computes
+    the new coordinates of the $j$-th column after the first column has entered to the base at the first position.
+    Thus we proved the following theorem.
+    \begin{theorem}
+        Let $A\in\mathbb{R}^{n\times n}$ be a symmetric matrix and assume that $a_{1,1}\neq 0$.
+        After separating the first complete square, as in the theorem above, the matrix of the remainder quadratic form
+        is the bottom right $n-1\times n-1$ matrix of the transformation table, when $a_{1,1}$ is the pivot term.
+    \end{theorem}
+\end{frame}
+\section{Problems}
+\begin{frame}
+    \frametitle{Problems}
+    \begin{block}{ Write the following quadratic forms as a linear combination of complete squares.}
+        \begin{enumerate}
+            \item 
+            $Q\left( x_2,x_3 \right)=13x_2^2-4x_2x_3+8x_3^2$,
+            \item
+            $Q\left( x_1,x_2,x_3 \right)=5x_1^2+6x_2^2+4x_3^2-4x_1x_2-4x_1x_3$,
+            \item
+            $Q\left( z_1,z_2,z_3 \right)=2z_1^2+\frac{3}{2}z_3^2+2z_1z_2-4z_1z_3+2z_2z_3$,
+            \item
+            $Q\left( x_1,x_2,x_3 \right)=3x_2^2+2x_1x_2+2x_1x_3+6x_2x_3$,
+            \item
+            $Q\left( x_1,x_2,x_3,x_4 \right)=2x_1^2+2x_2^2+2x_3^2+2x_4^2-4x_1x_2+2x_1x_4+2x_2x_3-4x_3x_4$
+            \item
+            $Q\left( x_1,x_2,x_3\right)=2x_1x_2+2x_2x_3$
+        \end{enumerate}
+    \end{block}
+\end{frame}
+\frame{
+Let $Q$ be a quadratic form defined as
+\[
+    Q\left( x_1,x_2,x_3,x_4 \right)=
+    \left( x_1+x_2+2x_3+x_4 \right)^2+\left( x_1+x_4 \right)^2+\left( x_2+2x_3 \right)^2
+\]
+for real numbers $x_1,x_2,x_3,x_4$.
+\begin{enumerate}
+    \item 
+        Characterize the definiteness of $Q$.
+    \item 
+        Write the matrix of the quadratic form above.
+    \item 
+        Compute the rank of the matrix above.
+    \item 
+        Write the matrix as a linear combinations of $r$ dyads, where $r$ is the rank above.
+\end{enumerate}
+}
+\section{Definiteness of a quadratic form}
+\begin{frame}
+    \frametitle{Definiteness}
+    Classify a quadratic form with respect to its range!
+    \begin{definition}
+        Let $Q:\mathbb{R}^n\to\mathbb{R}$ be a non-zero quadratic form. It is called
+        \begin{description}
+            \item[\emph{positive definite,}] if $Q\left( x \right)>0$ for every $x\in\mathbb{R}^n,x\neq 0$;
+        \item[\emph{positive semidefinite,}] if $ Q\left( x \right)\geq 0$ for every $x\in\mathbb{R}^n$,
+                but there exists a $z\in\mathbb{R}^n, z\neq 0$ such that $Q\left( z \right)=0$;
+            \item[\emph{negative definite,}] if $ Q\left( x \right)<0$ for every $x\in\mathbb{R}^n,x\neq 0;$
+            \item[\emph{negative semidefinite,}] if $ Q\left( x \right)\leq 0$ for every $x\in\mathbb{R}^n$,
+                but there exists a $z\in\mathbb{R}^n, z\neq 0$ such that $Q\left( z \right)=0$;
+            \item[\emph{indefinite,}] if there exist two vectors $x,y\in\mathbb{R}^n$ for which
+                $Q\left( x \right)>0$ but $Q\left( y \right)<0$.
+        \end{description}
+    \end{definition}
+\end{frame}
+\begin{frame}
+    \begin{theorem}
+    Consider a square matrix $A$ having rank $r$. 
+    Assume that 
+    \[A=B\cdot C\] 
+    where the number of the columns of $B$ (and the number of the rows of $C$) is the same as the rank $r$.
+    
+    Then the row system of $C$ is a linearly independent system.
+    \end{theorem}
+    \begin{proof}
+        Every rows of $A$ is a linear combination of the rows of $C$. 
+        It means that the row system of $C$ is a spanning set of the row space of $A$.
+        But the number of the rows of $C$ is the same as the dimension of the row space of $A$, 
+        thus it is a minimal spanning set.
+        We proved, that the rows of $C$ form an independent set.
+    \end{proof}
+    We also proved that the 
+    the row system of $C$ is a base of the row space of $A$ and similarly 
+    the column system of $B$ forms a base of the column space of $A$.
+\end{frame}
+
+\subsection{Summary}
+\begin{frame}
+    \frametitle{Definiteness after completing the square}
+    It is not hard to decide the definiteness of a quadratic form if it is given with its dyad decomposition.
+    Let $Q$ be an $n$-variable non-zero quadratic form.\\
+    If the dyad decomposition 
+    \begin{itemize}
+        \item includes positive and negative pivot terms then $Q$ is an \alert{\emph{indefinite}} quadratic form.
+    \end{itemize}
+    Now assume the dyad decomposition includes exactly $n$ complete squares.
+    If
+    \begin{itemize}
+        \item all pivot terms are positive numbers then $Q$ is \alert{\emph{positive definite}};
+        \item all pivot terms are negative numbers then $Q$ is \alert{\emph{negative definite}}.
+    \end{itemize}
+\end{frame}
+\begin{frame}
+    \frametitle{Definiteness after completing the square \ldots}
+    If the number of dyads is less than $n$, 
+    the same characterization holds true but the quadratic form is semidefinite only:\\
+    Thus if
+    \begin{itemize}
+        \item all pivot terms are positive numbers then $Q$ is \alert{\emph{positive semidefinite}};
+        \item all pivot terms are negative numbers then $Q$ is \alert{\emph{negative semidefinite}}.
+    \end{itemize}
+\end{frame}
+\closingframes{Thank you for your attention!}
+\end{document}

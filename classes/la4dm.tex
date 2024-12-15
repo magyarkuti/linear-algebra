@@ -1,0 +1,50 @@
+\documentclass[aspectratio=169,notheorems]{corvinusmetropolis}
+\usepackage{qrcode,adjustbox} % iff qrcode needed, otherwise comment this line!
+\usepackage{amsmath, unicode-math}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{example}[theorem]{Example}
+\email{magyarkuti@uni-corvinus.hu}
+
+\author[Magyarkuti]{Gyula~Magyarkuti}
+\institute[Corvinus University]
+  {
+  Department of Mathematics\\
+  Corvinus University of Budapest \\
+  S208/B
+
+  \begin{minipage}[b]{0.8\linewidth}
+  email: 
+  \texttt{magyarkuti@uni-corvinus.hu}\\
+  web:
+  \url{https://magyarkuti.github.io/linear-algebra}
+  \end{minipage}
+  \hfill{\adjustbox{valign=B}{\qrcode[hyperlink]{https://magyarkuti.github.io/linear-algebra}}}%% iff qrcode needed, otherwise comment this line!
+  }
+\titlegraphic{\hfill{\includegraphics[width=.2\textwidth]{corvinus_Department_of_Mathematics_logo_cmyk.eps}}}
+\subject{Linear Algebra}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\spn}{\operatorname{span}}
+
+\renewcommand{\mathbf}{\mathbb}
+\newcommand{\lin}{\operatorname{lin}}
+\newcommand{\gen}{\operatorname{gen}}
+\newcommand{\im}{\operatorname{Im}}
+\newcommand{\id}{\operatorname{id}}
+\newcommand{\sgn}{\operatorname{sgn}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\codim}{\operatorname{codim}}
+%newcommand{\deg}{\operatorname{deg}}
+\newcommand{\ip}[2]{\langle#1,#2\rangle}
+\newcommand{\uj}{\text{új}}
+\newcommand{\rgi}{\text{régi}}
+\newcommand{\Star}[1]{#1\ensuremath{^*}\kern-\scriptspace}
+\newcommand{\CStar}{\Star{\ensuremath{\mathrm{C}}}}
+
+\renewcommand{\mathbf}{\symbf}
+\renewcommand{\mathcal}{\symcal}
+\endinput

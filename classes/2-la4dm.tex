@@ -1,0 +1,782 @@
+\input{la4dm.tex}
+\title{Matrix}
+\subtitle{Inner product and geometry}
+\date[Linear Algebra Fall week 4]{September 30, 2024}
+
+\begin{document}
+
+\frame{\titlepage}
+%\section*{Outline:}
+\frame{\frametitle{Outline}
+\tableofcontents}
+\section{Inner product}
+
+
+\frame{\frametitle{Inner product in $\R^n$}
+To generalize the geometric concepts known in the plane or $3$-dimensional space some new notion must be introduced.
+
+\begin{definition}
+The inner product of two vectors $\mathbf{a=}( a_{1,}...,a_{n})$ and $\mathbf{b=}(b_{1},...,b_{n}) \in \mathbb{R}^{n}$ is the real number \\
+\centerline{$\left\langle \mathbf{a,b}\right\rangle =a_{1}b_{1}+....+a_{n}b_{n}.$}
+\end{definition}
+
+\begin{theorem}[Properties of inner product]
+\begin{enumerate}
+\item  $\forall \mathbf{a,b\in }\mathbb{R}^{n}:$ $\left\langle \mathbf{a,b}%
+\right\rangle =\left\langle \mathbf{b,a}\right\rangle ,$
+\item  $\forall \mathbf{a,b,c\in }\mathbb{R}^{n}:$ $\left\langle \mathbf{%
+a+b,c}\right\rangle =\left\langle \mathbf{a,c}\right\rangle
++\left\langle \mathbf{b,c}\right\rangle ,$
+\item  $\forall \mathbf{a,b\in }\mathbb{R}^{n},\forall \lambda \in \mathbb{R}%
+:$ $\left\langle \lambda \mathbf{a,b}\right\rangle =\lambda
+\left\langle \mathbf{a,b}\right\rangle ,$
+\item  $\left\langle \mathbf{a,a}\right\rangle \geq 0$ and  
+$\left\langle \mathbf{a,a}\right\rangle =0,$ iff $\mathbf{a=0}.$
+\end{enumerate}
+\end{theorem}
+}
+
+\frame{\frametitle{}
+\begin{example}
+Let $\mathbf{a}=( 3,-6,1) $ and $\mathbf{b}=( 1,0,4)\in \R^3 $. Find the inner product $\left\langle 2\mathbf{a}-3\mathbf{b},\mathbf{a}+2\mathbf{b}\right\rangle .$
+\end{example}
+
+$2\mathbf{a}-3\mathbf{b=}( 3,-12,-10)$ and $\mathbf{a}+2\mathbf{b=}( 5,-6,9)$
+thus their inner product
+$$\left\langle 2\mathbf{a}-3\mathbf{b},\mathbf{a}+2\mathbf{b}\right\rangle =3\cdot
+5+( -12) \cdot ( -6) +( -10) \cdot 9= -3 .$$
+another solution can be obtained if we use the properties of the inner product:
+
+\begin{eqnarray*}
+\left\langle 2\mathbf{a}-3\mathbf{b},\mathbf{a}+2\mathbf{b}\right\rangle
+&=&2\left\langle \mathbf{a},\mathbf{a}\right\rangle +\left\langle \mathbf{a},\mathbf{b}\right\rangle -6\left\langle \mathbf{b},\mathbf{b}\right\rangle = \\
+&=&2\cdot 46+7-6\cdot 17=-3,
+\end{eqnarray*}
+where $\left\langle \mathbf{a,a}\right\rangle = 3^2+(-6)^2+1^2=46,$ \\
+$\left\langle \mathbf{a},\mathbf{b}\right\rangle =3\cdot 1+\left( -6\right) \cdot 0+1\cdot 4=7$ and \\
+$\left\langle \mathbf{b},\mathbf{b}\right\rangle = 1^2+0^2+4^2=17.$ \\
+
+
+}
+
+\frame{\frametitle{Norm}
+Using the concept of inner product the {\em norm} of a vector can be defined:
+\begin{definition}[Norm]For a vector in $\mathbb{R}^n$
+$\|\mathbf{x}\|:=\sqrt{\left\langle \mathbf{x,x}\right\rangle } =\sqrt{\sum_{i=1}^nx_i^2}.$
+\end{definition}
+The norm of a vector is obviously the generalization of the absolute value of real numbers, or the length of vectors in the $2$-dimensional Cartesian coordinate systems.
+
+It is easy to verify that the following two important properties of function norm hold true.
+\begin{enumerate}
+\item $\|\mathbf{x}\|\geq 0$ and $\|\mathbf{x}\|= 0$ iff $\mathbf{x}=\mathbf{0},$
+\item $\|\lambda\mathbf{x}\|=|\lambda|\cdot \|\mathbf{x}\|.$
+\end{enumerate}
+}
+
+\frame{\frametitle{Cauchy--Schwarz inequality}
+One can see the first two properties. 
+For the third one we need the so-called \emph{Cauchy--Schwarz inequality}.
+
+\begin{theorem}[Cauchy--Schwarz inequality]
+For any pair $\mathbf{x} ,\mathbf{y}\in \R^n$ 
+$$|\left\langle \mathbf{x} , \mathbf{y}\right\rangle |\leq \|\mathbf{x}\|\cdot \|\mathbf{y}\|.$$
+\end{theorem}
+
+We have for any real number $\lambda $ 
+$$\left\langle \mathbf{x}-\lambda\mathbf{y},\mathbf{x}-\lambda\mathbf{y}\right\rangle =\|\mathbf{x}\|^2-2\lambda \left\langle \mathbf{x},\mathbf{y}\right\rangle +\lambda^2\|\mathbf{y}\|^2\geq 0,$$
+This is a quadratic polynomial in $\lambda$ which is non-negative everywhere. Therefore its discriminant is not positive:
+$$D=4(\left\langle \mathbf{x},\mathbf{y}\right\rangle)^2 - 4\|\mathbf{x}\|^2\|\mathbf{y}\|^2\leq 0.$$
+It was to be proved.
+}
+
+\frame{\frametitle{Triangle inequality}
+We are ready to prove the triangle inequality and summarize the three most important properties of the norm.
+\begin{theorem}[Properties of norm]
+\begin{enumerate}
+\item $\|\mathbf{x}\|\geq 0$ and $\|\mathbf{x}\|= 0$ iff $\mathbf{x}=\mathbf{0},$
+\item $\|\lambda\mathbf{x}\|=|\lambda|\cdot \|\mathbf{x}\|,$
+\item $\|\mathbf{x}+\mathbf{y}\|\leq \|\mathbf{x}\|+\|\mathbf{y}\|.$
+\end{enumerate}
+\end{theorem}
+The first two properties hold true as we saw it earlier.\\
+Now we have
+\begin{multline*}
+\|\mathbf{x}+\mathbf{y}\|^2=
+\left\langle \mathbf{x}+\mathbf{y},\mathbf{x}+\mathbf{y}\right\rangle =
+\|\mathbf{x}\|^2+2\left\langle \mathbf{x},\mathbf{y}\right\rangle +\|\mathbf{y}\|^2 \leq \\
+\leq \|\mathbf{x}\|^2+2\|\mathbf{x}\|\cdot\|\mathbf{y}\| +\|\mathbf{y}\|^2
+=(\|\mathbf{x}\|+\|\mathbf{y}\|)^2\ .
+\end{multline*}
+}
+
+\frame{\frametitle{Distance in $\R^n$}
+Using the concept of the norm of vectors a distance function can be introduced.
+\begin{definition}
+$$\forall \mathbf{x},\mathbf{y}\in \R^n: d(\mathbf{x},\mathbf{y}):=\|\mathbf{x}-\mathbf{y}\|.$$
+\end{definition}
+
+From the properties of the norm of vectors the expected properties of the distance function immediately follow:
+\begin{block}{Properties of the distance function}
+\begin{enumerate}
+\item $d(\mathbf{x},\mathbf{y})\geq 0$ and $d(\mathbf{x},\mathbf{y})=0$, iff $\mathbf{x}=\mathbf{y},$
+\item $d(\mathbf{x},\mathbf{y})=d(\mathbf{y},\mathbf{x}),$
+\item $d(\mathbf{x},\mathbf{y})\leq d(\mathbf{x},\mathbf{z})+d(\mathbf{z},\mathbf{y}).$
+\end{enumerate}
+\end{block}
+
+}
+\frame{\frametitle{Angle in $\mathbb{R}^n$}
+
+The Cauchy--Schwarz inequality implies that
+$$-1\leq \frac{\left\langle \mathbf{x},\mathbf{y}\right\rangle}{\|\mathbf{x}\|\cdot\|\mathbf{y}\|}\leq 1.$$
+Therefore there is a unique angle $\varphi \in [0,\pi],$ such that 
+$$\cos \varphi = \frac{\left\langle \mathbf{x},\mathbf{y}\right\rangle}{\|\mathbf{x}\|\cdot\|\mathbf{y}\|}.$$
+\begin{definition}[Angle]
+    The number $\varphi\in\left[ 0,\pi \right]$ defined above
+is the {\em angle} enclosed by the vectors $\mathbf{x}$  and $\mathbf{y}.$
+\end{definition}
+}
+\frame{\frametitle{Euclidean spaces}
+Introducing the inner product in $\R^n$ it became possible to define distance of vectors and measuring the angle of vectors. Therefore the Euclidean geometry of the plane or space can be generalized. Therefore the vector space $\R^n$ with the inner product is said to be {\em Euclidean $n$-space.}
+
+\begin{example}
+Find the area of triangle with vertices $\mathbf{a}=(1,1-1,1),\ \mathbf{b}=(2,1,-1,0)$ and $\mathbf{c}=(1,2,1,1).$
+\end{example}
+
+The length of the sides in the triangle are:\\
+$d(\mathbf{a},\mathbf{b})=\|\mathbf{b}-\mathbf{a}\|=\|(1,0,0,o-1)\|=\sqrt{2},\ d(\mathbf{a},\mathbf{c})=\|\mathbf{c}-\mathbf{a}\|=\|(0,1,2,0)\|=\sqrt{5},\ 
+d(\mathbf{b},\mathbf{c})=\|\mathbf{c}-\mathbf{b}\|=\|(1,0,0,1)\|=\sqrt{7}.$
+The angle at the vertex $\mathbf{a}$ is $90^\circ ,$ because $\left\langle \mathbf{b}-\mathbf{a},\mathbf{c}-\mathbf{a}\right\rangle = 0, $ therefore the area of the triangle is 
+$\frac{\sqrt{10}}{2}$.
+}
+
+\frame{\frametitle{Perpendicularity}
+
+\begin{definition}[Ortonormal system of vectors]
+Two vectors $\mathbf{x},\mathbf{y}$ in $\R^n$ are said to be {\em orthogonal} if their inner product is zero.\\
+The set of vectors $\{\mathbf{x}_1,\ldots ,\mathbf{x}_k\}$ is an orthonormal set, if 
+$$
+\left\langle \mathbf{x}_i,\mathbf{x}_j\right\rangle =\left\{\begin{array}{ccc}
+0&\mbox{if}& i\neq j,\\
+1&\mbox{if}& i=j.
+\end{array}\right.
+$$
+\end{definition}
+\begin{theorem}
+An orthonormal set is linearly independent. 
+\end{theorem}
+}
+\frame{\frametitle{Cartesian coordinate system}
+
+\begin{definition}[Ortonormal basis]
+If any vector $\mathbf{v}\in \R^n$ is the linear combination of the vectors of the orthonormal set $\{\mathbf{x}_1,\ldots ,\mathbf{x}_n\},$
+then $\{\mathbf{x}_1,\ldots ,\mathbf{x}_n\}$ is called {\em orthonormal basis}, or Cartesian coordinate system.\\
+The set $\{\mathbf{e}_1,\ldots ,\mathbf{e}_n\},$  is a Cartesian coordinate system of the Euclidean $n$-space.
+\end{definition}
+}
+
+
+\section{Concept of Matrices}
+\frame{\frametitle{}
+In our everyday life we often meet tables of numbers containing statistical data, coefficients of system of linear equations and so on. In linear algebra this tables of numbers are referred to as matrices.\\
+\begin{definition}
+A rectangular shaped array of numbers is called  matrix, that is, a matrix is
+$${\mathbf A}=\left[\begin{array}{cccc}
+\alpha_{11}&\alpha_{12}&\ldots &\alpha_{1n}\\
+\alpha_{21}&\alpha_{22}&\ldots &\alpha_{2n} \\
+\vdots&\vdots &\ddots &\vdots \\
+\alpha_{m1}&\alpha_{m2}&\ldots &\alpha_{mn}
+\end{array}\right],$$
+where $\alpha_{ij}\ (i=1,\ldots ,m;\ j=1,\ldots ,n)$ are numbers. If the matrix has $m$ rows and $n$ columns, then it is said to be of type $m\times n.$ If $m=n$ then we call it square matrix of {\em order} $m.$ Here $\alpha_{ij}$ is the entry in the intersection of the $i$th row and $j$th column.
+\end{definition}
+}
+
+\frame{\frametitle{}
+If the entries of the matrix are real numbers, then we say that ${\mathbf A}$ is a real matrix, and the set of all real matrices of type $m\times n$ will be denoted by $\R^{m\times n}.$
+
+For short we often refer to a matrix ${\mathbf A}$ by its general entry and we denote it as
+$[\alpha_{ij}].$\\
+If a matrix has only one column, then we call it column matrix or more often column vector and similarly if the matrix consists of only one row, then we call it row matrix or row vector.\\
+In some cases we partition the matrix into sub-matrices 
+$$\mathbf{A}=\left[\begin{array}{cccc}
+\mathbf{A}_{11}&\mathbf{A}_{12}&\ldots&\mathbf{A}_{1k}\\
+\mathbf{A}_{21}&\mathbf{A}_{22}&\ldots&\mathbf{A}_{2k}\\
+\vdots &\vdots &\ddots &\vdots \\
+\mathbf{A}_{\ell 1}&\mathbf{A}_{\ell 2}&\ldots&\mathbf{A}_{\ell k}\\
+\end{array}\right]$$
+}
+
+\frame{\frametitle{}
+In particular, we often use the partition, where the sub-matrices are the columns or rows of the matrix 
+\begin{block}{}
+$$\mathbf{A}=
+[\mathbf{a}_1,\mathbf{a}_2,\ldots ,\mathbf{a}_n]
+=\left[\begin{array}{c}
+\mathbf{a'}_1\\
+\mathbf{a'}_2\\
+\vdots \\
+\mathbf{a'}_m
+\end{array}\right]
+$$
+\end{block}
+where $\mathbf{a}_i$ denotes the $i$th column and $\mathbf{a'}_j$ the $j$th row of $\mathbf{A}.$
+}
+\section{Matrix operations}
+\frame{\frametitle{Operations on $\R^{m\times n}$}
+\begin{block}{}
+The sum of two matrices of the same type ${\mathbf A}=[\alpha_{ij}]$ and ${\mathbf B}=[\beta_{ij}]$ is the matrix
+$${\mathbf A}+{\mathbf B}=[\alpha_{ij}+\beta_{ij}].$$
+\end{block}
+\begin{block}{}
+If $\lambda\in \R$ and ${\mathbf A}=[\alpha_{ij}]\in \R^{m\times n}$ then we define the multiplication of a matrix by scalar $\lambda {\mathbf A}$ as follows:
+$$\lambda {\mathbf A}=[\lambda \alpha_{ij}].$$
+\end{block}
+Combining the addition and multiplication by scalars we can form the linear combination of matrices of the same type: $\lambda_1,\ldots ,\lambda_k\in \R$ and ${\mathbf A}_1,\ldots ,{\mathbf A}_k\in \R^{m\times n},$ then their linear combination is
+$$\lambda_1{\mathbf A}_1+\cdots +\lambda_k{\mathbf A}_k\in \R^{m\times n}.$$ 
+
+}
+
+\frame{\frametitle{}
+\begin{example}
+If $\displaystyle 
+{\mathbf A}=\left[
+\begin{array}{rrr}
+1 & 2 & 3 \\
+6 & 5 & 4
+\end{array}
+\right] \quad \mbox{and}\quad {\mathbf B}=\left[
+\begin{array}{rrr}
+-1 & 0 & 1 \\
+2 & -2 & 3
+\end{array}\right]$
+then the linear combination $2{\mathbf A}-3{\mathbf B}$ is
+\begin{eqnarray*}
+2{\mathbf A}-3{\mathbf B}&=&\underset{2{\mathbf A}}{\underbrace{\left[
+\begin{array}{rrr}
+2 & 4 & 6 \\
+12 & 10 & 8
+\end{array}\right] }}-\underset{3{\mathbf B}}{\underbrace{\left[
+\begin{array}{rrr}
+-3 & 0 & 3 \\
+6 & -6 & 9
+\end{array}\right] }}= \\
+&=&\left[
+\begin{array}{ccc}
+2-(-3)  & 4-0 & 6-3 \\
+12-6 & 10-(-6)  & 8-9
+\end{array}\right] = \\
+&=&\left[
+\begin{array}{rrr}
+5 & 4 & 3 \\
+6 & 16 & -1
+\end{array}\right].
+\end{eqnarray*}
+\end{example}
+
+}
+\frame{\frametitle{Vector space of matrices}
+Similarly to the operations of vectors, the addition of matrices is also led back to the addition of numbers, and the multiplication of matrices by scalars is led back to the multiplication of numbers, therefore the following properties are obviously hold true.\\
+If ${\mathbf A},{\mathbf B},{\mathbf C}$ are arbitrary matrices in $\R^{m\times n}$ and $\alpha, \beta\in \R,$ then
+\begin{block}{}
+\begin{enumerate}
+ \item ${\mathbf A}+{\mathbf B}={\mathbf B}+{\mathbf A},$
+ \item $({\mathbf A}+{\mathbf B})+{\mathbf C}={\mathbf A}+({\mathbf B}+{\mathbf C}),$
+ \item $\exists {\mathbf O}: \forall {\mathbf A}: {\mathbf O}+{\mathbf A}={\mathbf A},$
+ \item $\forall {\mathbf A}: \exists (-{\mathbf A}): {\mathbf A}+(-{\mathbf A})={\mathbf O}.$
+\end{enumerate}
+\end{block}
+
+}
+\frame{\frametitle{Vector space of matrices}
+The addition of matrices is commutative, associative, there exists zero matrix (each entry is $0$), and each matrix has an opposite (additive inverse).
+\begin{block}{}
+\begin{enumerate}
+ \item $\alpha ({\mathbf A}+{\mathbf B})=\alpha{\mathbf A}+\alpha{\mathbf B},$
+ \item $(\alpha +\beta){\mathbf A}=\alpha {\mathbf A}+\beta{\mathbf A},$
+ \item $(\alpha \beta){\mathbf A}=\alpha (\beta {\mathbf A}),$
+ \item $1{\mathbf A}={\mathbf A}.$
+\end{enumerate}
+\end{block}
+The set $\R^{m\times n}$ of matrices with the addition and scalar multiplication is a real vector space.
+
+}
+
+
+\section{Multiplication of matrices}
+\frame{\frametitle{Multiplication of matrices}
+
+While the addition of matrices was defined for matrices having the same type, the multiplication of two matrices is defined only if the number of columns in the left side
+matrix equals the number of rows in the right side one.\\
+\begin{definition}[Product of matrices]
+Let ${\mathbf A}=[\alpha_{ij}]$ be an $m\times n$ matrix and ${\mathbf B}=[\beta_{jk}]$ be an $n\times p$ matrix, then their product ${\mathbf A}{\mathbf B}={\mathbf C}=[\gamma_{ij}]$ is the $m\times p$ matrix for which
+$$\gamma_{ij}=\sum_{k=1}^n \alpha_{ik}\beta_{kj}=
+\alpha_{i1}\beta_{1j}+\alpha_{i2}\beta_{2j}+\cdots +\alpha_{in}\beta_{nj}.$$
+
+\end{definition}
+
+}
+
+\frame{\frametitle{}
+\begin{example} If 
+$\displaystyle 
+{\mathbf A}=\left[
+\begin{array}{rrr}
+1 & 2 & 3 \\
+6 & 5 & 4
+\end{array}\right] \quad \mbox{and}\quad {\mathbf B}=\left[
+\begin{array}{rr}
+-1 & 0  \\
+2 & -2  \\
+0 & 1
+\end{array}\right]$ then their product ${\mathbf A}{\mathbf B}$ is
+$$\left[\begin{array}{rr}
+1\cdot (-1)+2\cdot 2+3\cdot 0 & 1\cdot 0+2\cdot (-2)+3\cdot 1 \\
+6\cdot (-1)+5\cdot 2+4\cdot 0 & 6\cdot 0+5\cdot (-2)+4\cdot 1
+\end{array}\right]= \left[\begin{array}{rr}
+3 & -11\\
+4 & -6
+\end{array}\right].$$ 
+\end{example}
+
+}
+\frame{\frametitle{Matrix multiplied by a vector from right}
+\begin{block}{$Ax$}
+Multiplying the matrix of type $m\times n$
+$$\mathbf{A}=\left[\begin{array}{cccc}
+\alpha_{11}&\alpha_{12}&\ldots&\alpha_{1n} \\
+\alpha_{21}&\alpha_{22}&\ldots&\alpha_{2n} \\
+\vdots &\vdots & \ddots &\vdots \\
+\alpha_{m1}&\alpha_{m2}&\ldots&\alpha_{mn} \\
+\end{array}\right]\quad \mbox{by the vector}\quad \mathbf{x}=\left[\begin{array}{c}
+x_1\\
+x_2\\
+\vdots \\
+x_n
+\end{array}\right]$$
+the product
+is the linear combination of the columns of 
+$\mathbf{A},$ 
+where the scalar coefficients are the components of $\mathbf{x}.$
+\end{block}
+}
+\frame{\frametitle{Proof}
+$$\mathbf{Ax}=\left[\begin{array}{c}
+x_1\alpha_{11}+x_2\alpha_{12}+\cdots +x_n\alpha_{1n}\\
+x_1\alpha_{21}+x_2\alpha_{22}+\cdots +x_n\alpha_{2n}\\
+\vdots \\
+x_1\alpha_{m1}+x_2\alpha_{m2}+\cdots +x_n\alpha_{mn}\\
+\end{array}\right]=$$
+$$=x_1\left[\begin{array}{c}
+\alpha_{11}\\
+\alpha_{21}\\
+\vdots \\
+\alpha_{m1}
+\end{array}\right]+x_2\left[\begin{array}{c}
+\alpha_{12}\\
+\alpha_{22}\\
+\vdots \\
+\alpha_{m2}
+\end{array}\right]+\cdots +x_n\left[\begin{array}{c}
+\alpha_{1n}\\
+\alpha_{2n}\\
+\vdots \\
+\alpha_{mn}
+\end{array}\right],$$
+
+}
+\frame{\frametitle{Matrix multiplied by a vector from right}
+\begin{block}{$xB$}
+The product of a row vector and a matrix is a row vector, which is a linear combination of the rows of the matrix.
+\end{block}
+}
+\frame{\frametitle{}
+If $\mathbf{A}=\left[\begin{array}{c}
+\mathbf{a'}_1\\
+\mathbf{a'}_2\\
+\vdots \\
+\mathbf{a'}_m
+\end{array}\right],$ where $\mathbf{a'}_i$ denotes the $i$th row of $\mathbf{A}$ and
+$\mathbf{B}=[\mathbf{b}_1,\mathbf{b}_2,\ldots ,\mathbf{b}_p],$ where $\mathbf{b}_j$ is the $j$th column of $\mathbf{B},$ then their product is
+\begin{block}{}
+$$\mathbf{A}\mathbf{B}=\left[\begin{array}{cccc}
+\mathbf{a'}_1\mathbf{b}_1&\mathbf{a'}_1\mathbf{b}_2&\ldots &\mathbf{a'}_1\mathbf{b}_p\\
+\mathbf{a'}_2\mathbf{b}_1&\mathbf{a'}_2\mathbf{b}_2&\ldots &\mathbf{a'}_2\mathbf{b}_p\\
+\vdots &\vdots & \ddots &\vdots \\
+\mathbf{a'}_m\mathbf{b}_1&\mathbf{a'}_m\mathbf{b}_2&\ldots &\mathbf{a'}_m\mathbf{b}_p
+\end{array}\right]=[\mathbf{A}\mathbf{b}_1,\mathbf{A}\mathbf{b}_2,\ldots ,\mathbf{A}\mathbf{b}_p]=$$
+$$=\left[\begin{array}{c}
+\mathbf{a'}_1\mathbf{B}\\
+\mathbf{a'}_2\mathbf{B}\\
+\vdots \\
+\mathbf{a'}_m\mathbf{B}
+\end{array}\right]$$
+\end{block}
+
+}
+\begin{frame}{Properties of matrix multiplication}
+The $ij$th entry $\mathbf{a'}_i\mathbf{b}_j$ of the product  is the product of the row matrix
+$\mathbf{a'}_i$ and column matrix $\mathbf{b}_j,$ which is a scalar like the inner product of two vectors.
+\begin{theorem}
+Each column of the matrix product $\mathbf{AB}$ is the linear combination of the columns of $\mathbf{A}$ and each row of $\mathbf{AB}$ is the linear combination of the rows of $\mathbf{B}.$
+\end{theorem}
+\begin{theorem}[Properties of matrix multiplication]
+1. noncommutative,\\
+2. associative,\\
+3. distributive with respect to the addition.
+\end{theorem}
+\end{frame}
+\section{Powers of matrix}
+\frame{\frametitle{Power of square matrix}
+Using the multiplication of matrices we can define the powers of \alert{square} matrices (number of rows and columns are equal) with non-negative integer exponents as follows: if $\mathbf{A}\in \R^{n\times n}$ then
+\begin{block}{}
+$$\mathbf{A}^0:= \mathbf{E}_n\mbox{  and  }\forall k\in \mathbb{N}: \mathbf{A}^{k+1}:=\mathbf{A}^k\cdot \mathbf{A}.$$
+\end{block}
+where 
+$\mathbf{E}_n=\left[\begin{array}{cccc}
+1&0&\ldots&0\\
+0&1&\ldots&0\\
+\vdots&\vdots&\cdots&\vdots\\
+0&0&\ldots&1
+\end{array}\right]$
+is the $n\times n$ identity matrix. Notice that for an arbitrary matrix $\mathbf{A}\in \R^{m\times n}:\ \mathbf{A}\mathbf{E}_n=\mathbf{E}_m\mathbf{A}=\mathbf{A},$ that is, the identity matrix plays the same role among the matrices as the $1$ among the numbers.
+}
+\begin{frame}
+    \frametitle{Problems}
+    \begin{itemize}[<+-| alert@+>]
+        \item
+            Let 
+            \[
+            A=
+            \left[
+              \begin{array}{rr}
+                1&1\\
+                0&1
+              \end{array}
+            \right]
+            \]
+            Calculate $A^2,A^3,A^4,\cdots$ until you detect a pattern.
+            Write a general formula for $A^n$.
+        \item
+            Let 
+            \[
+            A=
+            \left[
+            \begin{array}{rr}
+                1&1\\
+                1&1
+              \end{array}
+            \right]
+            \]
+            Calculate $A^2,A^3,A^4,\cdots$ until you detect a pattern.
+            Write a general formula for $A^n$.
+    \end{itemize}
+\end{frame}
+\section{The rank}
+\frame{\frametitle{Transpose of matrices}
+\begin{definition}
+The transpose of a matrix $\mathbf{A}=[\alpha_{ij}]\in \R^{m\times n}$ is the matrix
+$\mathbf{A}^\top$ of type $n\times m$ is obtained by exchanging $\mathbf{A}'$s columns and rows.
+\end{definition}
+
+{\em Properties:}
+\begin{enumerate}
+\item $(\mathbf{A}+\mathbf{B})^\top=\mathbf{A}^\top+\mathbf{B}^\top,$
+\item $(\lambda \mathbf{A})^\top=\lambda \mathbf{A}^\top,$
+\item $(\mathbf{A}\mathbf{B})^\top=\mathbf{B}^\top\mathbf{A}^\top.$
+\end{enumerate}
+}
+\frame{\frametitle{The rank}
+\begin{definition}
+    \begin{enumerate}
+        \item
+        The \alert{rank of a system of vectors} is the dimension of the span of this system.
+
+        \item
+        The \alert{column space of a matrix} is span of the column system of the matrix.
+        Similarly, the \alert{row space of a matrix} is the span of row system of the matrix.
+
+        \item
+        The \alert{column rank} of a matrix is the dimension of the column space.
+        Smilarly, the \alert{row rank} of a matrix is the dimension of the row space.
+    \end{enumerate}
+\end{definition}
+
+Our goal is to understand that for any matrices the two concepts of rank, the column rank and the row rank, are the same!
+}
+\end{document}
+\section{Rank theorem}
+\frame{\frametitle{Rank theorem}
+\begin{definition}
+Let $\mathbf{A}=[\mathbf{a}_1,\mathbf{a}_2,\ldots ,\mathbf{a}_n]$ be a matrix. 
+The rank $\rho(\mathbf{A})$ of the matrix is the rank of the vector system $\{\mathbf{a}_1,\mathbf{a}_2,\ldots ,\mathbf{a}_n\}$, that is the number of vectors of a maximal linearly independent subsystem.
+\end{definition}
+
+We defined the rank of a matrix to be the rank of its column vector system.
+The following theorem says that the row vector system of a matrix could also be used to define the rank of the matrix.
+
+\begin{theorem}
+The system of column vectors and the system of row vectors of a matrix have the same rank.
+\end{theorem}
+
+}
+
+\frame{\frametitle{Transpose of matrices}
+\begin{definition}
+The transpose of a matrix $\mathbf{A}=[\alpha_{ij}]\in \R^{m\times n}$ is the matrix
+$\mathbf{A}^\top$ of type $n\times m$ is obtained by exchanging $\mathbf{A}'$s columns and rows.
+\end{definition}
+
+{\em Properties:}
+\begin{enumerate}
+\item $(\mathbf{A}+\mathbf{B})^\top=\mathbf{A}^\top+\mathbf{B}^\top,$
+\item $(\lambda \mathbf{A})^\top=\lambda \mathbf{A}^\top,$
+\item $(\mathbf{A}\mathbf{B})^\top=\mathbf{B}^\top\mathbf{A}^\top.$
+\end{enumerate}
+
+}
+
+
+
+\section{System of linear equations}
+\frame{\frametitle{System of linear equations}
+\begin{definition}\label{lsystem}
+The general form of a system of linear equations is
+\begin{eqnarray*}
+\alpha_{11}x_1+\alpha_{12}x_2+\cdots +\alpha_{1n}x_n&=&\beta_1\\
+\alpha_{21}x_1+\alpha_{22}x_2+\cdots +\alpha_{2n}x_n&=&\beta_2\\
+\vdots & & \\
+\alpha_{m1}x_1+\alpha_{m2}x_2+\cdots +\alpha_{mn}x_n&=&\beta_m\\
+\end{eqnarray*}
+where $\alpha_{ij}\ i=1,2,\ldots m,\ j=1,2,\ldots ,n$ and $\beta_i\ i=1,2\ldots ,m$ are given scalars and $x_j\ j=1,2,\ldots ,n$ are the unknowns.
+\end{definition}
+The system of linear equations is said to be \alert{homogeneous} if $\beta_i=0$ for all $i=1,\ldots ,m,$ otherwise it is called \alert{nonhomogeneous}.
+
+}
+\frame{\frametitle{}
+Collecting the coefficients in the matrix $\mathbf{A}=[\alpha_{ij}]$ the unknowns and the right-side scalars in the column vectors 
+$$\mathbf{x}=\left[\begin{array}{c}
+x_1\\
+x_2\\
+\vdots \\
+x_n
+\end{array}\right]\quad \mbox{and}\quad \mathbf{b}=\left[\begin{array}{c}
+\beta_1\\
+\beta_2\\
+\vdots \\
+\beta_m
+\end{array}\right]$$
+respectively, the matrix equation $\mathbf{Ax}=\mathbf{b}$ can be obtained.\\
+Since the left side of the above matrix equation is a linear combination of the columns of $\mathbf{A}$ the following statement can be obtained:\\
+\begin{theorem}
+The (\ref{lsystem}) linear system of equations is solvable if and only if $\mathbf{b}$
+is the linear combination of columns of the coefficient matrix $\mathbf{A}$, that is, $\mathbf{b}$ is in the subspace spanned by the columns of $\mathbf{A}$, or equivalently
+$\rho(\mathbf{A})=\rho([\mathbf{A},\mathbf{b}]).$
+\end{theorem}
+
+}
+
+
+\frame{\frametitle{}
+\bigskip
+
+A solution of the system of linear equations $\mathbf{Ax}=\mathbf{b}$ is an $n$-tuple (a vector) $\mathbf{s}=(s_1,s_2,\ldots ,s_n),$ such that substituting $s_i\mbox{ for }x_i\ i=1,2,\ldots ,n$ each equation of the system (\ref{lsystem}) becomes true numerical statement. The solution set of (\ref{lsystem}) is the set of all solution vectors.
+\bigskip
+
+To provide an effective method for solution of systems of linear equation first we show a process for factoring matrices.
+}
+\section{Factoring matrices}
+\frame{\frametitle{Basis factoring matrices}
+Let $\mathbf{A}=[\mathbf{a}_1,\mathbf{a}_2,\ldots ,\mathbf{a}_n]$ be a matrix having rank $r.$ Then there is an $r$ element linearly independent set of vectors $\mathbf{a}_{i_1},\ldots,\mathbf{a}_{i_r}$ such that any vector of the subspace spanned by the columns of $\mathbf{A}$ -- which is called the {\em column space} of $\mathbf{A}$ -- can be expressed as a linear combination of the vectors $\mathbf{a}_{i_1},\ldots,\mathbf{a}_{i_r},$ that is, $\mathbf{a}_{i_1},\ldots,\mathbf{a}_{i_r}$ is a basis of the column space of $\mathbf{A}.$ Therefore
+\begin{block}{}
+\begin{eqnarray*}
+\mathbf{a}_1&=&d_{11}\mathbf{a}_{i_1}+d_{21}\mathbf{a}_{i_2}+\cdots +d_{r1}\mathbf{a}_{i_r}\\
+\mathbf{a}_2&=&d_{12}\mathbf{a}_{i_1}+d_{22}\mathbf{a}_{i_2}+\cdots +d_{r2}\mathbf{a}_{i_r}\\
+&\vdots& \\
+\mathbf{a}_n&=&d_{1n}\mathbf{a}_{i_1}+d_{2n}\mathbf{a}_{i_2}+\cdots +d_{rn}\mathbf{a}_{i_r}.
+\end{eqnarray*}
+\end{block}
+}
+
+\frame{\frametitle{Basis factoring matrices}
+Form the matrices 
+\begin{block}{}
+\[
+\mathbf{A}_1=[\mathbf{a}_{i1},\ldots,\mathbf{a}_{ir}] \text{ and } 
+\mathbf{A}_2=\left[\begin{array}{cccc}
+d_{11}&d_{12}&\ldots &d_{1n}\\
+d_{21}&d_{22}&\ldots &d_{2n}\\
+\vdots \\
+d_{r1}&d_{r2}&\ldots &d_{rn}\\
+\end{array}\right],
+\]
+\end{block}
+then the above equation can be written in the form: 
+\begin{block}{}
+$$\mathbf{A}=\mathbf{A}_1\cdot \mathbf{A}_2.$$
+\end{block}
+Notice that the $j$th column of the matrix $\mathbf{A}_2$ is just the coordinate vector of $\mathbf{a}_j$ with respect to the basis $\{\mathbf{a}_{i1},\ldots,\mathbf{a}_{ir}\}.$
+}
+
+\frame{\frametitle{}
+\begin{example}
+Factor the matrix $\mathbf{A}=\left[\begin{array}{rrrr}
+1&2&0&3\\
+2&1&3&3\\
+-1&1&-3&0
+\end{array}\right].$
+\end{example}
+
+Using elementary basis transformation we find the rank of $\mathbf{A}$ and
+a basis of its column space, starting with the standard basis
+$\{\mathbf{e}_1,\mathbf{e}_2,\mathbf{e}_3\}$ of $\R^3.$
+$$\begin{array}{c|rrrr}
+&\mathbf{a}_1&\mathbf{a}_2&\mathbf{a}_3&\mathbf{a}_4\\ \hline
+\mathbf{e}_1&\fbox{$1$}&2&0&3\\
+\mathbf{e}_2&2&1&3&3\\
+\mathbf{e}_3&-1&1&-3&0
+\end{array}\longrightarrow \begin{array}{c|rrr}
+&\mathbf{a}_2&\mathbf{a}_3&\mathbf{a}_4\\ \hline
+\mathbf{a}_1&2&0&3\\
+\mathbf{e}_2&\fbox{$-3$}&3&-3\\
+\mathbf{e}_3&3&-3&3
+\end{array}\longrightarrow \begin{array}{c|rr}
+&\mathbf{a}_3&\mathbf{a}_4\\ \hline
+\mathbf{a}_1&2&1\\
+\mathbf{a}_2&-1&1\\
+\mathbf{e}_3&0&0
+\end{array}$$
+It can be red off from the last table, that the first and second column of $\mathbf{A}$ form a basis of its column space and $\mathbf{a}_3=2\mathbf{a}_1-\mathbf{a}_2$ and $\mathbf{a}_4=\mathbf{a}_1+\mathbf{a}_2.$ 
+}
+\frame{\frametitle{}
+Remember that $j$-th column of the matrix $\mathbf{A_2}$ is the coordinate vector of $\mathbf{a_j}$ with respect to the 
+basis $\left\{ \mathbf{a_1},\mathbf{a_2} \right\}$.
+Therefore
+\begin{exampleblock}{}
+$$\mathbf{A}_1=[\mathbf{a}_1,\mathbf{a}_2]=\left[\begin{array}{rr}
+1&2\\
+2&1\\
+-1&1
+\end{array}\right]\quad\text{ and }\quad \mathbf{A}_2=\left[\begin{array}{rrrr}
+1&0&2&1\\
+0&1&-1&1
+\end{array}\right],$$
+\end{exampleblock}
+where we used the obvious fact that $\left[\begin{array}{c}
+1\\
+0
+\end{array}\right]$ and $\left[\begin{array}{c}
+0\\
+1
+\end{array}\right]$ are the coordinate vectors of $\mathbf{a}_1$ respectively $\mathbf{a}_2$ with respect to the basis $\{\mathbf{a}_1,\mathbf{a}_2\}.$
+
+}
+
+\section{Problems}
+\begin{frame}
+    \frametitle{Problems}
+
+    \begin{exampleblock}{Factorize the matrices below}
+    \begin{columns}[t]
+    \column{.5\textwidth}
+    \begin{itemize}[<+|alert@+>]
+        \item
+            \(
+            \left[
+            \begin{array}{rrr}
+                1&3&5\\
+                2&4&6\\
+                3&5&7
+            \end{array}
+            \right]
+            \)
+        \item
+            \(
+            \left[
+            \begin{array}{rrr}
+                1&-3&2\\
+                2&-5&5\\
+                1&-2&3
+            \end{array}
+            \right]
+            \)
+        \item
+            \(
+            \left[
+            \begin{array}{rrr}
+                -3&-5&36\\
+                -1&0&7\\
+                1&1&-10
+            \end{array}
+            \right]
+            \)
+    \end{itemize}
+    \column{.5\textwidth}
+    \begin{itemize}[<+|alert@+>]
+        \item
+            \(
+            \left[
+            \begin{array}{rrrr}
+                1&2&-3&-4\\
+                1&3&-3&-4\\
+                2&2&-6&-8
+            \end{array}
+            \right]
+            \)
+        \item
+            \(
+            \left[
+            \begin{array}{rrrr}
+                4&8&-4&4\\
+                3&8&5&-11\\
+                -2&1&12&-17
+            \end{array}
+            \right]
+            \)
+    \end{itemize}
+    \end{columns}
+    \end{exampleblock}
+\end{frame}
+
+\end{document}
+Created:        Sun 27 Apr 2008 11:32:30 PM CEST
+Last Modified:  Tue 30 Mar 2010 07:30:19 AM CEST
+
+\frame{\frametitle{Polytope}
+The {\em polytope} is the convex hull of a finite set of vectors can be considered as the generalization of convex polygons and solids like triangle, rectangle, tetrahedron and so forth.
+
+The generalization of the plane is given as follows:
+\begin{definition}
+Let $\mathbf{n}\in \R^n$ and $\alpha\in \R$ such that $\mathbf{n}\neq \mathbf{0}.$ Then the hyperplane $S(\mathbf{n},\alpha )$ is the set of all vectors $\mathbf{x}\in \R^n$ satisfying the equation $\left\langle \mathbf{n};\mathbf{x}\right\rangle =\alpha .$
+\end{definition}
+
+For any two points $\mathbf{x}_1,\mathbf{x}_2\in S(\mathbf{n},\alpha )$ the vector $\mathbf{x}_1-\mathbf{x}_2$ is orthogonal to the vector $\mathbf{n},$ therefore it is often called the normal vector of the hyperplane.
+
+}
+
+\section{Geometric objects}
+
+\frame{\frametitle{Line segment}
+The Euclidean $n$-space is the generalization of the well known space, therefore its vectors are often called points and the objects of the Euclidean geometry are also defined for higher dimensional cases as well.
+\begin{block}{}
+If $\mathbf{x}_1$ and $\mathbf{x}_2$ are two distinct points then the straight line passing through them is the set $\{\lambda \mathbf{x}_1+(1-\lambda)\mathbf{x}_2\ \mid \ \lambda \in \R\},$ while the line segment connecting them is the set $\{\lambda \mathbf{x}_1+(1-\lambda)\mathbf{x}_2\ \mid \ 0\leq\lambda\leq 1 \}.$
+\end{block}
+
+In the definition of the line segment all linear combinations of the points $\mathbf{x}_1$ and $\mathbf{x}_2$ are collected, where the coefficients are non-negative and their sum is $1.$ 
+}
+\frame{\frametitle{Convex combination}
+\begin{definition}[Convex linear combination]
+In general, a linear combination of vectors
+$$\lambda_1\mathbf{x}_1+\cdots+\lambda_n\mathbf{x}_n$$
+is said to be a {\em convex combination} if 
+$$
+\lambda_i\geq 0\ (i=1,\ldots ,n) \text{ and } \sum_{i=1}^n \lambda_i=1.
+$$
+The set of all convex combinations of a system of vectors $\{\mathbf{x}_1,\ldots ,\mathbf{x}_k\}$ is called their 
+\emph{convex hull} 
+and denoted by $\co (\mathbf{x}_1,\ldots ,\mathbf{x}_n).$ 
+\end{definition}
+
+Thus the line segment connecting the points $\mathbf{x}_1$ and $\mathbf{x}_2$ 
+is often denoted by $\co (\mathbf{x}_1,\mathbf{x}_2).$
+}
+\end{comment}

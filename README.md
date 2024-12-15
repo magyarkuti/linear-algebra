@@ -7,9 +7,9 @@ The branch ``gh-pages``  includes the the files serving input for Jekyll.
 The page is part of my [web site](https://magyarkuti.github.io).
 
 The latex code of the classes are in the classes folder.
-To compile the files my corvinusmetropolis latex class is needed. 
+To compile the files my ``corvinusmetropolis`` latex class is required. 
 See https://github.com/magyarkuti/corvinusmetropolis
 
 The recommended command is
-latexmk -lualatex <file name>
+``latexmk -lualatex <file name>``
 

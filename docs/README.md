@@ -16,7 +16,7 @@ The [Course Syllabus](https://docs.google.com/file/d/1ScbjijrTbaIcM4gdS1h54pjiil
     Week 12.
 ```
 No reschedule or makeup of the mini quizzes. 
-* The Final Exam is scheduled to the first week of the examination period.
+* The written exam is organizeded to 19 of December, 10 am, Building C, XI. The [Mock exam](http://web.uni-corvinus.hu/magyarkuti/mock.pdf) helps you to be prepared. Taking part is compulsory for all!
 
 ### Grading
 - You will receive 5-5 points at maximum for your 4 Mini quizzes, but the best 3 is form 15 points. 25 points for the Final exam. Thus 40 points can be collected during the written part of examination.
@@ -80,7 +80,7 @@ Handouts compiled by the instructor [are available here](https://drive.google.co
    * Problems
 
 1. Preparation for the final exam
-   * Mock exam
+   * [Mock exam](http://web.uni-corvinus.hu/magyarkuti/mock.pdf)
 
 
 <!--

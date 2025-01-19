@@ -206,7 +206,7 @@ The subsequent statements are easily verified:
     Assume that $M$ is a subspace of the vector space and $S\subseteq M$ is a subset.
     If $\spn(S)=M$, then $S$ is a \alert{spanning set of } $M$.
     \end{definition}
-    The commonly used terminologies are as follow.
+    The commonly used terminologies are the following:
     $S$ spans $M$; $S$ generates $M$; $S$ is a spanning set of $M$; $S$ is a generating set of $M$.
     Sometimes, the set $\spn(S)$ is denoted by $\lin(S)$ and the spans of $S$ is called \alert{the linear hull} of $S$.
 
@@ -331,10 +331,10 @@ we realize that the number of the vectors of an independent system can not be gr
     \]
     Write a linear combination of the system $\left\{ x_1,\dots,x_m \right\}$ using the multipliers $\xi_1,\ldots,\xi_m$ specified later.
     \begin{eqnarray}
+        \label{eq:sys}
         \sum_{k=1}^m\xi_kx_k=
         \sum_{k=1}^m\sum_{j=1}^n\xi_k\alpha_{j,k}y_j=
         \sum_{j=1}^n\left( \sum_{k=1}^m\alpha_{j,k}\xi_k \right)y_j
-        \label{eq:sys}
     \end{eqnarray}
 \end{frame}
 \begin{frame}
@@ -350,7 +350,7 @@ we realize that the number of the vectors of an independent system can not be gr
     hold.
     Thus if we use the above found unknowns ($\xi_k$) for the multipliers of (\ref{eq:sys}), then the right hand side of (\ref{eq:sys}) becomes zero.
     Consider now the left hand side of (\ref{eq:sys}). 
-    It is a non trivial linear combination of the system $\left\{ x_1,\ldots,x_m \right\}$.
+    It is a non-trivial linear combination of the system $\left\{ x_1,\ldots,x_m \right\}$.
 
     It was to be proved.
 \end{frame}
@@ -365,9 +365,9 @@ Assume that systems $\left\{ x_1,\ldots,x_m \right\}$ and $\left\{ y_1,\ldots,y_
 
 On the one hand, $m\leq n$ because $\left\{ x_1,\ldots,x_m \right\}$ is independent and $\left\{ y_1,\ldots,y_n \right\}$ is a spanning set.
 
-On the other hand, $n\leq m$ because $\left\{ y_1,\ldots,x_n \right\}$ is independent and $\left\{ x_1,\ldots,x_m \right\}$ is a spanning set.
+On the other hand, $n\leq m$ because $\left\{ y_1,\ldots,y_n \right\}$ is independent and $\left\{ x_1,\ldots,x_m \right\}$ is a spanning set.
 
-Thus we proved, that 
+Thus, we proved, that
 \alert{any two bases have the same number of terms in a vector space}
 (in which there exist finitely many vectors forming a spanning set).
 \end{frame}
@@ -416,7 +416,7 @@ x&=&\xi_1v_1+\cdots +\xi_iv_i+\cdots +\xi_kv_k=\\
 }
 \frame{\frametitle{Summary}
 We started from a basis $\left\{ v_1,\ldots,v_k \right\}$ and a vector $w$
-for which the $i$-th coordinate of $w$ (with respect to the basis above) is non zero.
+for which the $i$-th coordinate of $w$ (with respect to the basis above) is non-zero.
 We proved that any vector $x\in\spn\left\{ v_1,\cdots,v_k \right\}$ can be expressed 
 as a linear combination of the system $\{v_1,\ldots ,w,\ldots ,v_k\}.$
 It means that the new system $\{v_1,\ldots ,w,\ldots ,v_k\}$ is also a spanning set.
@@ -425,7 +425,7 @@ Realize that this new system is a $k$ element spanning set of a $k$ dimensional 
 thus it becomes a new basis.
 \begin{proposition}
     Let the system $\left\{ v_1,\ldots,v_k \right\}$ be a basis and assume that the $i$-th coordinate of the vector $w$--%
-    with respect to the basis above--is non zero.
+    with respect to the basis above--is non-zero.
     Then the changed system 
     \[
         \left\{ v_1,\ldots,w,\ldots v_k \right\}
@@ -468,13 +468,13 @@ $$\mathbf{x}_{\cal V}=\left[\begin{array}{c}
 \vdots\\
 \xi_k-\alpha_k\frac{\xi_i}{\alpha_i}
 \end{array}\right]$$
-with respect to the basiss ${\cal V}$ and ${\cal V}'$ respectively.
+with respect to the basis ${\cal V}$ and ${\cal V}'$ respectively.
 }
 
 \section{Some applications}
 
 \frame{\frametitle{}
-Using elementary basis transformation actally any problem arising in linear algebra can be solved, that is, the linear algebra problems are easily solvable in appropriate coordinate system. To illustrate this statement we provide some example.
+Using elementary basis transformation actually any problem arising in linear algebra can be solved, that is, the linear algebra problems are easily solvable in appropriate coordinate system. To illustrate this statement we provide some examples.
 
 \begin{example}
 Decide if the system of vectors $$\{\mathbf{y}_{1}=(1,-1,2,0),\mathbf{y}_{2}=(-1,2,-2,3),\mathbf{y}_{3}=(3,-4,6,-3)\}$$ in $\R^4$ is linearly independent or dependent!
@@ -523,7 +523,7 @@ The calculation is shown by the subsequent tables:
 \mathbf{e}_{3}&0 \\[0.5mm]
 \mathbf{e}_{4}&0 \\[0.5mm] \hline
 \end{array}\]
-The last table shows, that the new basis is $\{\mathbf{y}_1,\mathbf{y}_2,\mathbf{e}_3,\mathbf{e}_4\}$ and the $\mathbf{y}_3$ can be expressed as a linear combination of $\mathbf{y}_1\quad\mbox{and}\quad\mathbf{y}_2,$ namely
+The last table shows, that the new basis is $\{\mathbf{y}_1,\mathbf{y}_2,\mathbf{e}_3,\mathbf{e}_4\}$ and that $\mathbf{y}_3$ can be expressed as a linear combination of $\mathbf{y}_1\quad\mbox{and}\quad\mathbf{y}_2,$ namely
 $\mathbf{y}_3=2\mathbf{y}_1-1\mathbf{y}_2.$ Therefore the system 
 $\{\mathbf{y}_{1},\mathbf{y}_{2},\mathbf{y}_{3}\}$ is linearly dependent.
 }

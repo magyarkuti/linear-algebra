@@ -26,7 +26,7 @@ All regulations and conditions are governed by the University’s Code of Studie
 
 ### Weekly Schedule  
 The week-by-week schedule is as follows:  
-1. Elements of Linear Algebra
+1. Elements of Linear Algebra [download](https://unicorvinus-my.sharepoint.com/:b:/g/personal/magyarkuti_uni-corvinus_hu/Eb0U4ADowP5Oq1QPJB_vGe0BiPCkqEzSz0R9N_00C8_LdQ?e=gYgXQL)
    * Vectors
    * Linear Combination
    * Basis

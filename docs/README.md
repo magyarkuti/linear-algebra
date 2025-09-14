@@ -1,31 +1,31 @@
 {% include head.html %}
 
-for the Fall semester of 2024-2025.
+for the Fall semester of 2025-2026.
 
 The Linear Algebra classes of Mathematics I -- ADIN001NABB.
-The [Course Syllabus](https://docs.google.com/file/d/1ScbjijrTbaIcM4gdS1h54pjiilGWe0HK/edit?usp=docslist_api&filetype=msword) contains more detailed information, the most important part is as follows:
 
 ### Important information
-* The Office Hours is in S 208/b at Monday 17.20. Registration via e-mail is required not later than 7pm of the actual day before.
+* The Office Hours is in S 208/b at Monday 15.30. Registration via e-mail is required not later than 7pm of the actual day before.
 * Attendance is compulsory in the classes.
-* The exact date of the Mini Quizzes are as follows:
+*  The precise schedule of the short tests will be established at a later date.
 ```
-    Week 3,
-    Week 6, 
-    Week 9,
-    Week 12.
 ```
-No reschedule or makeup of the mini quizzes. 
-* The written exam is organizeded to 19 of December, 10 am, Building C, XI. The [Mock exam](http://web.uni-corvinus.hu/magyarkuti/mock.pdf) helps you to be prepared. Taking part is compulsory for all!
+---  
 
-### Grading
-- You will receive 5-5 points at maximum for your 4 Mini quizzes, but the best 3 is form 15 points. 25 points for the Final exam. Thus 40 points can be collected during the written part of examination.
-- You have optional oral exams at the examination periode for 10 points.
-All rules and conditions are regulated by the University Code of Study and Exams.
+**No rescheduling or make-up opportunities will be provided for the mini quizzes.**
 
----
-The week by week schedule is as follows.
-Handouts compiled by the instructor [are available here](https://drive.google.com/file/d/1HA3ykDZn5RcQR4Mj9J8bixvM42_HJ46T/view?usp=sharing), after each classes.
+*The written examination is scheduled for the very first week of the examination period. Attendance is compulsory for all students.*  
+
+### Grading  
+- Each of the four mini quizzes is worth a maximum of 5 points. The best three results will be counted, contributing up to 15 points.  
+- The final written exam is worth 25 points.  
+- Altogether, a maximum of 40 points can be earned from the written components of the course.  
+- Optional oral examinations are available during the examination period.  
+
+All regulations and conditions are governed by the University’s Code of Studies and Examinations.  
+
+### Weekly Schedule  
+The week-by-week schedule is as follows:  
 1. Elements of Linear Algebra
    * Vectors
    * Linear Combination

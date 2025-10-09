@@ -34,7 +34,7 @@ The week-by-week schedule is as follows:
    * Applications
 
 1. Matrix
-   * Inner product
+   * Inner product [download](https://unicorvinus-my.sharepoint.com/:b:/g/personal/magyarkuti_uni-corvinus_hu/EXbpXGpbpLBBuOR-uZix2-QB0AwF23FT6pt06UdzfkyUQQ?e=hLxrtw)
    * Concept of Matrices
    * Operations on matrices
    * Multiplication of matrices

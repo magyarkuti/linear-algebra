@@ -7,10 +7,14 @@ The Linear Algebra classes of Mathematics I -- ADIN001NABB.
 ### Important information
 * The Office Hours is in S 208/b at Monday 15.30. Registration via e-mail is required not later than 7pm of the actual day before.
 * Attendance is compulsory in the classes.
-*  The precise schedule of the short tests will be established at a later date.
-```
-```
----  
+* The precise schedule of the quizzes:
+  Week 3 (September 29)
+  Week 6 (October 20)
+  Week 9 (November 17)
+  Week 12 (December 8)
+
+The expected date of the first written midterm is December 16. Two additional major written tests will take place during the first two weeks of the new year.
+ 
 
 **No rescheduling or make-up opportunities will be provided for the mini quizzes.**
 

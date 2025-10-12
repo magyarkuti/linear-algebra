@@ -2,7 +2,7 @@
 \title[Solution of linear systems]
 {Solution of system of linear equations}
 \subtitle{Inverse of a matrix}
-\date{October 14, 2024}
+\date{October 13, 2025}
 \begin{document}
 \metroset{outer/numbering=none, outer/progressbar=foot}
 \frame{\titlepage}
@@ -145,39 +145,6 @@ $
 $
 \end{example}
 }
-\section{The rank--nullity theorem}
-\begin{frame}\frametitle{Kernel and nullity}
-    Assume that a matrix $A\in\mathbb{R}^{m\times n}$ is given.
-    This matrix has three important subspaces.
-    The column space which the range of $A$ is a subset of $\mathbb{R^m}$; 
-    the row space is the subspace of $\mathbb{R}^n$; 
-    and the kernel of $A$ which is a subspace of $\mathbb{R}^n$.
-    \begin{definition}[kernel of a matrix]
-        Let $A$ be an $m\times n$ matrix.
-        The \alert{kernel of }$A$ is defined as
-        \[
-            \ker{A}=\left\{ x\in\mathbb{R}^n: Ax=0 \right\}
-        \]
-        The \alert{nullity} of a matrix is the dimension of the kernel.
-    \end{definition}
-    Obviously, if matrix $A$ is considered as the coefficient matrix of a homogeneous system of linear equations,
-    then the kernel is the same as the solution set of the linear system.
-\end{frame}
-\begin{frame}\frametitle{Rank--Nullity theorem}
-    Remember that the rank of a matrix is the dimension of the range,
-    which is the same as the number of pivot terms of the elimination tables of the matrix.
-
-    The degree of freedom is the same as the nullity, 
-    which is the same as the number of those columns the final 
-    elimination table of the matrix which have no pivot terms.
-
-    The Rank--Nullity theorem is proven.
-    \begin{theorem}
-        The number of columns of a matrix is the sum of the rank and the nullity of the matrix.
-    \end{theorem}
-\end{frame}
-
-
 \frame{
 Find the rank, the nullity and all solutions of homogeneous linear systems of equations!
 \begin{example}

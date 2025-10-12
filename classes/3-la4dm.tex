@@ -1,7 +1,7 @@
 \input{la4dm.tex}
 \title{Matrix factorization}
 \subtitle{The rank of a matrix}
-\date{October 7, 2024}
+\date{October 13, 2025}
 
 \begin{document}
 
@@ -164,74 +164,93 @@ Thus we proved the
         The rank is the same as the number of the pivot terms of the Gauss-Jordan elimination of the matrix.
     \end{theorem}
 \end{frame}
-\section{Problems}
-\begin{frame}
-    \frametitle{Problems}
-
-    \begin{exampleblock}{Factorize the matrices below}
-    \begin{columns}[t]
-    \column{.5\textwidth}
-    \begin{itemize}[<+|alert@+>]
-        \item
-            \(
-            \left[
-            \begin{array}{rrr}
-                1&3&5\\
-                2&4&6\\
-                3&5&7
-            \end{array}
-            \right]
-            \)
-        \item
-            \(
-            \left[
-            \begin{array}{rrr}
-                1&-3&2\\
-                2&-5&5\\
-                1&-2&3
-            \end{array}
-            \right]
-            \)
-        \item
-            \(
-            \left[
-            \begin{array}{rrr}
-                -3&-5&36\\
-                -1&0&7\\
-                1&1&-10
-            \end{array}
-            \right]
-            \)
-    \end{itemize}
-    \column{.5\textwidth}
-    \begin{itemize}[<+|alert@+>]
-        \item
-            \(
-            \left[
-            \begin{array}{rrrr}
-                1&2&-3&-4\\
-                1&3&-3&-4\\
-                2&2&-6&-8
-            \end{array}
-            \right]
-            \)
-        \item
-            \(
-            \left[
-            \begin{array}{rrrr}
-                4&8&-4&4\\
-                3&8&5&-11\\
-                -2&1&12&-17
-            \end{array}
-            \right]
-            \)
-    \end{itemize}
-    \end{columns}
-    \end{exampleblock}
+\section{The rank--nullity theorem}
+\begin{frame}\frametitle{Kernel and nullity}
+    Assume that a matrix $A\in\mathbb{R}^{m\times n}$ is given.
+    This matrix has three important subspaces.
+    The column space (the range of $A$) is a subspace of $\mathbb{R^m}$; 
+    the row space is the subspace of $\mathbb{R}^n$; 
+    and the kernel of $A$ which is also a subspace of $\mathbb{R}^n$.
+    \begin{definition}[kernel of a matrix]
+        Let $A$ be an $m\times n$ matrix.
+        The \alert{kernel of }$A$ is defined as
+        \[
+            \ker{A}=\left\{ x\in\mathbb{R}^n: Ax=0 \right\}
+        \]
+        The \alert{nullity} of a matrix is the dimension of the kernel.
+    \end{definition}
+    Obviously, if matrix $A$ is considered as the coefficient matrix of a homogeneous system of linear equations,
+    then the kernel coinsides with the solution set of the system.
 \end{frame}
+\begin{frame}\frametitle{Rank--Nullity theorem}
+    Remember that the rank of a matrix is the dimension of the range,
+    which is the same as the number of pivot terms of the elimination tables of the matrix.
+
+    We are going to clarify, that the degree of freedom is the same as the nullity, 
+    which is the same as the number of those columns the final 
+    elimination table of the matrix which have no pivot terms.
+
+    \begin{theorem}
+        The number of columns of a matrix is the sum of the rank and the nullity of the matrix.
+    \end{theorem}
+\end{frame}
+\begin{frame}
+    First we should understand a corollary of Steinitz lemma.
+    \begin{lemma}
+        In a finite-dimensional vector space, every linearly independent set can be extend to a basis.
+    \end{lemma}
+\begin{proof}
+    If the set $\left\{ x_1,\ldots,x_\nu \right\}$ is independent and it is not a spanning set,
+    then inserting any vector not in the span of this system we obtain an independent set having $\nu+1$ terms.
+    We understand that a linearly independent system can not have more elements than any basis does.
+    Repeating this process, in finitely many steps, we obtain larger and larger independent sets
+    until the set is a basis.
+\end{proof}
+\end{frame}
+\frame{\frametitle{The proof of the Rank--Nullity theorem}
+Assume that $A\in\mathbb{R}^{m\times n}$, and $\left\{ x_1,\ldots,x_\nu \right\} $ 
+is a bases for the kernel of $A$.
+Insert some vectors to this set expand to a bases for $\mathbb{R}^n$, that is the system 
+$\left\{ x_1,\ldots,x_\nu,x_{\nu+1},\ldots,x_n \right\}$ is a bases of $\mathbb{R}^n$.
+It is enough to prove that the system $\left\{ Ax_{\nu+1},\ldots,Ax_n \right\}$ is a base of the column space.
+
+Spanning set: Let us assume that $z$ is a vector of the column space, that is $z=Ax$ for some $x$.
+But $x=\sum_{j=1}^n\lambda_jx_j$, 
+thus 
+$z=
+A\left(\sum_{j=1}^n\lambda_jx_j  \right)
+=
+\sum_{j=1}^n\lambda_jA(x_j)
+=
+\sum_{j=\nu+1}^n\lambda_jA(x_j).
+$
+
+Independent set:
+Assume that the linear combination
+$
+\sum_{j=\nu+1}^n\lambda_jA(x_j)=0.
+$
+It means the vector
+$u=\sum_{j=\nu+1}^n\lambda_jx_j$ belongs to the kernel.
+Since the system $\{x_1,\ldots,x_\nu\}$ is the base of the kernel there exist
+$\alpha_1,\ldots,\alpha_\nu$ such that
+\(
+    \alpha_1x_1+\ldots+\alpha_\nu x_\nu+0x_{\nu+1}+\ldots+0x_n
+    =u=
+    0x_1+\ldots+0x_\nu+\lambda_{\nu+1}x_{\nu+1}+\ldots+\lambda_nx_n.
+    \)
+By linearly independence, the coefficients of the left and right hand side must be the same,
+especially
+$\lambda_{\nu+1},\ldots,\lambda_n$ must all be zero.
+}
+\frame{}
+
 \end{document}
-Created:        Sun 27 Apr 2008 11:32:30 PM CEST
-Last Modified:  Tue 30 Mar 2010 07:30:19 AM CEST
+
+
+
+
+**************************************************************************
 \frame{\frametitle{Polytope}
 The {\em polytope} is the convex hull of a finite set of vectors can be considered as the generalization of convex polygons and solids like triangle, rectangle, tetrahedron and so forth.
 

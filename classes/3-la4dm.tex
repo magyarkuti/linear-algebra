@@ -1,4 +1,5 @@
 \input{la4dm.tex}
+\usepackage{ragged2e}
 \title{Matrix factorization}
 \subtitle{The rank of a matrix}
 \date{October 13, 2025}
@@ -144,43 +145,45 @@ where we used the obvious fact that $\left[\begin{array}{c}
 }
 
 \section{The rank theorem}
-\begin{frame}
-Let $A$ be an $m\times n$ matrix, and consider the factorization $A=B\cdot C$ as before.
-Here $B$ includes a maximal linearly independent system of columns of $A$. 
-Because of the maximal property the span of columns of $B$ coincides with the column space of $A$.
-It means that the columns of $B$ form a basis of the column space of $A$.
-
-We know that $C$ is the last elimination table after dropping the zero rows.
-The system of rows of $C$ is linearly independent, because every row has pivot position $1$,
-and at that position the rest of the rows includes $0$. 
-Thus none of the rows can be obtained as the linear combination of the rest.
-One can see that the row space is not changing during the elimination.
-It means that the rows of $C$ form a basis of the column space of $A$.
-
-Thus we proved the 
+\begin{frame}{Rank Theorem}
+\justifying
+Let $A$ be an $m \times n$ matrix, and consider the factorization $A = BC$ as before.\\[0.4em]
+The matrix $B$ consists of a maximal linearly independent set of columns of $A$.\\[0.3em]
+Because of this maximality, the column span of $B$ coincides with the column space of $A$.\\[0.3em]
+Hence, the columns of $B$ form a basis for the column space of $A$.
+\pause\\[0.8em]
+The matrix $C$ represents the final elimination table obtained after removing all zero rows.\\[0.3em]
+The rows of $C$ are linearly independent, since each row contains a pivot position with entry $1$, and all other rows contain $0$ in that position.\\[0.3em]
+Therefore, no row can be expressed as a linear combination of the others.\\[0.3em]
+Moreover, the row operations used in the elimination process do not change the row space.\\[0.3em]
+Consequently, the rows of $C$ form a basis for the row space of $A$.
+\\[1em]
+From these observations we obtain the following result.
+\end{frame}
+\frame{
     \begin{theorem}[Rank theorem]
         The dimensions of the column space and the row space of a matrix are equal.
-        This common dimension is called the \alert{rank of the matrix}.
-        The rank is the same as the number of the pivot terms of the Gauss-Jordan elimination of the matrix.
+        This common dimension is called the \alert{rank} of the matrix.
+        The rank is equal to the number of pivot positions in the Gauss--Jordan elimination of the matrix.
     \end{theorem}
-\end{frame}
+}
 \section{The rank--nullity theorem}
-\begin{frame}\frametitle{Kernel and nullity}
+\begin{frame}\frametitle{Fundamental Subspaces of a Matrix}
     Assume that a matrix $A\in\mathbb{R}^{m\times n}$ is given.
     This matrix has three important subspaces.
-    The column space (the range of $A$) is a subspace of $\mathbb{R^m}$; 
-    the row space is the subspace of $\mathbb{R}^n$; 
-    and the kernel of $A$ which is also a subspace of $\mathbb{R}^n$.
-    \begin{definition}[kernel of a matrix]
+    The \alert{column space} (the \alert{range} of $A$) is a subspace of $\mathbb{R^m}$; 
+    the \alert{row space} is the subspace of $\mathbb{R}^n$; 
+    and the \alert{kernel} (or null space) of $A$ which is also a subspace of $\mathbb{R}^n$.
+    \begin{definition}[Kernel of a Matrix]
         Let $A$ be an $m\times n$ matrix.
-        The \alert{kernel of }$A$ is defined as
+        The \alert{kernel} of $A$ is defined as
         \[
             \ker{A}=\left\{ x\in\mathbb{R}^n: Ax=0 \right\}
         \]
-        The \alert{nullity} of a matrix is the dimension of the kernel.
+        The \alert{nullity} of a matrix is the dimension of its kernel.
     \end{definition}
-    Obviously, if matrix $A$ is considered as the coefficient matrix of a homogeneous system of linear equations,
-    then the kernel coincides with the solution set of the system.
+    Obviously, if the matrix $A$ is considered as the coefficient matrix of a homogeneous system of linear equations,
+    then the kernel coincides with the solution set of that system.
 \end{frame}
 \begin{frame}\frametitle{Rank--Nullity theorem}
     Remember that the rank of a matrix is the dimension of the range,
@@ -197,7 +200,7 @@ Thus we proved the
 \begin{frame}
     First we should understand a corollary of Steinitz lemma.
     \begin{lemma}
-        In a finite-dimensional vector space, every linearly independent set can be extended to a basis.
+        In a finite-dimensional vector space, every linearly independent set can be extend to a basis.
     \end{lemma}
 \begin{proof}
     If the set $\left\{ x_1,\ldots,x_\nu \right\}$ is independent and it is not a spanning set,
@@ -246,8 +249,14 @@ $\lambda_{\nu+1},\ldots,\lambda_n$ must all be zero.
 \frame{}
 
 \end{document}
+The dimensions of the column space and the row space of a matrix are equal.  
+This common dimension is called the \textbf{rank} of the matrix.  
+The rank is equal to the number of pivot positions in the Gauss--Jordan elimination of the matrix.
 
-
+\documentclass{beamer}
+\usepackage{amsmath, amssymb}
+\usepackage{ragged2e}
+\justifying
 
 
 **************************************************************************

@@ -55,7 +55,7 @@ The week-by-week schedule is as follows:
    * Solution of homogeneous linear system of equations
    * Solution of nonhomogeneous linear system of equations
 
-1. The concept of the inverse matrix
+1. The concept of the inverse matrix [download](https://unicorvinus.sharepoint.com/:b:/t/Section_211387/ERmwXrgzdcJDp-CZC_OEKjQB7KS26m-dcUiL9ah4L5ReZg?e=5S8zuy)
    * Matrix equations
    * Inverse matrix
 

@@ -1,7 +1,7 @@
 \input la4dm.tex
 \title{Quadratic forms}
 \subtitle{The Gauss--Jordan elimination completes the square}
-\date[Linear Algebra Fall week 8]{November 4, 2024}
+\date[Linear Algebra Fall week 8]{November 10, 2025}
 \begin{document}
 \openingframes{Outline}
 \metroset{block=fill}
@@ -16,7 +16,7 @@ A quadratic form is a special multi-variable function.
     Q\left( x_{1},x_2,\cdots,x_n \right)=
     \sum_{k=1}^n\sum_{j=1}^na_{k,j}x_kx_j
     \]
-    is called $n$ variables quadratic function.
+    is called $n$-variable quadratic function.
 \end{definition}
 If $n=1$ then $Q(x_1)=ax_1^2$.\\
 If $n=2$ then
@@ -110,51 +110,73 @@ Compute the case when $n=3$.
 \end{frame}
 \subsection{Professional method}
 \begin{frame}
-    \frametitle{Dyadic decomposition using Gauss--Jordan elimination}
-    Every $n$-variable quadratic form can be decreased by a multiply of a dyad such that
-    the remainder quadratic form has one variable less:
-    \metroset{block=fill}
-    \begin{theorem}
-        Consider a symmetric matrix $A\in\mathbb{R}^{n\times n}$.
-        Assume, that $a_{1,1}\neq 0$ and denote $d=\frac{1}{a_{1,1}}a_1$,
-        where $a_1$ is the first column of matrix $A$.
-        Then 
-        \[
-            R=A-a_{1,1}d\cdot d^T
-        \]
-        is a symmetric matrix, where the first row (and column) is the zero vector.
-    \end{theorem}
-    \metroset{block=transparent}
-    \begin{proof}
-        The sum of symmetric matrices is a symmetric matrix.
-        If $\delta_k$ denotes the $k$-th coordinate of $d$, then
-        \(
-            r_{k,j}=
-            a_{k,j}-a_{1,1}\delta_{k}\delta_j.
-        \)
-        If $k=1$ we obtain $r_{1,j}=a_{1,j}-a_{1,1}\cdot 1\cdot\frac{a_{1,j}}{a_{1,1}}=0$.
-    \end{proof}
+\frametitle{Dyadic decomposition using Gauss--Jordan elimination}
+Every \(n\)-variable quadratic form can be reduced by subtracting a multiple of a dyad such that the resulting quadratic form has one fewer variable:
+\metroset{block=fill}
+\begin{theorem}
+Consider a symmetric matrix \(A \in \mathbb{R}^{n \times n}\).
+Assume that \(a_{t,t} \neq 0\) and denote \(d = \frac{1}{a_{t,t}} a_t\),
+where \(a_t\) is the \(t\)-th column of the matrix \(A\).
+Then
+\[
+R = A - a_{t,t} d \cdot d^T
+\]
+is a symmetric matrix whose $t$-th row (and column) is zero vector.
+\end{theorem}
+
+\metroset{block=transparent}
+\begin{proof}
+The sum of symmetric matrices is symmetric.
+If \(\delta_k\) denotes the \(k\)-th coordinate of \(d\), then
+\(
+a_t^T - a_{t,t} \delta_t d^T
+\)
+is the \(t\)-th row of matrix \(R\).
+It is the zero row because \(\delta_t = 1\) and \(a_{t,t} d = a_t\).
+By the symmetry of \(R\), the \(t\)-th column is also the zero column.
+\end{proof}
 \end{frame}
-\begin{frame}
-    The $k,j$ term of the matrix of the remainder quadratic form is
-    \metroset{block=fill}
-    \begin{block}{}
-    \[
-        r_{k,j}=
-        a_{k,j}-a_{1,1}\delta_k\delta_j=
-        a_{k,j}-a_{1,1}\frac{a_{k,1}}{a_{1,1}}\delta_j=
-        a_{k,j}-a_{k,1}\delta_j.
-    \]
-    \end{block}
-    If $k>1$ and $j>1$, then the above formula just computes
-    the new coordinates of the $j$-th column after the first column has entered to the base at the first position.
-    Thus we proved the following theorem.
-    \begin{theorem}
-        Let $A\in\mathbb{R}^{n\times n}$ be a symmetric matrix and assume that $a_{1,1}\neq 0$.
-        After separating the first complete square, as in the theorem above, the matrix of the remainder quadratic form
-        is the bottom right $n-1\times n-1$ matrix of the transformation table, when $a_{1,1}$ is the pivot term.
-    \end{theorem}
-\end{frame}
+\frame{
+Understanding the second step of the algorithm guaranteeing dyadic decomposition 
+relies on the observation that the matrix of the residual quadratic form,
+namely \[ R = A - a_{t,t} d \cdot d^T, \] 
+can be calculated far more efficiently than by the original formula.
+It was already seen that every element in the \( t \)-th row is zero.
+Now let us write down the \( k \)-th row of matrix \( R \) for \( k \neq t \).
+It is important to note that the row \( d^T \) is the auxiliary row of the Gauss--Jordan elimination
+when choosing the pivot element \( a_{t,t} \).
+Consider the \( k \)-th row of the dyad \( d \cdot d^T \) as \( \delta_k d^T \).
+Then it is clear that the \( k \)-th row of matrix \( R \) is the difference of the \( k \)-th row of matrix \( A \)
+and the row \( a_{t,k} d^T \) because
+\[
+    a_{t,t} \delta_k d^T = a_{t,t} \frac{a_{k,t}}{a_{t,t}} d^T.
+\]
+
+Recognize that this is exactly the computational rule of the elimination algorithm in the case when
+the diagonal \( t \)-th element is the pivot and we compute the entries of the rows not containing the pivot element.
+}
+\frame{
+This means that the operation 
+\[ A - a_{t,t} d \cdot d^T \] 
+can be calculated by Gauss--Jordan elimination
+instead of dyadic multiplication and matrix subtraction.
+
+We have thus proven the following proposition.
+
+\begin{proposition}
+Let \( A \in \mathbb{R}^{n \times n} \) be a symmetric matrix such that \( a_{t,t} \neq 0 \).
+Let \( R \) be the matrix of the residual quadratic form after removing the first dyad,
+that is,
+\[
+R = A - a_{t,t} d \cdot d^T,
+\]
+where \( d \) is the \( t \)-th column of matrix \( A \) multiplied by the reciprocal of \( a_{t,t} \).%
+\footnote{That is, \( d^T \) is the auxiliary row of the elimination.}
+We know that the \( t \)-th column and row of matrix \( R \) contain only zeros.
+The rest of matrix \( R \) can be obtained by Gauss--Jordan elimination on matrix \( A \)
+with the pivot element \( a_{t,t} \).
+\end{proposition}
+}
 \section{Problems}
 \begin{frame}
     \frametitle{Problems}
@@ -258,5 +280,10 @@ for real numbers $x_1,x_2,x_3,x_4$.
         \item all pivot terms are negative numbers then $Q$ is \alert{\emph{negative semidefinite}}.
     \end{itemize}
 \end{frame}
-\closingframes{Thank you for your attention!}
+%\closingframes{Thank you for your attention!}
+\begin{frame}
+    
+\end{frame}
 \end{document}
+
+

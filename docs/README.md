@@ -60,7 +60,7 @@ The week-by-week schedule is as follows:
    * Inverse matrix
 
 1. Quadratic forms
-   * Definition of quadratic froms [download]{https://unicorvinus-my.sharepoint.com/:b:/g/personal/magyarkuti_uni-corvinus_hu/EcKerT9DNXlEqwFrjwim37UBKx1T_3Gb2RAAyO-6L2Okhg?e=y3f4g2}
+   * Definition of quadratic froms [download](https://unicorvinus-my.sharepoint.com/:b:/g/personal/magyarkuti_uni-corvinus_hu/EcKerT9DNXlEqwFrjwim37UBKx1T_3Gb2RAAyO-6L2Okhg?e=y3f4g2)
    * Dyadic decomposition
       * Dyad is the matrix of a complete square
       * High school method for small size
@@ -69,7 +69,7 @@ The week-by-week schedule is as follows:
    * Definiteness of a quadratic form
    * Summary
 
-1. Determinant [download]{https://unicorvinus-my.sharepoint.com/:b:/g/personal/magyarkuti_uni-corvinus_hu/EahXlOphWyRFue3HzFEbOKABLVoIUMKxPhGSScz5CPUhHg?e=PhFMEE}
+1. Determinant [download](https://unicorvinus-my.sharepoint.com/:b:/g/personal/magyarkuti_uni-corvinus_hu/EahXlOphWyRFue3HzFEbOKABLVoIUMKxPhGSScz5CPUhHg?e=PhFMEE)
    * Parity of permutations
    * The concept of determinant
    * Special cases when the size is 1,2, or 3

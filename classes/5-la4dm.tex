@@ -280,6 +280,74 @@ for real numbers $x_1,x_2,x_3,x_4$.
         \item all pivot terms are negative numbers then $Q$ is \alert{\emph{negative semidefinite}}.
     \end{itemize}
 \end{frame}
+\frame{\frametitle{Proof.}
+    Let us start with the case when, 
+    in the last tableau of the elimination algorithm, 
+    all elements on the diagonal are zero, 
+    but there exists at least one nonzero element.
+
+    Then the quadratic form \(Q\) can be decomposed as \(Q = Q_1 + Q_R\), 
+    where \(Q_R\) is indefinite.
+
+    For simplicity, 
+    assume that \(x_1, \dots, x_k\) are the separated variables, 
+    and \(Q_R\) depends only on the remaining variables.
+    Accordingly, the quadratic form \(Q_1\) is a linear combination of at most \(k\) perfect squares.
+}
+\frame{
+    Consider the homogeneous linear system whose coefficient matrix is formed by stacking the auxiliary 
+    rows of the elimination algorithm in the order given by the elimination tableaux.
+    It is clear that the last row contains the variable \(x_k\).
+
+    Each higher row contains at least one more variable than the row below it.
+    Thus, for arbitrary values of \(x_{k+1}, \dots, x_n\), 
+    there exist values for \(x_1, \dots, x_k\) such that the variables form a solution to the linear system, hence
+    \(
+    Q_1(x_1, \dots, x_n) = 0.
+    \)
+
+    This shows that not only \(Q_R\) but also \(Q\) is indefinite.
+    }\frame{
+    Assume, now that \(Q\) is a linear combination of \(r\) perfect squares, 
+    where \(r\) is the rank of the matrix representing the original quadratic form.
+
+    Consider the case when there are both positive and negative pivot elements.
+
+    Denote by \(Dx = b_+\) and \(Dx = b_-\) the inhomogeneous systems where the rows of \(D\) 
+    are the auxiliary rows of the elimination algorithm, 
+    and the vector \(b_+\) (respectively \(b_-\)) contains $1$ or $0$ 
+    depending on whether the pivot element corresponding to the row is positive or negative.
+
+    Similarly, the elements of \(b_-\) are $1$ or zero, 
+    depending on whether the pivot element of the corresponding row is negative or not.
+
+    Here, \(x = (x_1, \dots, x_n)\) are the variables of the quadratic form.
+
+    Since the row system of \(D\) is linearly independent system,
+    therefore, both systems \(Dx = b_+\) and \(Dx = b_-\) have solutions, implying that \(Q\) is indeed indefinite.
+}\frame{
+Finally, consider the case when all pivot elements are positive (or all are negative).
+
+It is clear that
+\[
+Q(x_1, \dots, x_n) \geq 0 \quad (\text{or } \leq 0).
+\]
+If \(r = n\), then with the above notations, \(D\) is a regular matrix.
+Hence,
+\[
+Q(x) = 0 \quad \text{if and only if} \quad Dx=0, \quad \text{which holds only if} \quad x=0.
+\]
+This proves the statement about positive (or negative) definite quadratic forms.
+
+If \(r < n\), then the dimension of the nullspace is \(n-r > 0\), so there exists a nonzero \(x\) such that \(Q(x) = 0\).
+This proves the statement about positive (or negative) semi definite quadratic forms.
+}
+
+\begin{frame}
+\end{frame}
+\end{document}
+
+}
 %\closingframes{Thank you for your attention!}
 \begin{frame}
     

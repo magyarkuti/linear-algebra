@@ -78,7 +78,7 @@ The week-by-week schedule is as follows:
    * Expension by minors
    * Characteristic polynomial
 
-1. Diagonalize a matrix [download](web.uni-corvinus.hu/magyarkuti/7-la4dm.pdf)
+1. Diagonalize a matrix [download](https://unicorvinus-my.sharepoint.com/:b:/g/personal/magyarkuti_uni-corvinus_hu/IQDvvYWvgvOsTKr6jArz3GhOAV338vUDv8MyJfMiSUKQWcg?e=0lOS8b)
    * Concept of eigenvalue and eigenvector
    * The G-J elimination to find the eigenvalues and the eigenvectors.
    * Diagonalizable matrices.

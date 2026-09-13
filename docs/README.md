@@ -1,30 +1,28 @@
 {% include head.html %}
 
-for the Fall semester of 2025-2026.
+for the Fall semester of 2026-2027.
 
 The Linear Algebra classes of Mathematics I -- ADIN001NABB.
 
 ### Important information
-* The Office Hours is in S 208/b at Monday 15.30. Registration via e-mail is required not later than 7pm of the actual day before.
+The syllabus can be [downloaded](https://unicorvinus.sharepoint.com/sites/syllabuses/Megosztott%20dokumentumok/Forms/AllItems.aspx?id=%2Fsites%2Fsyllabuses%2FMegosztott%20dokumentumok%2F2026%2D27%2D1%2FMSMT006NABB%5FLinear%5FAlgebra%2Epdf&parent=%2Fsites%2Fsyllabuses%2FMegosztott%20dokumentumok%2F2026%2D27%2D1),
+but the summary of the most important part is as follows.
+* Attendance is compulsory in the classes.
+* The Office Hours is in S 208/b at Monday 19.00. Registration via e-mail is required not later than 7pm of the actual day before.
 * Attendance is compulsory in the classes.
 * The precise schedule of the quizzes:
-  Week 3 (September 29)
-  Week 6 (October 20)
-  Week 9 (November 17)
-  Week 12 (December 8)
+  * Week 3 (September 28)
+  * Week 6 (October 19)
+  * Week 9 (November 16)
+  * Week 12 (December 7)
 
-The expected date of the first written midterm is December 16. Two additional major written tests will take place during the first two weeks of the new year.
+
  
-
-**No rescheduling or make-up opportunities will be provided for the mini quizzes.**
-
-*The written examination is scheduled for the very first week of the examination period. Attendance is compulsory for all students.*  
-
 ### Grading  
-- Each of the four mini quizzes is worth a maximum of 5 points. The best three results will be counted, contributing up to 15 points.  
-- The final written exam is worth 25 points.  
-- Altogether, a maximum of 40 points can be earned from the written components of the course.  
-- Optional oral examinations are available during the examination period.  
+- Each of the four mini quizzes is worth a maximum of 5 points. 
+- The final written exam is worth 30 points.  
+- Altogether, a maximum of 50 points can be earned from the written components of the course.
+- The written examination is scheduled for the very first week of the examination period.
 
 All regulations and conditions are governed by the University’s Code of Studies and Examinations.  
 

@@ -5,7 +5,7 @@ for the Fall semester of 2026-2027.
 The Linear Algebra classes of Mathematics I -- ADIN001NABB.
 
 ### Important information
-The syllabus can be [downloaded](https://unicorvinus.sharepoint.com/sites/syllabuses/Megosztott%20dokumentumok/Forms/AllItems.aspx?id=%2Fsites%2Fsyllabuses%2FMegosztott%20dokumentumok%2F2026%2D27%2D1%2FMSMT006NABB%5FLinear%5FAlgebra%2Epdf&parent=%2Fsites%2Fsyllabuses%2FMegosztott%20dokumentumok%2F2026%2D27%2D1),
+The syllabus can be [downloaded](https://unicorvinus-my.sharepoint.com/:b:/g/personal/magyarkuti_uni-corvinus_hu/IQCctNh7FsZtRJtQGUlVHZctAQeH4WIq456wSsT91sSsMok?e=20wEeh),
 but the summary of the most important part is as follows.
 * Attendance is compulsory in the classes.
 * The Office Hours is in S 208/b at Monday 19.00. Registration via e-mail is required not later than 7pm of the actual day before.

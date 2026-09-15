@@ -28,9 +28,16 @@ All regulations and conditions are governed by the University’s Code of Studie
 
 ### Weekly Schedule  
 The week-by-week schedule is as follows:  
-1. Elements of Linear Algebra [download](https://unicorvinus-my.sharepoint.com/:b:/g/personal/magyarkuti_uni-corvinus_hu/IQDnhewLwa6cQ6by0exA-q3iAfyrq2D0RqomeQz0BCiLdjM?e=k625Qw)
+1. Elements [download](https://raw.githubusercontent.com/magyarkuti/linear-algebra/master/classes/1-la4dm.pdf)
    * Vectors
    * Linear Combination
+   * Subspaces
+   * Linearly independent systems
+   * Linearly dependent systems
+   * Basic properties of independent systems
+   * Gauss-Jordan elimination
+
+1. Basis
    * Basis
    * Basis transformation
    * Applications

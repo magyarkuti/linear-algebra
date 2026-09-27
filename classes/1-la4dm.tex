@@ -384,8 +384,151 @@ Thus, we proved, that
         \end{enumerate}
     \end{proposition}
 \end{frame}
-%\end{document}
+\section{Gauss--Jordan elimination}
+\begin{frame}{Gauss--Jordan Elimination: A Theoretical View}
 
+So far, we have learned the Gauss--Jordan algorithm through examples.
+We now reconsider the procedure from a theoretical point of view.
+
+Let
+\[
+A\in\mathbb{R}^{n\times m}.
+\]
+
+The algorithm transforms \(A\) by repeated row operations:
+\begin{enumerate}
+\item multiply a row by a nonzero scalar;
+\item subtract a scalar multiple of one row from another row.
+\end{enumerate}
+
+At each stage, choose a nonzero entry as a \alert{pivot term} and use
+row operations to eliminate all other entries in its pivot column.
+
+The algorithm terminates in a reduced row echelon form in which each 
+nonzero row includes a pivot term.
+\end{frame}
+\begin{frame}
+
+Our main theoretical questions are:
+
+\begin{itemize}
+    \item 
+     Which properties are preserved by the row operations?
+    \item
+     Why is the number of pivot terms independent of their choice?
+\end{itemize}
+\end{frame}
+\begin{frame}{Gauss--Jordan Elimination: Basic Idea}
+
+Let
+\(
+A\in\mathbb{R}^{n\times m}
+\)
+be a matrix over the real field \(\mathbb{R}\).
+
+The Gauss--Jordan algorithm transforms \(A\) by elementary operations
+on its rows. During the algorithm, we choose a nonzero entry as a
+\alert{pivot term} and eliminate all other entries in its column:
+both the entries below and the entries above the pivot term.
+
+We use only the following two types of row operations:
+\begin{enumerate}
+\item Multiply a row by a nonzero scalar:
+\[
+R_i \longleftarrow \lambda R_i,
+\qquad \lambda\neq 0.
+\]
+
+\item Subtract a scalar multiple of one row from another row:
+\[
+R_i \longleftarrow R_i-\lambda R_j,
+\qquad i\neq j.
+\]
+\end{enumerate}
+
+Both operations are reversible. Therefore, they preserve the subspace
+spanned by the rows of the matrix.
+\end{frame}
+\begin{frame}{The Pivot Steps}
+
+Suppose that a nonzero entry \(a_{ij}\) has been chosen as a pivot
+term.
+
+First, we may multiply row \(i\) by a nonzero scalar so that the pivot
+term becomes \(1\).
+
+Then, for every \(k\neq i\), we subtract a suitable multiple of row
+\(i\) from row \(k\). In this way, the entry in position \((k,j)\)
+becomes zero.
+
+Thus, after processing the pivot column, it has the form
+\(
+\begin{pmatrix}
+0\\
+\vdots\\
+0\\
+1\\
+0\\
+\vdots\\
+0
+\end{pmatrix},
+\)
+where the entry \(1\) is the pivot term.
+
+The algorithm then continues with a new pivot term in a different row.
+\end{frame}
+\begin{frame}{The Final Matrix}
+
+The Gauss--Jordan algorithm terminates, if every non zero row includes pivot term.
+The resulting matrix is called \alert{reduced row echelon form}.
+
+Its nonzero rows have exactly one pivot term.
+Moreover, because we eliminate all entries above and below
+each pivot term, every pivot column contains exactly one nonzero entry.
+
+Thus the nonzero rows are linearly independent: No nonzero row can be expressed as the linear combination of the rest of the rows.
+
+Each elementary row operation preserves the row space:
+Indeed, after an elementary row operation, every new row is a linear
+combination of the old rows. Hence the new row space is contained in
+the old one. Since every elementary row operation is reversible, the
+old rows are also linear combinations of the new rows. Thus the two
+row spaces are equal.
+Since the row operations preserve the row space, the nonzero rows of
+the final matrix form a basis of the row space of the original matrix.
+\end{frame}
+
+\begin{frame}{Independence of the number of pivots}
+
+\begin{theorem}
+Let \(A\in \mathbb{R}^{n\times m}\). Suppose that two executions of
+Gaussian--Jordan elimination, possibly using different pivot choices,
+produce matrices \(R\) and \(S\) in reduced row echelon form. Then \(R\) and
+\(S\) have the same number of nonzero rows.
+\end{theorem}
+
+\begin{proof}
+Let \(W\subseteq \mathbb{R}^m\) be the subspace spanned by the rows of
+\(A\):
+\[
+W=\operatorname{span}\{\text{rows of }A\}.
+\]
+
+Each elementary row operation preserves the row space.
+
+Consequently,
+\(
+\operatorname{Row}(A)=\operatorname{Row}(R)=\operatorname{Row}(S)=W.
+\)
+
+Since the nonzero rows of \(R\) span \(W\), they form a basis of \(W\).
+Similarly, the nonzero rows of \(S\) form a basis of \(W\).
+
+Hence \(R\) and \(S\) have the same number of nonzero rows.
+\end{proof}
+
+\end{frame}
+\section{Basis transformation}
 \begin{frame}\frametitle{Coordinate of a vector with respect to a basis}
 \begin{definition}
 Let ${\cal V}=\{v_1,\ldots ,v_k\}$ be a basis of the vector space $V$ and $x\in V.$ Then the scalars in the linear combination $x=\xi_1v_1+\cdots +\xi_kv_k$ are called the coordinates of the vector $x.$ In particular, $\xi_j$ is the coordinate of $x$ with respect to the basis vector $v_j.$ The column vector 
@@ -399,7 +542,6 @@ is said to be the coordinate vector of $x$ with respect to the basis ${\cal V}.$
 
 The coordinate vector depends on the basis. The same vector has different coordinate vectors with respect to different bases.
 \end{frame}
-\section{Basis transformation}
 
 \frame{\frametitle{Elementary basis transformation}
 The problem is to find out how the coordinate vector is changing if the basis is changed.

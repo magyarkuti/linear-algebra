@@ -42,9 +42,8 @@ The week-by-week schedule is as follows:
    * Basis transformation
    * Applications
 
-1. Matrix
-   * Inner product [download](https://unicorvinus-my.sharepoint.com/:b:/g/personal/magyarkuti_uni-corvinus_hu/EXbpXGpbpLBBuOR-uZix2-QB0AwF23FT6pt06UdzfkyUQQ?e=hLxrtw)
-   * Concept of Matrices
+1. Matrix[download](https://unicorvinus-my.sharepoint.com/:b:/g/personal/magyarkuti_uni-corvinus_hu/EXbpXGpbpLBBuOR-uZix2-QB0AwF23FT6pt06UdzfkyUQQ?e=hLxrtw)
+   * Inner product    * Concept of Matrices
    * Operations on matrices
    * Multiplication of matrices
    * Powers of matrix

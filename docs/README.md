@@ -42,8 +42,9 @@ The week-by-week schedule is as follows:
    * Basis transformation
    * Applications
 
-1. Matrix[download](https://unicorvinus-my.sharepoint.com/:b:/g/personal/magyarkuti_uni-corvinus_hu/EXbpXGpbpLBBuOR-uZix2-QB0AwF23FT6pt06UdzfkyUQQ?e=hLxrtw)
-   * Inner product    * Concept of Matrices
+1. Matrix [download](https://unicorvinus-my.sharepoint.com/:b:/g/personal/magyarkuti_uni-corvinus_hu/EXbpXGpbpLBBuOR-uZix2-QB0AwF23FT6pt06UdzfkyUQQ?e=hLxrtw)
+   * Inner product
+   * Concept of Matrices
    * Operations on matrices
    * Multiplication of matrices
    * Powers of matrix
@@ -63,8 +64,8 @@ The week-by-week schedule is as follows:
    * Matrix equations
    * Inverse matrix
 
-1. Quadratic forms
-   * Definition of quadratic froms [download](https://unicorvinus-my.sharepoint.com/:b:/g/personal/magyarkuti_uni-corvinus_hu/EcKerT9DNXlEqwFrjwim37UBKx1T_3Gb2RAAyO-6L2Okhg?e=y3f4g2)
+1. Quadratic forms [download](https://unicorvinus-my.sharepoint.com/:b:/g/personal/magyarkuti_uni-corvinus_hu/EcKerT9DNXlEqwFrjwim37UBKx1T_3Gb2RAAyO-6L2Okhg?e=y3f4g2)
+   * Definition of quadratic froms
    * Dyadic decomposition
       * Dyad is the matrix of a complete square
       * High school method for small size

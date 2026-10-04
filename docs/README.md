@@ -42,7 +42,7 @@ The week-by-week schedule is as follows:
    * Basis transformation
    * Applications
 
-1. Matrix [download](https://unicorvinus-my.sharepoint.com/:b:/g/personal/magyarkuti_uni-corvinus_hu/EXbpXGpbpLBBuOR-uZix2-QB0AwF23FT6pt06UdzfkyUQQ?e=hLxrtw)
+1. Matrix [download](https://raw.githubusercontent.com/magyarkuti/linear-algebra/master/classes/2-la4dm.pdf)
    * Inner product
    * Concept of Matrices
    * Operations on matrices
@@ -50,7 +50,7 @@ The week-by-week schedule is as follows:
    * Powers of matrix
    * Rank theorem
 
-1. Factoring matrices [download](https://unicorvinus-my.sharepoint.com/:b:/g/personal/magyarkuti_uni-corvinus_hu/EUonwo2laLRNjaoHpJhJ9bcBHD62-D0FIaUP5_dk-puStA?e=RGzq4U)
+1. Factoring matrices [download](https://raw.githubusercontent.com/magyarkuti/linear-algebra/master/classes/3-la4dm.pdf)
    * System of linear equations
    * Factoring matrices
    * Rank--Nullity theorem

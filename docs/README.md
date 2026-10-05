@@ -56,7 +56,7 @@ The week-by-week schedule is as follows:
    * Rank--Nullity theorem
    * Problems
 
-1. System of linear equations [download](https://unicorvinus-my.sharepoint.com/:b:/g/personal/magyarkuti_uni-corvinus_hu/EUonwo2laLRNjaoHpJhJ9bcBHD62-D0FIaUP5_dk-puStA?e=RGzq4U)
+1. System of linear equations [download](https://raw.githubusercontent.com/magyarkuti/linear-algebra/master/classes/4-la4dm.pdf)
    * Solution of homogeneous linear system of equations
    * Solution of nonhomogeneous linear system of equations
 

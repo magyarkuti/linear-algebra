@@ -1,0 +1,1700 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Linear Algebra · Corvinus</title>
+<meta name="description" content="Linear Algebra classes of Mathematics I (ADIN001NABB), Corvinus University of Budapest. Slides, schedule, quizzes and an interactive lab.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&display=swap">
+<style>
+/* Layout: graph-paper page, one 1120px column; the two basis-vector colours (î green, ĵ rose) are the only accents and always mean î and ĵ / positive and negative. */
+:root {
+  --paper: #f4f6fa;
+  --surface: #ffffff;
+  --ink: #18213a;
+  --ink-2: #4f5a75;
+  --line: #d8deea;
+  --grid: #e5eaf2;
+  --i: #0c9466;
+  --j: #d93a52;
+  --gold: #d89614;
+  --focus: #2f5bea;
+  --font-display: "Bricolage Grotesque", "Avenir Next", system-ui, sans-serif;
+  --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+  --radius: 10px;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0d1320; --surface: #141c2d; --ink: #e8ecf5; --ink-2: #a2acc3; --line: #27324a; --grid: #182135;
+    --i: #34d399; --j: #fb7185; --gold: #fbbf24; --focus: #7aa2ff; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0d1320; --surface: #141c2d; --ink: #e8ecf5; --ink-2: #a2acc3; --line: #27324a; --grid: #182135;
+  --i: #34d399; --j: #fb7185; --gold: #fbbf24; --focus: #7aa2ff; color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  margin: 0;
+  background-color: var(--paper);
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 28px 28px;
+  color: var(--ink);
+  font: 17px/1.6 var(--font-body);
+}
+a { color: inherit; text-decoration-color: var(--i); text-decoration-thickness: 2px; text-underline-offset: 3px; }
+a:hover { color: var(--i); }
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; border-radius: 4px; }
+h1, h2, h3 { font-family: var(--font-display); font-weight: 700; letter-spacing: -.02em; line-height: 1.1; text-wrap: balance; margin: 0; }
+h2 { font-size: clamp(1.8rem, 3.5vw, 2.4rem); }
+h3 { font-size: 1.3rem; }
+p { margin: 0; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-inline: 20px; }
+.eyebrow { font: 600 .75rem/1.2 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); }
+.muted { color: var(--ink-2); }
+.mono { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+.i { color: var(--i); } .j { color: var(--j); }
+
+/* top bar */
+.bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10; background: color-mix(in srgb, var(--paper) 88%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+.bar .wrap { display: flex; align-items: center; gap: 20px; padding-block: 10px; }
+.brand { font-family: var(--font-display); font-weight: 800; letter-spacing: -.02em; font-size: 1.15rem; text-decoration: none; margin-right: auto; }
+.bar nav { display: flex; gap: 18px; font-size: .95rem; }
+.bar nav a { text-decoration: none; color: var(--ink-2); }
+.bar nav a:hover { color: var(--ink); }
+
+/* hero */
+.hero { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 48px; align-items: center; padding-block: 56px 40px; }
+.hero h1 { font-size: clamp(3.2rem, 9vw, 6.2rem); font-weight: 800; letter-spacing: -.045em; line-height: .95; margin-block: 14px 18px; }
+.hero h1 .vec { white-space: nowrap; }
+.lede { font-size: 1.15rem; max-width: 34ch; color: var(--ink-2); }
+.chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+.chip { display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); font-size: .9rem; }
+.chip .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--i); }
+.chip.alert .dot { background: var(--j); }
+.cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+.btn { appearance: none; border: 1px solid var(--ink); background: var(--ink); color: var(--paper); font: 600 .95rem/1 var(--font-body); padding: 11px 18px; border-radius: 8px; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; }
+.btn:hover { color: var(--paper); filter: brightness(1.15); }
+.btn.ghost { background: transparent; color: var(--ink); border-color: var(--line); }
+.btn.ghost:hover { border-color: var(--ink); color: var(--ink); filter: none; }
+.btn.small { padding: 7px 12px; font-size: .85rem; }
+.btn:disabled { opacity: .4; cursor: default; filter: none; }
+.hero-fig { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 14px; box-shadow: 0 20px 50px -30px rgba(20, 30, 60, .35); }
+.hero-fig canvas { width: 100%; aspect-ratio: 1; display: block; }
+.hero-fig figcaption { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 4px 2px; font-size: .9rem; color: var(--ink-2); min-height: 64px; }
+
+/* matrices: drawn with CSS brackets */
+.mat { display: inline-grid; position: relative; padding: 3px 11px; column-gap: 14px; row-gap: 1px; font-family: var(--font-mono); font-variant-numeric: tabular-nums; text-align: right; vertical-align: middle; color: var(--ink); }
+.mat::before, .mat::after { content: ""; position: absolute; top: 0; bottom: 0; width: 6px; border: 1.5px solid currentColor; }
+.mat::before { left: 0; border-right: 0; }
+.mat::after { right: 0; border-left: 0; }
+.mat > span { padding: 1px 4px; border-radius: 4px; transition: background-color .25s; }
+.mat > span.aug { border-left: 1.5px solid var(--ink-2); padding-left: 12px; }
+.mat > span.changed { background: color-mix(in srgb, var(--gold) 28%, transparent); }
+.mat > span.pivot { background: color-mix(in srgb, var(--i) 30%, transparent); font-weight: 600; }
+
+/* sections */
+section { padding-block: 56px; scroll-margin-top: 20px; }
+[id^="lab-"] { scroll-margin-top: 72px; }
+.sec-head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 12px 32px; margin-bottom: 28px; }
+.sec-head p { max-width: 58ch; color: var(--ink-2); }
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; min-width: 0; }
+
+/* course info */
+.info { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.info h3 { margin-bottom: 12px; }
+.facts { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.facts li { display: grid; grid-template-columns: 22px 1fr; gap: 8px; }
+.facts li::before { content: "→"; font-family: var(--font-mono); color: var(--i); }
+.quiz-track { list-style: none; padding: 0; margin: 0; display: grid; gap: 0; }
+.quiz-track li { display: grid; grid-template-columns: 18px 1fr auto; gap: 12px; align-items: center; padding-block: 9px; position: relative; }
+.quiz-track li::before { content: ""; width: 12px; height: 12px; border-radius: 50%; border: 2px solid var(--ink-2); background: var(--surface); justify-self: center; z-index: 1; }
+.quiz-track li:not(:last-child)::after { content: ""; position: absolute; left: 8px; top: 50%; height: 100%; width: 2px; background: var(--line); }
+.quiz-track li.past::before { background: var(--ink-2); }
+.quiz-track li.next::before { border-color: var(--j); background: var(--j); box-shadow: 0 0 0 4px color-mix(in srgb, var(--j) 25%, transparent); }
+.quiz-track .when { font-family: var(--font-mono); font-size: .85rem; color: var(--ink-2); }
+.quiz-track li.next .when { color: var(--j); font-weight: 600; }
+.grade-bar { display: flex; height: 38px; border-radius: 6px; overflow: hidden; border: 1px solid var(--line); margin-block: 14px 8px; }
+.grade-bar span { display: grid; place-items: center; font: 600 .78rem var(--font-mono); color: var(--surface); }
+.grade-bar .q { flex: 5; background: var(--i); border-right: 1px solid var(--surface); }
+.grade-bar .q:nth-child(even) { background: color-mix(in srgb, var(--i) 78%, var(--ink)); }
+.grade-bar .e { flex: 30; background: var(--ink); }
+.dot-product { font-family: var(--font-mono); font-size: .85rem; overflow-x: auto; white-space: nowrap; padding-block: 4px; }
+
+/* schedule */
+.weeks { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; list-style: none; margin: 0; padding: 0; counter-reset: wk; }
+.week { display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 16px; position: relative; }
+.week .num { font: 800 2.4rem/1 var(--font-display); letter-spacing: -.04em; color: var(--ink-2); text-align: center; padding-top: 2px; }
+.week .num small { display: block; font: 600 .62rem/1.4 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; margin-bottom: 4px; }
+.week ul { margin: 8px 0 12px; padding-left: 18px; color: var(--ink-2); font-size: .95rem; }
+.week ul ul { margin: 2px 0; }
+.week .links { display: flex; flex-wrap: wrap; gap: 8px; }
+.tag { font: 600 .78rem/1 var(--font-mono); padding: 6px 9px; border-radius: 6px; border: 1px solid var(--line); text-decoration: none; display: inline-flex; gap: 6px; align-items: center; }
+.tag.pdf { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.tag.pdf:hover { color: var(--paper); filter: brightness(1.2); }
+.tag.lab { color: var(--i); }
+.tag.lab:hover { border-color: var(--i); }
+.week.now { border-color: var(--j); box-shadow: 0 0 0 1px var(--j); }
+.week.now .num { color: var(--j); }
+.week.now::after { content: "This week"; position: absolute; top: -10px; right: 16px; background: var(--j); color: var(--surface); font: 600 .7rem/1 var(--font-mono); letter-spacing: .06em; text-transform: uppercase; padding: 5px 8px; border-radius: 4px; }
+
+/* lab */
+.lab { display: grid; gap: 28px; }
+.exp { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 28px; align-items: start; }
+.exp .stage { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+.exp canvas { width: 100%; aspect-ratio: 1; display: block; touch-action: none; }
+.exp .side { display: grid; gap: 18px; min-width: 0; }
+.exp .side > p { color: var(--ink-2); }
+.exp-head { display: grid; gap: 8px; }
+.weeks-ref { font: .8rem var(--font-mono); color: var(--ink-2); }
+.row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.readout { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 8px 18px; align-items: baseline; font-size: .95rem; }
+.readout dt { font: 600 .72rem var(--font-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--ink-2); }
+.readout dd { margin: 0; min-width: 0; }
+.verdict { padding: 12px 14px; border-radius: 8px; border: 1px solid var(--line); background: var(--surface); }
+.verdict.good { border-color: var(--i); background: color-mix(in srgb, var(--i) 10%, var(--surface)); }
+.verdict.bad { border-color: var(--j); background: color-mix(in srgb, var(--j) 10%, var(--surface)); }
+.mat-input { display: inline-grid; grid-template-columns: repeat(2, 76px); gap: 6px 10px; position: relative; padding: 6px 14px; }
+.mat-input::before, .mat-input::after { content: ""; position: absolute; top: 0; bottom: 0; width: 8px; border: 2px solid var(--ink); }
+.mat-input::before { left: 0; border-right: 0; } .mat-input::after { right: 0; border-left: 0; }
+input[type="number"] { width: 100%; font: 600 1rem var(--font-mono); padding: 6px 8px; border: 1px solid var(--line); border-radius: 6px; background: var(--paper); color: var(--ink); text-align: right; }
+input.col-i { border-color: var(--i); } input.col-j { border-color: var(--j); }
+.slider { display: grid; grid-template-columns: 34px minmax(0, 1fr) 56px; gap: 12px; align-items: center; }
+.slider label { font: 600 1rem var(--font-mono); }
+.slider output { font: 600 .95rem var(--font-mono); text-align: right; font-variant-numeric: tabular-nums; }
+input[type="range"] { width: 100%; accent-color: var(--ink); }
+.ops { font-family: var(--font-mono); font-size: .95rem; min-height: 1.6em; }
+.gj-mat { overflow-x: auto; padding-block: 6px; font-size: 1.1rem; }
+.system { font-family: var(--font-mono); font-size: .95rem; line-height: 1.8; overflow-x: auto; }
+.score { font: 600 .85rem var(--font-mono); color: var(--ink-2); }
+.phi .match { color: var(--i); font-weight: 600; }
+.phi .rest { color: var(--ink-2); }
+.big-mat { overflow-x: auto; padding-block: 4px; font-size: 1.05rem; }
+
+.wild { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+.wild .panel { display: grid; gap: 10px; align-content: start; }
+.wild .formula { font-family: var(--font-mono); font-size: .95rem; color: var(--i); }
+.wild p { font-size: .95rem; color: var(--ink-2); }
+
+footer { border-top: 1px solid var(--line); background: var(--surface); }
+footer .wrap { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 24px; padding-block: 36px 44px; align-items: end; }
+footer address { font-style: normal; display: grid; gap: 4px; }
+footer .name { font-family: var(--font-display); font-weight: 700; font-size: 1.3rem; }
+.email { font-family: var(--font-mono); user-select: all; }
+footer .small { font-size: .85rem; color: var(--ink-2); text-align: right; }
+
+/* game UI */
+.head-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px; }
+.seg { display: inline-flex; flex-wrap: wrap; border: 1px solid var(--line); border-radius: 9px; padding: 3px; gap: 3px; background: var(--paper); }
+.seg button { border: 0; background: transparent; font: 600 .85rem/1 var(--font-body); padding: 7px 12px; border-radius: 6px; color: var(--ink-2); cursor: pointer; }
+.seg button:hover { color: var(--ink); }
+.seg button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+.small-text { font-size: .9rem; }
+.task { display: grid; gap: 10px; padding: 14px 16px; border: 1.5px dashed var(--gold); border-radius: 10px; background: color-mix(in srgb, var(--gold) 7%, var(--surface)); }
+.task-top { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; }
+.task-text { font-size: 1.05rem; font-weight: 600; }
+.dots { display: flex; gap: 6px; }
+.dots span { width: 10px; height: 10px; border-radius: 50%; border: 1.5px solid var(--ink-2); }
+.dots span.done { background: var(--i); border-color: var(--i); }
+.dots span.cur { border-color: var(--ink); box-shadow: 0 0 0 3px color-mix(in srgb, var(--ink) 18%, transparent); }
+.stats { display: flex; flex-wrap: wrap; gap: 10px; }
+.stat { display: grid; gap: 2px; min-width: 84px; padding: 8px 12px; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); }
+.stat span { font: 600 .68rem var(--font-mono); letter-spacing: .07em; text-transform: uppercase; color: var(--ink-2); }
+.stat b { font: 700 1.35rem/1.1 var(--font-display); font-variant-numeric: tabular-nums; }
+.stat b.bump { animation: bump .45s ease; }
+@keyframes bump { 40% { transform: scale(1.25); color: var(--i); } }
+.level { font: 600 .78rem/1 var(--font-mono); letter-spacing: .05em; text-transform: uppercase; padding: 6px 10px; border-radius: 999px; background: var(--ink); color: var(--paper); }
+.choices { display: grid; gap: 8px; }
+.choices.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.choice { text-align: left; font: 500 .95rem var(--font-mono); border: 1px solid var(--line); background: var(--surface); color: var(--ink); padding: 10px 12px; border-radius: 8px; cursor: pointer; transition: border-color .15s, background-color .15s; }
+.choices.two .choice { font-family: var(--font-body); font-weight: 600; }
+.choice:hover:not(:disabled) { border-color: var(--ink); }
+.choice:disabled { cursor: default; }
+.choice.right { border-color: var(--i); background: color-mix(in srgb, var(--i) 14%, var(--surface)); }
+.choice.wrong { border-color: var(--j); background: color-mix(in srgb, var(--j) 12%, var(--surface)); animation: shake .35s; opacity: .8; }
+@keyframes shake { 20%, 60% { transform: translateX(-4px); } 40%, 80% { transform: translateX(4px); } }
+@media (prefers-reduced-motion: reduce) { .choice.wrong, .stat b.bump { animation: none; } }
+.gj-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; align-items: start; }
+.hl-pivot { background: color-mix(in srgb, var(--i) 30%, transparent); padding: 0 4px; border-radius: 3px; }
+.hl-changed { background: color-mix(in srgb, var(--gold) 28%, transparent); padding: 0 4px; border-radius: 3px; }
+.check-line { font-family: var(--font-mono); font-size: .9rem; }
+.check-line .ok { color: var(--i); font-weight: 600; }
+.stage { position: relative; }
+.veil { position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; gap: 14px; padding: 20px; text-align: center; background: var(--surface); }
+.veil #qf-veil-q { font-size: 1.15rem; }
+.veil .mat { font-size: 1.4rem; }
+.chart-box { border: 1px solid var(--line); border-radius: 8px; background: var(--paper); }
+.chart-box canvas { width: 100%; height: 190px; display: block; }
+@media (max-width: 960px) { .gj-grid { grid-template-columns: 1fr 1fr; } .gj-grid > :last-child { grid-column: 1 / -1; } }
+@media (max-width: 600px) { .gj-grid { grid-template-columns: 1fr; } .choices.two { grid-template-columns: 1fr; } }
+
+@media (max-width: 960px) {
+  .info { grid-template-columns: 1fr 1fr; }
+  .info .panel:last-child { grid-column: 1 / -1; }
+  .wild { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 820px) {
+  .hero { grid-template-columns: 1fr; gap: 28px; padding-block: 36px 24px; }
+  .hero-fig { max-width: 460px; }
+  .exp { grid-template-columns: 1fr; }
+  .exp .stage { max-width: 520px; }
+  .weeks { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  body { font-size: 16px; }
+  .wrap { padding-inline: 16px; }
+  .bar nav { gap: 12px; font-size: .88rem; }
+  .brand { display: none; }
+  .bar nav { margin-left: auto; }
+  .info, .wild { grid-template-columns: 1fr; }
+  .week { grid-template-columns: 44px minmax(0, 1fr); gap: 10px; }
+  .week .num { font-size: 1.8rem; }
+  footer .wrap { grid-template-columns: 1fr; }
+  footer .small { text-align: left; }
+  section { padding-block: 40px; }
+}
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <div class="wrap">
+    <a class="brand" href="#top">Linear Algebra</a>
+    <nav aria-label="Sections">
+      <a href="#course">Course</a>
+      <a href="#schedule">Schedule</a>
+      <a href="#lab">Lab</a>
+      <a href="#wild">In the wild</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="wrap hero">
+    <div>
+      <p class="eyebrow">Mathematics I · ADIN001NABB · Corvinus University of Budapest</p>
+      <h1>Linear Algebra</h1>
+      <p class="lede">Fall semester 2026–27, with Gyula Magyarkuti. Slides, quiz dates, the weekly schedule, and a lab where you can push matrices around and see what they do.</p>
+      <div class="chips" aria-live="polite">
+        <span class="chip" id="chip-week"><span class="dot"></span><span>Quizzes in weeks 3, 6, 9 and 12</span></span>
+        <span class="chip alert" id="chip-quiz" hidden><span class="dot"></span><span></span></span>
+      </div>
+      <div class="cta">
+        <a class="btn" href="#schedule">Weekly schedule</a>
+        <a class="btn ghost" href="#lab">Open the lab</a>
+      </div>
+    </div>
+    <figure class="hero-fig" style="margin:0">
+      <canvas id="hero-canvas" aria-label="Animation: the coordinate grid is transformed by a sequence of 2 by 2 matrices"></canvas>
+      <figcaption>
+        <span id="hero-name">Identity</span>
+        <span id="hero-mat"></span>
+      </figcaption>
+    </figure>
+  </div>
+
+  <!-- ===================== COURSE ===================== -->
+  <section id="course">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="eyebrow">Course</p>
+          <h2>How the course works</h2>
+        </div>
+        <p>The syllabus can be <a href="https://unicorvinus-my.sharepoint.com/:b:/g/personal/magyarkuti_uni-corvinus_hu/IQCctNh7FsZtRJtQGUlVHZctAQeH4WIq456wSsT91sSsMok?e=20wEeh">downloaded here</a>. The most important parts are summarised below.</p>
+      </div>
+      <div class="info">
+        <div class="panel">
+          <h3>Essentials</h3>
+          <ul class="facts">
+            <li><span>Attendance is <strong>compulsory</strong> in the classes.</span></li>
+            <li><span>Office hours: <strong>S 208/b, Monday 19.00</strong>. Register by e-mail no later than 7pm of the day before.</span></li>
+            <li><span>The written exam is in the <strong>first week of the examination period</strong>.</span></li>
+            <li><span>All regulations and conditions are governed by the University’s Code of Studies and Examinations.</span></li>
+          </ul>
+        </div>
+        <div class="panel">
+          <h3>Mini quizzes</h3>
+          <ol class="quiz-track" id="quiz-track">
+            <li data-date="2026-09-28"><span>Quiz 1 · Week 3</span><span class="when">Sep 28</span></li>
+            <li data-date="2026-10-19"><span>Quiz 2 · Week 6</span><span class="when">Oct 19</span></li>
+            <li data-date="2026-11-16"><span>Quiz 3 · Week 9</span><span class="when">Nov 16</span></li>
+            <li data-date="2026-12-07"><span>Quiz 4 · Week 12</span><span class="when">Dec 7</span></li>
+          </ol>
+        </div>
+        <div class="panel">
+          <h3>Grading</h3>
+          <p class="muted">Four quizzes worth 5 points each, plus a final written exam worth 30. That makes 50 points in total.</p>
+          <div class="grade-bar" role="img" aria-label="Points: four quizzes of 5 points and an exam of 30 points, 50 in total">
+            <span class="q">5</span><span class="q">5</span><span class="q">5</span><span class="q">5</span><span class="e">Final exam · 30</span>
+          </div>
+          <p class="dot-product">total = (q₁, q₂, q₃, q₄, e) · (1, 1, 1, 1, 1) ≤ 50</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SCHEDULE ===================== -->
+  <section id="schedule">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="eyebrow">Schedule</p>
+          <h2>Week by week</h2>
+        </div>
+        <p>Each week links to its slides. The green links jump to a lab experiment for that topic.</p>
+      </div>
+      <ol class="weeks">
+        <li class="week panel" data-week="1">
+          <div class="num"><small>Week</small>1</div>
+          <div>
+            <h3>Elements</h3>
+            <ul><li>Vectors</li><li>Linear combination</li><li>Subspaces</li><li>Linearly independent and dependent systems</li><li>Basic properties of independent systems</li><li>Gauss–Jordan elimination</li></ul>
+            <div class="links">
+              <a class="tag pdf" href="https://raw.githubusercontent.com/magyarkuti/linear-algebra/master/classes/1-la4dm.pdf">Slides PDF</a>
+              <a class="tag lab" href="#lab-span">Span game</a>
+              <a class="tag lab" href="#lab-gauss">Gauss–Jordan stepper</a>
+            </div>
+          </div>
+        </li>
+        <li class="week panel" data-week="2">
+          <div class="num"><small>Week</small>2</div>
+          <div>
+            <h3>Basis</h3>
+            <ul><li>Basis</li><li>Basis transformation</li><li>Applications</li></ul>
+            <div class="links">
+              <a class="tag pdf" href="https://raw.githubusercontent.com/magyarkuti/linear-algebra/master/classes/1-la4dm.pdf">Slides PDF (part of week 1)</a>
+              <a class="tag lab" href="#lab-span">Span game</a>
+            </div>
+          </div>
+        </li>
+        <li class="week panel" data-week="3">
+          <div class="num"><small>Week</small>3</div>
+          <div>
+            <h3>Matrix</h3>
+            <ul><li>Inner product</li><li>Concept of matrices</li><li>Operations on matrices</li><li>Multiplication of matrices</li><li>Powers of a matrix</li><li>Rank theorem</li></ul>
+            <div class="links">
+              <a class="tag pdf" href="https://raw.githubusercontent.com/magyarkuti/linear-algebra/master/classes/2-la4dm.pdf">Slides PDF</a>
+              <a class="tag lab" href="#lab-transform">Matrix sandbox</a>
+              <a class="tag lab" href="#lab-powers">Matrix powers</a>
+            </div>
+          </div>
+        </li>
+        <li class="week panel" data-week="4">
+          <div class="num"><small>Week</small>4</div>
+          <div>
+            <h3>Factoring matrices</h3>
+            <ul><li>System of linear equations</li><li>Factoring matrices</li><li>Rank–nullity theorem</li><li>Problems</li></ul>
+            <div class="links">
+              <a class="tag pdf" href="https://raw.githubusercontent.com/magyarkuti/linear-algebra/master/classes/3-la4dm.pdf">Slides PDF</a>
+              <a class="tag lab" href="#lab-transform">Rank &amp; kernel in the sandbox</a>
+            </div>
+          </div>
+        </li>
+        <li class="week panel" data-week="5">
+          <div class="num"><small>Week</small>5</div>
+          <div>
+            <h3>System of linear equations</h3>
+            <ul><li>Solution of homogeneous linear systems</li><li>Solution of non-homogeneous linear systems</li></ul>
+            <div class="links">
+              <a class="tag pdf" href="https://raw.githubusercontent.com/magyarkuti/linear-algebra/master/classes/4-la4dm.pdf">Slides PDF</a>
+              <a class="tag lab" href="#lab-gauss">Gauss–Jordan stepper</a>
+            </div>
+          </div>
+        </li>
+        <li class="week panel" data-week="6">
+          <div class="num"><small>Week</small>6</div>
+          <div>
+            <h3>The inverse matrix</h3>
+            <ul><li>Matrix equations</li><li>Inverse matrix</li></ul>
+            <div class="links">
+              <a class="tag pdf" href="https://unicorvinus.sharepoint.com/:b:/t/Section_211387/ERmwXrgzdcJDp-CZC_OEKjQB7KS26m-dcUiL9ah4L5ReZg?e=5S8zuy">Slides PDF</a>
+              <a class="tag lab" href="#lab-transform">When is a matrix invertible?</a>
+            </div>
+          </div>
+        </li>
+        <li class="week panel" data-week="7">
+          <div class="num"><small>Week</small>7</div>
+          <div>
+            <h3>Quadratic forms</h3>
+            <ul><li>Definition of quadratic forms</li><li>Dyadic decomposition
+              <ul><li>A dyad is the matrix of a complete square</li><li>High-school method for small sizes</li><li>Professional method with Gaussian elimination</li></ul></li>
+              <li>Problems</li><li>Definiteness of a quadratic form</li><li>Summary</li></ul>
+            <div class="links">
+              <a class="tag pdf" href="https://unicorvinus-my.sharepoint.com/:b:/g/personal/magyarkuti_uni-corvinus_hu/EcKerT9DNXlEqwFrjwim37UBKx1T_3Gb2RAAyO-6L2Okhg?e=y3f4g2">Slides PDF</a>
+              <a class="tag lab" href="#lab-quad">Quadratic landscapes</a>
+            </div>
+          </div>
+        </li>
+        <li class="week panel" data-week="8">
+          <div class="num"><small>Week</small>8</div>
+          <div>
+            <h3>Determinant</h3>
+            <ul><li>Parity of permutations</li><li>The concept of the determinant</li><li>Special cases of size 1, 2 and 3</li><li>Properties</li><li>Computing the determinant with Gauss–Jordan elimination</li><li>Expansion by minors</li><li>Characteristic polynomial</li></ul>
+            <div class="links">
+              <a class="tag pdf" href="https://unicorvinus-my.sharepoint.com/:b:/g/personal/magyarkuti_uni-corvinus_hu/EahXlOphWyRFue3HzFEbOKABLVoIUMKxPhGSScz5CPUhHg?e=PhFMEE">Slides PDF</a>
+              <a class="tag lab" href="#lab-transform">Determinant as area</a>
+            </div>
+          </div>
+        </li>
+        <li class="week panel" data-week="9">
+          <div class="num"><small>Week</small>9</div>
+          <div>
+            <h3>Diagonalising a matrix</h3>
+            <ul><li>Eigenvalues and eigenvectors</li><li>Finding them with G–J elimination</li><li>Diagonalisable matrices</li><li>Problems</li></ul>
+            <div class="links">
+              <a class="tag pdf" href="https://unicorvinus-my.sharepoint.com/:b:/g/personal/magyarkuti_uni-corvinus_hu/IQDvvYWvgvOsTKr6jArz3GhOAV338vUDv8MyJfMiSUKQWcg?e=0lOS8b">Slides PDF</a>
+              <a class="tag lab" href="#lab-transform">Eigenvector hunt</a>
+              <a class="tag lab" href="#lab-powers">Fibonacci &amp; φ</a>
+            </div>
+          </div>
+        </li>
+        <li class="week panel" data-week="10">
+          <div class="num"><small>Week</small>10</div>
+          <div>
+            <h3>Preparation for the final exam</h3>
+            <ul><li>Mock exam</li><li>Review problems</li></ul>
+            <div class="links">
+              <a class="tag pdf" href="http://web.uni-corvinus.hu/magyarkuti/mock.pdf">Mock exam PDF</a>
+            </div>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ===================== LAB ===================== -->
+  <section id="lab">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="eyebrow">Lab</p>
+          <h2>Play with the ideas</h2>
+        </div>
+        <p>Five small games, one for each big idea of the course. Each has a free-play mode and a challenge mode. Scores stay in your own browser and nothing here is graded.</p>
+      </div>
+
+      <div class="lab">
+        <!-- 1. Transformation sandbox -->
+        <article class="exp panel" id="lab-transform">
+          <div class="stage"><canvas id="tf-canvas" aria-label="Plane transformed by the matrix. Drag the green and rose arrow tips."></canvas></div>
+          <div class="side">
+            <div class="exp-head">
+              <div class="head-row">
+                <p class="weeks-ref">Weeks 3, 4, 6, 8, 9</p>
+                <div class="seg" role="group" aria-label="Mode">
+                  <button type="button" id="tf-mode-free" aria-pressed="true">Free play</button>
+                  <button type="button" id="tf-mode-ch" aria-pressed="false">Challenges</button>
+                </div>
+              </div>
+              <h3>Matrix sandbox</h3>
+            </div>
+            <p>A 2×2 matrix is decided by where it sends the two basis vectors. Its first column is where <strong class="i">î</strong> lands, its second is where <strong class="j">ĵ</strong> lands. Drag the arrow tips or type numbers. The gold square shows the determinant as an area, and dashed lines mark the eigenvectors.</p>
+            <div class="task" id="tf-task" hidden>
+              <div class="task-top">
+                <span class="eyebrow" id="tf-task-n"></span>
+                <span class="dots" id="tf-dots"></span>
+              </div>
+              <p class="task-text" id="tf-task-text"></p>
+              <p class="muted small-text" id="tf-hint" hidden></p>
+              <div class="row">
+                <button class="btn ghost small" type="button" id="tf-hint-btn">Hint</button>
+                <button class="btn ghost small" type="button" id="tf-reset">Reset to identity</button>
+                <button class="btn small" type="button" id="tf-next">Skip</button>
+              </div>
+              <div class="verdict" id="tf-verdict" aria-live="polite" hidden></div>
+            </div>
+            <div class="row">
+              <span class="mono" style="font-size:1.3rem">A =</span>
+              <div class="mat-input">
+                <input type="number" id="m-a" class="col-i" step="0.1" aria-label="a11">
+                <input type="number" id="m-b" class="col-j" step="0.1" aria-label="a12">
+                <input type="number" id="m-c" class="col-i" step="0.1" aria-label="a21">
+                <input type="number" id="m-d" class="col-j" step="0.1" aria-label="a22">
+              </div>
+            </div>
+            <div class="row" id="tf-presets"></div>
+            <dl class="readout" id="tf-readout"></dl>
+          </div>
+        </article>
+
+        <!-- 2. Span game -->
+        <article class="exp panel" id="lab-span">
+          <div class="stage"><canvas id="sp-canvas" aria-label="Span game: reach the target point with a linear combination of u and v"></canvas></div>
+          <div class="side">
+            <div class="exp-head">
+              <div class="head-row">
+                <p class="weeks-ref">Weeks 1, 2</p>
+                <span class="level" id="sp-level">Level 1</span>
+              </div>
+              <h3>Span game</h3>
+            </div>
+            <p>Land on the gold ring using only <strong class="i">u</strong> and <strong class="j">v</strong>. Pick α and β so that α<span class="i">u</span> + β<span class="j">v</span> hits the target. Watch out for traps: if u and v are parallel, they only span a line, and the target may be out of reach. Every three hits takes you up a level.</p>
+            <div class="stats">
+              <div class="stat"><span>Score</span><b id="sp-score">0</b></div>
+              <div class="stat"><span>Streak</span><b id="sp-streak">0</b></div>
+              <div class="stat"><span>Best</span><b id="sp-best">0</b></div>
+            </div>
+            <div class="slider"><label for="sp-a">α</label><input type="range" id="sp-a" min="-3" max="3" step="0.25" value="0"><output id="sp-a-out" for="sp-a">0</output></div>
+            <div class="slider"><label for="sp-b">β</label><input type="range" id="sp-b" min="-3" max="3" step="0.25" value="0"><output id="sp-b-out" for="sp-b">0</output></div>
+            <p class="mono" id="sp-eq" style="overflow-x:auto"></p>
+            <div class="row">
+              <button class="btn ghost small" id="sp-imp" type="button">It’s not in the span</button>
+              <button class="btn ghost small" id="sp-hint" type="button">Show the u, v grid (−30)</button>
+              <button class="btn small" id="sp-new" type="button">Skip round</button>
+            </div>
+            <div class="verdict" id="sp-msg" aria-live="polite"></div>
+          </div>
+        </article>
+
+        <!-- 3. Gauss-Jordan -->
+        <article class="exp panel" id="lab-gauss">
+          <div class="side" style="grid-column: 1 / -1">
+            <div class="exp-head">
+              <div class="head-row">
+                <p class="weeks-ref">Weeks 1, 5, 6</p>
+                <div class="seg" role="group" aria-label="Mode">
+                  <button type="button" id="gj-mode-watch" aria-pressed="false">Watch</button>
+                  <button type="button" id="gj-mode-quiz" aria-pressed="true">Quiz me</button>
+                </div>
+              </div>
+              <h3>Gauss–Jordan elimination</h3>
+            </div>
+            <p>A random 3×3 system, worked in exact fractions. In <strong>Quiz me</strong> mode you choose each row operation, and a wrong choice tells you what it would break. In <strong>Watch</strong> mode you just step through. The <span class="hl-pivot">green cell</span> is the pivot and the <span class="hl-changed">gold row</span> is the one that just changed.</p>
+            <div class="gj-grid">
+              <div>
+                <p class="eyebrow" style="margin-bottom:8px">The system</p>
+                <div class="system" id="gj-system"></div>
+              </div>
+              <div>
+                <p class="eyebrow" style="margin-bottom:8px">Augmented matrix <span id="gj-count"></span></p>
+                <div class="gj-mat" id="gj-mat"></div>
+                <p class="ops" id="gj-op" aria-live="polite"></p>
+              </div>
+              <div id="gj-quiz">
+                <p class="eyebrow" style="margin-bottom:8px" id="gj-q-title">Next row operation?</p>
+                <div class="choices" id="gj-choices"></div>
+                <p class="muted small-text" id="gj-feedback" aria-live="polite"></p>
+              </div>
+            </div>
+            <div class="row">
+              <span id="gj-watch-ctrls" class="row">
+                <button class="btn ghost small" id="gj-back" type="button">Back</button>
+                <button class="btn small" id="gj-next" type="button">Next step</button>
+                <button class="btn ghost small" id="gj-end" type="button">Jump to the solution</button>
+              </span>
+              <button class="btn ghost small" id="gj-new" type="button">New system</button>
+              <span class="score" id="gj-score"></span>
+            </div>
+          </div>
+        </article>
+
+        <!-- 4. Quadratic forms -->
+        <article class="exp panel" id="lab-quad">
+          <div class="stage">
+            <canvas id="qf-canvas" aria-label="Heat map of the quadratic form with contour lines and principal axes"></canvas>
+            <div class="veil" id="qf-veil" hidden>
+              <p class="eyebrow">What shape is this?</p>
+              <div id="qf-veil-q" class="mono"></div>
+              <div id="qf-veil-mat"></div>
+              <p class="muted small-text">The picture is hidden until you answer.</p>
+            </div>
+          </div>
+          <div class="side">
+            <div class="exp-head">
+              <div class="head-row">
+                <p class="weeks-ref">Weeks 7, 9</p>
+                <div class="seg" role="group" aria-label="Mode">
+                  <button type="button" id="qf-mode-explore" aria-pressed="true">Explore</button>
+                  <button type="button" id="qf-mode-quiz" aria-pressed="false">Classify</button>
+                </div>
+              </div>
+              <h3>Quadratic landscapes</h3>
+            </div>
+            <p>Q(x, y) = a·x² + 2b·xy + c·y², seen from above. Green is where Q is positive, rose where it is negative, and the lines are contour lines. Sylvester’s criterion reads the shape off the leading principal minors. The dashed lines are the eigenvectors of the symmetric matrix, and they are always perpendicular.</p>
+            <div id="qf-explore">
+              <div class="slider"><label for="qf-a">a</label><input type="range" id="qf-a" min="-3" max="3" step="0.25" value="1"><output id="qf-a-out" for="qf-a"></output></div>
+              <div class="slider"><label for="qf-b">b</label><input type="range" id="qf-b" min="-3" max="3" step="0.25" value="0.5"><output id="qf-b-out" for="qf-b"></output></div>
+              <div class="slider"><label for="qf-c">c</label><input type="range" id="qf-c" min="-3" max="3" step="0.25" value="2"><output id="qf-c-out" for="qf-c"></output></div>
+              <div class="row" id="qf-presets" style="margin-top:12px"></div>
+            </div>
+            <div id="qf-quiz" hidden>
+              <div class="stats">
+                <div class="stat"><span>Correct</span><b id="qf-right">0</b></div>
+                <div class="stat"><span>Streak</span><b id="qf-streak">0</b></div>
+                <div class="stat"><span>Best streak</span><b id="qf-best">0</b></div>
+              </div>
+              <div class="choices two" id="qf-choices"></div>
+              <div class="row" style="margin-top:10px"><button class="btn small" type="button" id="qf-next" hidden>Next form</button></div>
+            </div>
+            <dl class="readout" id="qf-readout"></dl>
+          </div>
+        </article>
+
+        <!-- 5. Matrix powers -->
+        <article class="exp panel" id="lab-powers">
+          <div class="side">
+            <div class="exp-head">
+              <p class="weeks-ref">Weeks 3, 9</p>
+              <h3>Matrix powers race to an eigenvalue</h3>
+            </div>
+            <p id="pw-story"></p>
+            <div class="seg" role="group" aria-label="Matrix" id="pw-pick"></div>
+            <div class="row">
+              <button class="btn small" id="fib-step" type="button">Multiply by A</button>
+              <button class="btn ghost small" id="fib-ten" type="button">×10 more</button>
+              <button class="btn ghost small" id="fib-reset" type="button">Reset</button>
+            </div>
+            <div class="big-mat"><span class="mono" id="fib-lhs">A¹ =</span> <span id="fib-mat"></span></div>
+          </div>
+          <div class="side">
+            <dl class="readout">
+              <dt>Ratio</dt><dd class="mono phi" id="fib-ratio" style="overflow-wrap:anywhere"></dd>
+              <dt>λ₁</dt><dd class="mono" id="pw-limit" style="overflow-wrap:anywhere"></dd>
+              <dt>Error</dt><dd id="fib-agree"></dd>
+            </dl>
+            <div class="chart-box">
+              <canvas id="pw-chart" aria-label="Correct digits of the ratio against the power n"></canvas>
+            </div>
+            <p class="muted small-text" id="pw-chart-cap"></p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== IN THE WILD ===================== -->
+  <section id="wild">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="eyebrow">In the wild</p>
+          <h2>Where this shows up after the exam</h2>
+        </div>
+      </div>
+      <div class="wild">
+        <div class="panel">
+          <p class="eyebrow">Week 9 · eigenvectors</p>
+          <h3>Google’s PageRank</h3>
+          <p class="formula">P·r = 1·r</p>
+          <p>The original ranking of web pages is the eigenvector for eigenvalue 1 of a huge matrix of link probabilities.</p>
+        </div>
+        <div class="panel">
+          <p class="eyebrow">Week 6 · inverse matrix</p>
+          <h3>Leontief’s economy</h3>
+          <p class="formula">x = (I − A)⁻¹·d</p>
+          <p>How much each sector must produce to meet final demand d. This input–output model won Wassily Leontief the 1973 Nobel Prize in economics.</p>
+        </div>
+        <div class="panel">
+          <p class="eyebrow">Week 7 · quadratic forms</p>
+          <h3>Portfolio risk</h3>
+          <p class="formula">σ² = wᵀ·Σ·w</p>
+          <p>The variance of a portfolio with weights w is a quadratic form in the covariance matrix Σ. It is positive semidefinite, because a variance can’t be negative.</p>
+        </div>
+        <div class="panel">
+          <p class="eyebrow">Week 3 · matrix product</p>
+          <h3>Every video game frame</h3>
+          <p class="formula">v′ = M·v</p>
+          <p>Each rotation, zoom and camera move is a matrix multiplication, applied to millions of vertices per frame on the graphics card.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <address>
+      <span class="name">Gyula Magyarkuti</span>
+      <span>Department of Mathematics, Corvinus University of Budapest · S 208/B</span>
+      <span class="email">magyarkuti@uni-corvinus.hu</span>
+    </address>
+    <p class="small">Part of <a href="https://magyarkuti.github.io">magyarkuti.github.io</a><br>Slide sources on <a href="https://github.com/magyarkuti/linear-algebra">GitHub</a><br>Page and lab made by Benjámin Ribizsár</p>
+  </div>
+</footer>
+
+<script>
+(() => {
+"use strict";
+const root = document.documentElement;
+const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const $ = id => document.getElementById(id);
+
+/* ---------- tokens & helpers ---------- */
+let T = {};
+function readTokens() {
+  const cs = getComputedStyle(root);
+  for (const k of ["paper", "surface", "ink", "ink-2", "line", "grid", "i", "j", "gold"]) T[k] = cs.getPropertyValue("--" + k).trim();
+  T.mono = cs.getPropertyValue("--font-mono").trim();
+}
+function hexRgb(h) {
+  h = h.replace("#", "");
+  if (h.length === 3) h = h.split("").map(c => c + c).join("");
+  const n = parseInt(h, 16);
+  return [(n >> 16) & 255, (n >> 8) & 255, n & 255];
+}
+function rgba(h, a) { const [r, g, b] = hexRgb(h); return `rgba(${r},${g},${b},${a})`; }
+function fmt(x, dp = 2) {
+  if (Math.abs(x) < 1e-9) x = 0;
+  return String(+x.toFixed(dp)).replace("-", "−");
+}
+function matHTML(rows, cls = () => "") {
+  const cols = rows[0].length;
+  let s = `<span class="mat" style="grid-template-columns:repeat(${cols},auto)">`;
+  rows.forEach((r, i) => r.forEach((v, j) => { s += `<span class="${cls(i, j)}">${v}</span>`; }));
+  return s + "</span>";
+}
+const store = {
+  get(k, d) { try { const v = JSON.parse(localStorage.getItem("la-" + k)); return v ?? d; } catch (e) { return d; } },
+  set(k, v) { try { localStorage.setItem("la-" + k, JSON.stringify(v)); } catch (e) {} },
+};
+const ri = (a, b) => a + Math.floor(Math.random() * (b - a + 1));
+const shuffle = arr => { for (let k = arr.length - 1; k > 0; k--) { const m = ri(0, k); [arr[k], arr[m]] = [arr[m], arr[k]]; } return arr; };
+function bump(el) { el.classList.remove("bump"); void el.offsetWidth; el.classList.add("bump"); }
+function setSeg(btns, active) { btns.forEach(b => b.setAttribute("aria-pressed", String(b === active))); }
+
+const redrawers = [];
+function onTheme() { readTokens(); redrawers.forEach(f => f()); }
+readTokens();
+matchMedia("(prefers-color-scheme: dark)").addEventListener("change", onTheme);
+new MutationObserver(onTheme).observe(root, { attributes: true, attributeFilter: ["data-theme", "class"] });
+if (document.fonts) document.fonts.ready.then(onTheme);
+
+function makeCanvas(el, draw) {
+  const ctx = el.getContext("2d");
+  const st = { w: 0, h: 0 };
+  function redraw() { draw(ctx, st.w, st.h); }
+  function resize() {
+    const r = el.getBoundingClientRect();
+    const dpr = window.devicePixelRatio || 1;
+    st.w = r.width; st.h = r.height;
+    el.width = Math.max(1, Math.round(r.width * dpr));
+    el.height = Math.max(1, Math.round(r.height * dpr));
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    redraw();
+  }
+  new ResizeObserver(resize).observe(el);
+  redrawers.push(redraw);
+  return { redraw, st };
+}
+
+/* plane: world <-> pixel */
+function plane(w, h, R) {
+  const s = Math.min(w, h) / (2 * R);
+  return {
+    s, R,
+    px: (x, y) => [w / 2 + x * s, h / 2 - y * s],
+    world: (X, Y) => [(X - w / 2) / s, (h / 2 - Y) / s],
+  };
+}
+const apply = (M, x, y) => [M[0] * x + M[1] * y, M[2] * x + M[3] * y];
+
+function line(ctx, P, a, b) {
+  const [x1, y1] = P.px(a[0], a[1]), [x2, y2] = P.px(b[0], b[1]);
+  ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2, y2); ctx.stroke();
+}
+function arrow(ctx, P, to, color, width = 3, from = [0, 0]) {
+  const [x1, y1] = P.px(from[0], from[1]), [x2, y2] = P.px(to[0], to[1]);
+  const len = Math.hypot(x2 - x1, y2 - y1);
+  ctx.strokeStyle = color; ctx.fillStyle = color; ctx.lineWidth = width; ctx.lineCap = "round";
+  if (len < 2) { ctx.beginPath(); ctx.arc(x1, y1, 3, 0, 7); ctx.fill(); return; }
+  const ux = (x2 - x1) / len, uy = (y2 - y1) / len, hl = Math.min(14, len * .45);
+  ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2 - ux * hl * .8, y2 - uy * hl * .8); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(x2, y2);
+  ctx.lineTo(x2 - ux * hl - uy * hl * .45, y2 - uy * hl + ux * hl * .45);
+  ctx.lineTo(x2 - ux * hl + uy * hl * .45, y2 - uy * hl - ux * hl * .45);
+  ctx.closePath(); ctx.fill();
+}
+function staticGrid(ctx, P, w, h) {
+  const R = Math.ceil(Math.max(w, h) / P.s / 2) + 1;
+  ctx.lineWidth = 1; ctx.strokeStyle = T.grid;
+  for (let k = -R; k <= R; k++) { line(ctx, P, [k, -R], [k, R]); line(ctx, P, [-R, k], [R, k]); }
+  ctx.strokeStyle = T.line; ctx.lineWidth = 1.5;
+  line(ctx, P, [-R, 0], [R, 0]); line(ctx, P, [0, -R], [0, R]);
+}
+function transformedGrid(ctx, P, M, N = 14) {
+  ctx.lineWidth = 1; ctx.strokeStyle = rgba(T["ink-2"], .32);
+  for (let k = -N; k <= N; k++) {
+    if (k === 0) continue;
+    line(ctx, P, apply(M, k, -N), apply(M, k, N));
+    line(ctx, P, apply(M, -N, k), apply(M, N, k));
+  }
+  ctx.lineWidth = 2; ctx.strokeStyle = rgba(T.ink, .55);
+  line(ctx, P, apply(M, -N, 0), apply(M, N, 0));
+  line(ctx, P, apply(M, 0, -N), apply(M, 0, N));
+}
+function unitSquare(ctx, P, M) {
+  const det = M[0] * M[3] - M[1] * M[2];
+  const pts = [[0, 0], [1, 0], [1, 1], [0, 1]].map(p => P.px(...apply(M, p[0], p[1])));
+  ctx.beginPath(); pts.forEach((p, k) => k ? ctx.lineTo(...p) : ctx.moveTo(...p)); ctx.closePath();
+  ctx.fillStyle = rgba(T.gold, det < 0 ? .16 : .28); ctx.fill();
+  ctx.setLineDash(det < 0 ? [5, 4] : []); ctx.strokeStyle = T.gold; ctx.lineWidth = 1.5; ctx.stroke(); ctx.setLineDash([]);
+}
+function tag(ctx, X, Y, txt) {
+  ctx.font = "600 12px " + T.mono;
+  const tw = ctx.measureText(txt).width;
+  ctx.fillStyle = rgba(T.surface, .92); ctx.fillRect(X - tw / 2 - 4, Y - 9, tw + 8, 18);
+  ctx.fillStyle = T.ink; ctx.textAlign = "center"; ctx.textBaseline = "middle"; ctx.fillText(txt, X, Y);
+}
+/* expanding rings when something is solved */
+function burst(cv, getXY) {
+  if (reduceMotion) return;
+  const t0 = performance.now();
+  cv.fx = now => {
+    const p = Math.min(1, (now - t0) / 700);
+    return p >= 1 ? null : p;
+  };
+  cv.fxXY = getXY;
+  (function loop(now) { cv.redraw(); if (cv.fx && cv.fx(now) !== null) requestAnimationFrame(loop); else { cv.fx = null; cv.redraw(); } })(t0);
+}
+function drawBurst(ctx, cv) {
+  if (!cv.fx) return;
+  const p = cv.fx(performance.now());
+  if (p === null) return;
+  const [X, Y] = cv.fxXY();
+  for (let k = 0; k < 3; k++) {
+    const q = Math.max(0, p - k * .12);
+    ctx.beginPath(); ctx.arc(X, Y, 10 + q * 60, 0, 7);
+    ctx.strokeStyle = rgba(T.gold, (1 - q) * .9); ctx.lineWidth = 3 * (1 - q) + .5; ctx.stroke();
+  }
+}
+
+/* ---------- dates: current week, next quiz ---------- */
+(function dates() {
+  const today = new Date(); today.setHours(0, 0, 0, 0);
+  const start = new Date(2026, 8, 14); // Monday of week 1 (week 3 = Sep 28)
+  const week = Math.floor((today - start) / 864e5 / 7) + 1;
+  const chipW = document.querySelector("#chip-week span:last-child");
+  if (week >= 1 && week <= 14) {
+    chipW.textContent = `Week ${week} of the semester`;
+    const card = document.querySelector(`.week[data-week="${week}"]`);
+    if (card) card.classList.add("now");
+  }
+  let nextFound = false;
+  document.querySelectorAll("#quiz-track li").forEach(li => {
+    const [y, m, d] = li.dataset.date.split("-").map(Number);
+    const qd = new Date(y, m - 1, d);
+    if (qd < today) li.classList.add("past");
+    else if (!nextFound) {
+      nextFound = true; li.classList.add("next");
+      const days = Math.round((qd - today) / 864e5);
+      const label = li.firstElementChild.textContent.split(" · ")[0];
+      const chip = $("chip-quiz");
+      chip.lastElementChild.textContent = days === 0 ? `${label} is today. Good luck!` : `${label} in ${days} day${days === 1 ? "" : "s"} (${li.lastElementChild.textContent})`;
+      chip.hidden = false;
+    }
+  });
+})();
+
+/* ---------- hero animation ---------- */
+(function hero() {
+  const keys = [
+    { m: [1, 0, 0, 1], name: "Identity" },
+    { m: [Math.SQRT1_2, -Math.SQRT1_2, Math.SQRT1_2, Math.SQRT1_2], name: "Rotation by 45°" },
+    { m: [1, 1, 0, 1], name: "Shear" },
+    { m: [2, 1, 1, 2], name: "Stretch, eigenvalues 3 and 1" },
+    { m: [-1, 0, 0, 1], name: "Reflection, det = −1" },
+    { m: [1, .5, 2, 1], name: "Rank 1, det = 0" },
+  ];
+  const HOLD = 1700, MOVE = 1300, SEG = HOLD + MOVE;
+  let M = keys[3].m.slice(), name = keys[3].name;
+  const nameEl = $("hero-name"), matEl = $("hero-mat");
+  const cv = makeCanvas($("hero-canvas"), (ctx, w, h) => {
+    ctx.clearRect(0, 0, w, h);
+    const P = plane(w, h, 3.3);
+    staticGrid(ctx, P, w, h);
+    transformedGrid(ctx, P, M);
+    unitSquare(ctx, P, M);
+    arrow(ctx, P, [M[0], M[2]], T.i, 3.5);
+    arrow(ctx, P, [M[1], M[3]], T.j, 3.5);
+  });
+  function caption() {
+    nameEl.textContent = name;
+    matEl.innerHTML = matHTML([[fmt(M[0]), fmt(M[1])], [fmt(M[2]), fmt(M[3])]]);
+  }
+  caption();
+  if (reduceMotion) return;
+  const ease = t => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+  let visible = true, t0 = performance.now(), last = -1;
+  new IntersectionObserver(es => { visible = es[0].isIntersecting; }).observe($("hero-canvas"));
+  function frame(now) {
+    requestAnimationFrame(frame);
+    if (!visible || document.hidden) return;
+    const t = (now - t0) % (SEG * keys.length);
+    const k = Math.floor(t / SEG), local = t - k * SEG;
+    const A = keys[k].m, B = keys[(k + 1) % keys.length].m;
+    const u = local < HOLD ? 0 : ease((local - HOLD) / MOVE);
+    M = A.map((v, n) => v + (B[n] - v) * u);
+    name = u < .5 ? keys[k].name : keys[(k + 1) % keys.length].name;
+    cv.redraw();
+    const step = Math.round(now / 120);
+    if (step !== last) { last = step; caption(); }
+  }
+  requestAnimationFrame(frame);
+})();
+
+/* ---------- 1. transformation sandbox + challenges ---------- */
+(function sandbox() {
+  let M = [2, 1, 1, 2];
+  const R = 4.5, eps = 1e-9;
+  const F = [[0, 0], [0, 2], [1.2, 2], [1.2, 1.6], [.4, 1.6], [.4, 1.2], [1, 1.2], [1, .85], [.4, .85], [.4, 0]].map(([x, y]) => [x - 2.6, y + .4]);
+  const inputs = ["a", "b", "c", "d"].map(k => $("m-" + k));
+  const readout = $("tf-readout"), canvas = $("tf-canvas");
+  let P = null, mode = "free";
+
+  function eigen(A = M) {
+    const [a, b, c, d] = A, tr = a + d, det = a * d - b * c, disc = tr * tr - 4 * det;
+    if (Math.abs(b) < eps && Math.abs(c) < eps && Math.abs(a - d) < eps) return { kind: "scalar", l: [a] };
+    if (disc < -1e-9) return { kind: "complex", re: tr / 2, im: Math.sqrt(-disc) / 2 };
+    const s = Math.sqrt(Math.max(0, disc));
+    const ls = Math.abs(s) < 1e-7 ? [tr / 2] : [(tr + s) / 2, (tr - s) / 2];
+    const vecs = ls.map(l => {
+      if (Math.abs(b) > eps) return [b, l - a];
+      if (Math.abs(c) > eps) return [l - d, c];
+      return Math.abs(l - a) < eps ? [1, 0] : [0, 1];
+    });
+    return { kind: "real", l: ls, v: vecs };
+  }
+  const det = (A = M) => A[0] * A[3] - A[1] * A[2];
+  const near = (x, y, tol = .011) => Math.abs(x - y) < tol;
+
+  const CH = [
+    { text: "Turn the F a quarter turn counter-clockwise, onto the gold outline.", target: [0, -1, 1, 0],
+      hint: "After a 90° turn, î = (1, 0) points straight up and ĵ = (0, 1) points left.",
+      done: "That is a rotation by 90°. Rotations keep areas, so det = 1, and no direction stays fixed, so there are no real eigenvalues." },
+    { text: "Make the F twice as big in every direction.", target: [2, 0, 0, 2],
+      hint: "Both basis vectors stay on their axes and get twice as long.",
+      done: "Scaling by 2 multiplies areas by 2·2 = 4. Every vector is an eigenvector with λ = 2." },
+    { text: "Mirror the F across the vertical axis.", target: [-1, 0, 0, 1],
+      hint: "î has to point the other way. ĵ does not move.",
+      done: "A mirror reverses orientation, so det = −1. The eigenvalues are −1 and 1." },
+    { text: "Slant the F so it matches the gold outline.", target: [1, 1, 0, 1],
+      hint: "Keep î where it is and only move ĵ.",
+      done: "A shear. Areas stay the same (det = 1), but λ = 1 is a double root with only one eigenvector line, so it is not diagonalisable." },
+    { text: "Mirror the F across the diagonal line y = x.", target: [0, 1, 1, 0],
+      hint: "î and ĵ trade places.",
+      done: "The eigenvectors are (1, 1) with λ = 1, the mirror line, and (1, −1) with λ = −1, the line perpendicular to it." },
+    { text: "Squash the whole plane onto a line, but no entry of A may be 0.",
+      check: A => near(det(A), 0) && A.every(x => Math.abs(x) > .05),
+      hint: "Make the two columns parallel, for example ĵ = 2·î.",
+      done: "The columns are linearly dependent, so rank A = 1, det A = 0, and the kernel is a whole line." },
+    { text: "Make det A = −2 exactly.",
+      check: A => near(det(A), -2),
+      hint: "Start with a mirror (det = −1), then make one of the vectors twice as long.",
+      done: "The minus sign means the F is flipped. The 2 means areas are doubled." },
+    { text: "Make sure that no vector keeps its direction: A has no real eigenvalues.",
+      check: A => eigen(A).kind === "complex",
+      hint: "Rotations do this. Any rotation other than 0° or 180° works.",
+      done: "The characteristic polynomial λ² − (tr A)·λ + det A has a negative discriminant, so its roots are complex." },
+    { text: "Give A the eigenvalues 2 and 3, using a matrix that is not diagonal.",
+      check: A => { const e = eigen(A); if (e.kind !== "real" || e.l.length !== 2) return false; const s = e.l.slice().sort((x, y) => x - y); return near(s[0], 2, .02) && near(s[1], 3, .02) && (Math.abs(A[1]) > .05 || Math.abs(A[2]) > .05); },
+      hint: "A triangular matrix has its eigenvalues on the diagonal.",
+      done: "Check: trace = 2 + 3 = 5 and det = 2·3 = 6, so the characteristic polynomial is λ² − 5λ + 6 = (λ − 2)(λ − 3)." },
+  ];
+  let ci = 0, solved = new Set(store.get("tf-solved", [])), justSolved = false;
+  const isSolved = A => CH[ci].target ? CH[ci].target.every((v, k) => near(A[k], v, .06)) : CH[ci].check(A);
+
+  const cv = makeCanvas(canvas, (ctx, w, h) => {
+    ctx.clearRect(0, 0, w, h);
+    P = plane(w, h, R);
+    staticGrid(ctx, P, w, h);
+    const path = pts => { ctx.beginPath(); pts.forEach((p, k) => k ? ctx.lineTo(...P.px(...p)) : ctx.moveTo(...P.px(...p))); ctx.closePath(); };
+    const target = mode === "ch" && CH[ci].target;
+    if (target) {
+      path(F.map(p => apply(target, ...p))); ctx.fillStyle = rgba(T.gold, .16); ctx.fill();
+      ctx.strokeStyle = T.gold; ctx.setLineDash([6, 4]); ctx.lineWidth = 2; ctx.stroke(); ctx.setLineDash([]);
+    } else {
+      path(F); ctx.strokeStyle = rgba(T["ink-2"], .35); ctx.setLineDash([3, 3]); ctx.lineWidth = 1; ctx.stroke(); ctx.setLineDash([]);
+    }
+    transformedGrid(ctx, P, M, 16);
+    const e = eigen();
+    if (e.kind === "real") {
+      e.v.forEach((v, k) => {
+        const n = Math.hypot(...v); if (n < 1e-9) return;
+        const u = [v[0] / n, v[1] / n];
+        ctx.setLineDash([7, 6]); ctx.strokeStyle = T.ink; ctx.lineWidth = 1.6;
+        line(ctx, P, [-u[0] * 20, -u[1] * 20], [u[0] * 20, u[1] * 20]); ctx.setLineDash([]);
+        const f = R * .82 / Math.max(Math.abs(u[0]), Math.abs(u[1]));
+        const [X, Y] = P.px(u[0] * Math.min(f, R * .82), u[1] * Math.min(f, R * .82));
+        tag(ctx, X, Y - (k ? -14 : 14), "λ = " + fmt(e.l[k]));
+      });
+    }
+    unitSquare(ctx, P, M);
+    path(F.map(p => apply(M, ...p))); ctx.fillStyle = rgba(T.ink, .14); ctx.fill(); ctx.strokeStyle = T.ink; ctx.lineWidth = 1.5; ctx.stroke();
+    arrow(ctx, P, [M[0], M[2]], T.i, 3.5);
+    arrow(ctx, P, [M[1], M[3]], T.j, 3.5);
+    [[M[0], M[2], T.i], [M[1], M[3], T.j]].forEach(([x, y, c]) => {
+      const [X, Y] = P.px(x, y);
+      ctx.beginPath(); ctx.arc(X, Y, 9, 0, 7); ctx.fillStyle = rgba(c, .2); ctx.fill();
+      ctx.lineWidth = 2; ctx.strokeStyle = c; ctx.stroke();
+    });
+    drawBurst(ctx, cv);
+  });
+
+  function renderTask() {
+    const ch = CH[ci];
+    $("tf-task-n").textContent = `Challenge ${ci + 1} of ${CH.length}`;
+    $("tf-dots").innerHTML = CH.map((_, k) => `<span class="${solved.has(k) ? "done" : ""} ${k === ci ? "cur" : ""}"></span>`).join("");
+    $("tf-task-text").textContent = ch.text;
+    $("tf-hint").hidden = true; $("tf-hint").textContent = ch.hint;
+    $("tf-verdict").hidden = true;
+    $("tf-next").textContent = "Skip";
+  }
+  function update(fromInput) {
+    if (!fromInput) inputs.forEach((el, k) => { el.value = +M[k].toFixed(2); });
+    const [a, b, c, d] = M, D = det(), tr = a + d;
+    const rank = Math.abs(D) > eps ? 2 : (M.some(v => Math.abs(v) > eps) ? 1 : 0);
+    let area;
+    if (rank === 2) area = D > 0 ? `Areas are multiplied by ${fmt(D)}. Orientation is kept.` : `Areas are multiplied by ${fmt(-D)} and the plane is flipped: the F reads backwards.`;
+    else if (rank === 1) area = "The plane is squashed onto a line, so all area is lost.";
+    else area = "Everything collapses to the origin.";
+    let kernel = "only the zero vector";
+    if (rank === 1) {
+      const v = (Math.abs(a) > eps || Math.abs(b) > eps) ? [b, -a] : [d, -c];
+      kernel = `span{(${fmt(v[0])}, ${fmt(v[1])})}, a whole line is sent to 0`;
+    } else if (rank === 0) kernel = "the whole plane";
+    const e = eigen();
+    let eig;
+    if (e.kind === "complex") eig = `${fmt(e.re)} ± ${fmt(e.im)}i. Not real, so no direction stays put.`;
+    else if (e.kind === "scalar") eig = `${fmt(e.l[0])} only. Every vector is an eigenvector.`;
+    else if (e.l.length === 1) eig = `${fmt(e.l[0])} (double root). One eigenvector line, so A is not diagonalisable.`;
+    else eig = `${fmt(e.l[0])} and ${fmt(e.l[1])}. Vectors on the dashed lines only get stretched.`;
+    readout.innerHTML = `
+      <dt>det A</dt><dd><span class="mono">${fmt(a)}·${fmt(d)} − ${fmt(b)}·${fmt(c)} = <strong>${fmt(D)}</strong></span><br><span class="muted">${area}</span></dd>
+      <dt>Rank</dt><dd>${rank}. ${rank === 2 ? "A is invertible." : "A is <strong>not</strong> invertible."}</dd>
+      <dt>Kernel</dt><dd>${kernel}</dd>
+      <dt>Trace</dt><dd class="mono">${fmt(tr)}</dd>
+      <dt>Eigenvalues</dt><dd>${eig}</dd>`;
+    if (mode === "ch" && !justSolved && isSolved(M)) {
+      justSolved = true;
+      solved.add(ci); store.set("tf-solved", [...solved]);
+      const v = $("tf-verdict");
+      v.hidden = false; v.className = "verdict good";
+      v.innerHTML = `<strong>Solved!</strong> ${CH[ci].done}` + (solved.size === CH.length ? " <br><strong>All challenges done.</strong>" : "");
+      $("tf-next").textContent = ci < CH.length - 1 ? "Next challenge" : "Back to the first";
+      $("tf-dots").innerHTML = CH.map((_, k) => `<span class="${solved.has(k) ? "done" : ""} ${k === ci ? "cur" : ""}"></span>`).join("");
+      burst(cv, () => P ? P.px(...(CH[ci].target ? apply(M, -2, 1.4) : [0, 0])) : [0, 0]);
+    }
+    cv.redraw();
+  }
+  inputs.forEach((el, k) => el.addEventListener("input", () => {
+    const v = parseFloat(el.value);
+    if (!Number.isFinite(v)) return;
+    M[k] = Math.max(-9, Math.min(9, v)); update(true);
+  }));
+
+  const presets = [["Identity", [1, 0, 0, 1]], ["Rotate 90°", [0, -1, 1, 0]], ["Shear", [1, 1, 0, 1]], ["Reflect", [-1, 0, 0, 1]], ["Project", [1, 0, 0, 0]], ["Eigen-stretch", [2, 1, 1, 2]]];
+  const pw = $("tf-presets");
+  presets.forEach(([label, m]) => {
+    const b = document.createElement("button");
+    b.type = "button"; b.className = "btn ghost small"; b.textContent = label;
+    b.addEventListener("click", () => { M = m.slice(); update(); });
+    pw.appendChild(b);
+  });
+
+  function goto(k) { ci = (k + CH.length) % CH.length; justSolved = false; M = [1, 0, 0, 1]; renderTask(); update(); }
+  const bFree = $("tf-mode-free"), bCh = $("tf-mode-ch");
+  bFree.addEventListener("click", () => { mode = "free"; setSeg([bFree, bCh], bFree); $("tf-task").hidden = true; pw.hidden = false; update(); });
+  bCh.addEventListener("click", () => {
+    mode = "ch"; setSeg([bFree, bCh], bCh); $("tf-task").hidden = false; pw.hidden = true;
+    const first = CH.findIndex((_, k) => !solved.has(k));
+    goto(first < 0 ? 0 : first);
+  });
+  $("tf-hint-btn").addEventListener("click", () => { $("tf-hint").hidden = false; });
+  $("tf-reset").addEventListener("click", () => { M = [1, 0, 0, 1]; update(); });
+  $("tf-next").addEventListener("click", () => goto(ci + 1));
+
+  // dragging
+  let drag = -1;
+  const snap = v => { const r = Math.round(v * 2) / 2; return Math.abs(v - r) < .15 ? r : Math.round(v * 10) / 10; };
+  function pos(ev) { const r = canvas.getBoundingClientRect(); return [ev.clientX - r.left, ev.clientY - r.top]; }
+  const tipsPx = () => [[M[0], M[2]], [M[1], M[3]]].map(p => P.px(...p));
+  canvas.addEventListener("pointerdown", ev => {
+    if (!P) return;
+    const [X, Y] = pos(ev);
+    const dists = tipsPx().map(([x, y]) => Math.hypot(x - X, y - Y));
+    const k = dists[0] <= dists[1] ? 0 : 1;
+    if (dists[k] < 28) { drag = k; canvas.setPointerCapture(ev.pointerId); canvas.style.cursor = "grabbing"; ev.preventDefault(); }
+  });
+  canvas.addEventListener("pointermove", ev => {
+    if (!P) return;
+    const [X, Y] = pos(ev);
+    if (drag < 0) { canvas.style.cursor = tipsPx().some(([x, y]) => Math.hypot(x - X, y - Y) < 28) ? "grab" : "default"; return; }
+    let [x, y] = P.world(X, Y);
+    x = snap(Math.max(-R, Math.min(R, x))); y = snap(Math.max(-R, Math.min(R, y)));
+    if (drag === 0) { M[0] = x; M[2] = y; } else { M[1] = x; M[3] = y; }
+    update();
+  });
+  const end = () => { drag = -1; canvas.style.cursor = "default"; };
+  canvas.addEventListener("pointerup", end); canvas.addEventListener("pointercancel", end);
+  update();
+})();
+
+/* ---------- 2. span game ---------- */
+(function span() {
+  const R = 6;
+  let u, v, target, dependent, over, hint;
+  let st = { score: 0, streak: 0, hits: 0 };
+  let best = store.get("span-best", 0);
+  const a = $("sp-a"), b = $("sp-b"), msg = $("sp-msg");
+  const level = () => Math.min(4, 1 + Math.floor(st.hits / 3));
+
+  function newRound() {
+    const L = level();
+    dependent = L > 1 && Math.random() < (L === 2 ? .25 : .3);
+    const den = L === 1 ? 1 : L === 2 ? 2 : 4;
+    const vmax = L >= 4 ? 4 : 3;
+    for (let tries = 0; tries < 500; tries++) {
+      u = [ri(-vmax, vmax), ri(-vmax, vmax)];
+      if (u[0] === 0 && u[1] === 0) continue;
+      if (dependent) {
+        if (Math.max(Math.abs(u[0]), Math.abs(u[1])) > 2) continue;
+        const k = [-2, -1, 2][ri(0, 2)];
+        v = [u[0] * k, u[1] * k];
+        const t = [ri(-5, 5), ri(-5, 5)];
+        if (u[0] * t[1] - u[1] * t[0] === 0) continue;
+        target = t; break;
+      }
+      v = [ri(-vmax, vmax), ri(-vmax, vmax)];
+      const d = u[0] * v[1] - u[1] * v[0];
+      if (d === 0) continue;
+      if (L >= 4 && Math.abs(d) > 3) continue; // nearly parallel: harder to read
+      const lim = L === 1 ? 2 : 2.5;
+      const al = ri(-lim * den, lim * den) / den, be = ri(-lim * den, lim * den) / den;
+      if (al === 0 || be === 0) continue;
+      if (L >= 3 && Number.isInteger(al * 2) && Number.isInteger(be * 2)) continue; // force quarters
+      target = [al * u[0] + be * v[0], al * u[1] + be * v[1]];
+      if (Math.abs(target[0]) > 5.5 || Math.abs(target[1]) > 5.5) continue;
+      break;
+    }
+    over = false; hint = false; a.value = 0; b.value = 0;
+    msg.className = "verdict";
+    msg.textContent = L === 1 ? "Level 1: whole-number coefficients, no traps." : L === 2 ? "Level 2: halves, and traps appear." : L === 3 ? "Level 3: quarter steps." : "Level 4: quarter steps with nearly parallel vectors.";
+    $("sp-hint").disabled = false; $("sp-imp").disabled = false;
+    $("sp-new").textContent = "Skip round";
+    render();
+  }
+  function cur() { const al = +a.value, be = +b.value; return [al, be, [al * u[0] + be * v[0], al * u[1] + be * v[1]]]; }
+  const vec = p => `(${fmt(p[0])}, ${fmt(p[1])})`;
+  const cv = makeCanvas($("sp-canvas"), (ctx, w, h) => {
+    if (!u) return;
+    ctx.clearRect(0, 0, w, h);
+    const P = plane(w, h, R);
+    cv.P = P;
+    staticGrid(ctx, P, w, h);
+    const [al, , p] = cur();
+    if (hint && !dependent) {
+      ctx.strokeStyle = rgba(T.gold, .45); ctx.lineWidth = 1;
+      for (let m = -14; m <= 14; m++) {
+        line(ctx, P, [m * u[0] - 40 * v[0], m * u[1] - 40 * v[1]], [m * u[0] + 40 * v[0], m * u[1] + 40 * v[1]]);
+        line(ctx, P, [m * v[0] - 40 * u[0], m * v[1] - 40 * u[1]], [m * v[0] + 40 * u[0], m * v[1] + 40 * u[1]]);
+      }
+    }
+    if (dependent && (hint || over)) { ctx.strokeStyle = rgba(T.i, .35); ctx.lineWidth = 6; line(ctx, P, [-u[0] * 20, -u[1] * 20], [u[0] * 20, u[1] * 20]); }
+    const [tx, ty] = P.px(...target);
+    ctx.lineWidth = 3; ctx.strokeStyle = T.gold; ctx.beginPath(); ctx.arc(tx, ty, 12, 0, 7); ctx.stroke();
+    ctx.beginPath(); ctx.arc(tx, ty, 4, 0, 7); ctx.fillStyle = T.gold; ctx.fill();
+    const mid = [al * u[0], al * u[1]];
+    ctx.globalAlpha = .55; arrow(ctx, P, mid, T.i, 2.5); arrow(ctx, P, p, T.j, 2.5, mid); ctx.globalAlpha = 1;
+    arrow(ctx, P, u, T.i, 4); arrow(ctx, P, v, T.j, 4);
+    ctx.font = "600 14px " + T.mono; ctx.textAlign = "left"; ctx.textBaseline = "middle";
+    const lab = (pt, t, c) => { const [X, Y] = P.px(...pt); ctx.fillStyle = c; ctx.fillText(t, X + 8, Y - 10); };
+    lab(u, "u", T.i); lab(v, "v", T.j);
+    const [px, py] = P.px(...p);
+    ctx.beginPath(); ctx.arc(px, py, 6, 0, 7); ctx.fillStyle = T.ink; ctx.fill();
+    drawBurst(ctx, cv);
+  });
+  function stats(changed) {
+    $("sp-score").textContent = st.score; $("sp-streak").textContent = st.streak; $("sp-best").textContent = best;
+    $("sp-level").textContent = `Level ${level()}`;
+    changed.forEach(id => bump($(id)));
+  }
+  function finish(won, text) {
+    over = true;
+    const L = level();
+    if (won) {
+      const pts = 100 * L + 20 * st.streak - (hint ? 30 : 0);
+      st.score += pts; st.streak++; st.hits++;
+      text += ` <strong>+${pts} points.</strong>`;
+      if (level() > L) text += ` <strong>Level up!</strong>`;
+    } else st.streak = 0;
+    if (st.score > best) { best = st.score; store.set("span-best", best); }
+    msg.className = "verdict " + (won ? "good" : "bad");
+    msg.innerHTML = text;
+    $("sp-hint").disabled = true; $("sp-imp").disabled = true;
+    $("sp-new").textContent = "Next round";
+    stats(won ? ["sp-score", "sp-streak"] : ["sp-streak"]);
+    if (won) burst(cv, () => cv.P.px(...target));
+    cv.redraw();
+  }
+  function render() {
+    const [al, be, p] = cur();
+    $("sp-a-out").textContent = fmt(al); $("sp-b-out").textContent = fmt(be);
+    $("sp-eq").innerHTML = `${fmt(al)}·<span class="i">${vec(u)}</span> + ${fmt(be)}·<span class="j">${vec(v)}</span> = ${vec(p)} &nbsp;→ target ${vec(target)}`;
+    stats([]);
+    if (!over && Math.abs(p[0] - target[0]) < 1e-9 && Math.abs(p[1] - target[1]) < 1e-9) {
+      finish(true, `Hit! The target is ${fmt(al)}u + ${fmt(be)}v. Since u and v are independent, these are the only coefficients that work.`);
+    }
+    cv.redraw();
+  }
+  a.addEventListener("input", render); b.addEventListener("input", render);
+  $("sp-new").addEventListener("click", () => { if (!over) { st.streak = 0; } newRound(); });
+  $("sp-hint").addEventListener("click", () => {
+    hint = true; $("sp-hint").disabled = true;
+    msg.className = "verdict";
+    msg.textContent = dependent ? "The span of u and v is the green line. Is the target on it?" : "The gold grid shows every point αu + βv with whole-number α and β. Count the steps along u and along v.";
+    cv.redraw();
+  });
+  $("sp-imp").addEventListener("click", () => {
+    if (over) return;
+    if (dependent) {
+      const k = u[0] ? v[0] / u[0] : v[1] / u[1];
+      finish(true, `Correct, it’s a trap. v = ${fmt(k)}·u, so span{u, v} is just the green line and the target is not on it.`);
+    } else {
+      const d = u[0] * v[1] - u[1] * v[0];
+      const al = (target[0] * v[1] - target[1] * v[0]) / d, be = (u[0] * target[1] - u[1] * target[0]) / d;
+      finish(false, `Not a trap. det[u v] = ${fmt(d)} ≠ 0, so u and v are independent and span the whole plane. The answer was α = ${fmt(al)}, β = ${fmt(be)}. Your streak resets.`);
+    }
+  });
+  newRound();
+})();
+
+/* ---------- 3. Gauss–Jordan ---------- */
+(function gauss() {
+  const gcd = (a, b) => { a = Math.abs(a); b = Math.abs(b); while (b) [a, b] = [b, a % b]; return a; };
+  class Fr {
+    constructor(n, d = 1) { if (d < 0) { n = -n; d = -d; } const g = gcd(n, d) || 1; this.n = n / g; this.d = d / g; }
+    add(o) { return new Fr(this.n * o.d + o.n * this.d, this.d * o.d); }
+    sub(o) { return new Fr(this.n * o.d - o.n * this.d, this.d * o.d); }
+    mul(o) { return new Fr(this.n * o.n, this.d * o.d); }
+    div(o) { return new Fr(this.n * o.d, this.d * o.n); }
+    inv() { return new Fr(this.d, this.n); }
+    neg() { return new Fr(-this.n, this.d); }
+    eq(o) { return this.n === o.n && this.d === o.d; }
+    get zero() { return this.n === 0; }
+    get one() { return this.n === 1 && this.d === 1; }
+    toString() { const s = this.d === 1 ? String(Math.abs(this.n)) : `${Math.abs(this.n)}/${this.d}`; return (this.n < 0 ? "−" : "") + s; }
+  }
+  const ONE = new Fr(1);
+  const R = k => `R<sub>${k + 1}</sub>`;
+  const sub = ["₁", "₂", "₃"];
+  let states = [], idx = 0, A0, b0, x0, mode = "quiz", firstTry = 0, missed = false, totals = store.get("gj-totals", { solved: 0 });
+
+  function opText(op) {
+    if (op.type === "swap") return `${R(op.a)} ↔ ${R(op.b)}`;
+    if (op.type === "divzero") return `${R(op.k)} ← ${R(op.k)} ÷ 0`;
+    if (op.type === "scale") {
+      const p = op.p;
+      if (p.n === -1 && p.d === 1) return `${R(op.k)} ← −1·${R(op.k)}`;
+      return `${R(op.k)} ← ${R(op.k)} ÷ ${p.n < 0 ? "(" + p + ")" : p}`;
+    }
+    const f = op.f, fa = f.n < 0 ? f.neg() : f;
+    return `${R(op.i)} ← ${R(op.i)} ${f.n < 0 ? "+" : "−"} ${fa.one ? "" : fa + "·"}${R(op.k)}`;
+  }
+  const purpose = op => op.type === "swap" ? "swap in a row with a nonzero pivot" : op.type === "scale" ? "make the pivot 1" : `clear column ${op.k + 1}`;
+  function applyOp(M, op) {
+    M = M.map(r => r.slice());
+    if (op.type === "swap") [M[op.a], M[op.b]] = [M[op.b], M[op.a]];
+    else if (op.type === "scale") M[op.k] = M[op.k].map(v => v.div(op.p));
+    else if (op.type === "elim") { const piv = M[op.k]; M[op.i] = M[op.i].map((v, j) => v.sub(op.f.mul(piv[j]))); }
+    return M;
+  }
+  function whyWrong(op, M) {
+    if (op.type === "divzero") return "Division by 0 is undefined. When the pivot is 0, swap in a row below it that has a nonzero entry in that column.";
+    if (op.type === "swap") return `Row ${op.b + 1} also has 0 in column ${op.a + 1}, so after this swap the pivot would still be 0.`;
+    const N = applyOp(M, op);
+    if (op.type === "scale") return `That would make the pivot ${N[op.k][op.k]}, not 1. Divide the row by the pivot itself.`;
+    return `That leaves ${N[op.i][op.k]} in row ${op.i + 1}, column ${op.k + 1}, but it should become 0. The multiplier is the entry you want to clear, divided by the pivot.`;
+  }
+  function distractors(op, M) {
+    let c = [];
+    if (op.type === "elim") {
+      const f = op.f;
+      c = [f.neg(), f.add(ONE), f.sub(ONE)].concat(f.one || (f.n === -1 && f.d === 1) ? [] : [f.inv()])
+        .filter(g => !g.zero && !g.eq(f)).map(g => ({ type: "elim", i: op.i, k: op.k, f: g }));
+    } else if (op.type === "scale") {
+      const p = op.p;
+      c = [p.neg(), p.inv(), p.add(ONE), p.sub(ONE), new Fr(2), new Fr(-2)]
+        .filter(g => !g.zero && !g.one && !g.eq(p)).map(g => ({ type: "scale", k: op.k, p: g }));
+    } else {
+      c.push({ type: "divzero", k: op.a });
+      for (let r = op.a + 1; r < 3; r++) if (r !== op.b && M[r][op.a].zero) c.push({ type: "swap", a: op.a, b: r });
+    }
+    const seen = new Set([opText(op)]), out = [];
+    shuffle(c).forEach(o => { const t = opText(o); if (!seen.has(t) && out.length < 2) { seen.add(t); out.push(o); } });
+    return out;
+  }
+
+  function generate() {
+    for (;;) {
+      const A = [0, 1, 2].map(() => [0, 1, 2].map(() => ri(-3, 4)));
+      if (Math.random() < .25) A[0][0] = 0;
+      const det = A[0][0] * (A[1][1] * A[2][2] - A[1][2] * A[2][1]) - A[0][1] * (A[1][0] * A[2][2] - A[1][2] * A[2][0]) + A[0][2] * (A[1][0] * A[2][1] - A[1][1] * A[2][0]);
+      if (det === 0 || A.flat().filter(x => x === 0).length > 3) continue;
+      const x = [ri(-3, 3), ri(-3, 3), ri(-3, 3)];
+      if (x.every(v => v === 0)) continue;
+      const b = A.map(r => r[0] * x[0] + r[1] * x[1] + r[2] * x[2]);
+      if (b.some(v => Math.abs(v) > 25)) continue;
+      const res = eliminate(A, b);
+      if (res) return [A, b, x, res];
+    }
+  }
+  function eliminate(A, b) {
+    let M = A.map((r, i) => [...r, b[i]].map(v => new Fr(v)));
+    const out = [{ M, op: null, pivot: null, changed: [] }];
+    const push = (op, pivot, changed) => { M = applyOp(M, op); out.push({ M, op, pivot, changed }); };
+    for (let k = 0; k < 3; k++) {
+      if (M[k][k].zero) {
+        let r = k + 1; while (M[r][k].zero) r++;
+        push({ type: "swap", a: k, b: r }, [k, k], [k, r]);
+      }
+      const p = M[k][k];
+      if (!p.one) push({ type: "scale", k, p }, [k, k], [k]);
+      for (let i = 0; i < 3; i++) if (i !== k && !M[i][k].zero) push({ type: "elim", i, k, f: M[i][k] }, [k, k], [i]);
+    }
+    const ugly = out.some(s => s.M.flat().some(v => v.d > 12 || Math.abs(v.n) > 99));
+    return ugly ? null : out;
+  }
+  function build() {
+    let res; [A0, b0, x0, res] = generate();
+    states = res; idx = 0; firstTry = 0; missed = false;
+    states.forEach((s, k) => { if (k > 0) s.choices = shuffle([{ op: s.op, ok: true }, ...distractors(s.op, states[k - 1].M).map(op => ({ op, ok: false }))]); });
+    els.sys.innerHTML = A0.map((r, i) => {
+      let s = "", first = true;
+      r.forEach((c, j) => {
+        if (c === 0) return;
+        const mag = Math.abs(c) === 1 ? "" : Math.abs(c);
+        s += first ? (c < 0 ? "−" : "") : (c < 0 ? " − " : " + ");
+        s += `${mag}x${sub[j]}`; first = false;
+      });
+      return `<div>${s} = ${String(b0[i]).replace("-", "−")}</div>`;
+    }).join("");
+    render();
+  }
+  const els = { sys: $("gj-system"), mat: $("gj-mat"), op: $("gj-op"), cnt: $("gj-count"), back: $("gj-back"), next: $("gj-next"), end: $("gj-end"),
+    quiz: $("gj-quiz"), choices: $("gj-choices"), fb: $("gj-feedback"), qt: $("gj-q-title"), score: $("gj-score"), watch: $("gj-watch-ctrls") };
+
+  function checkLines() {
+    const x = states[states.length - 1].M.map(r => r[3]);
+    return A0.map((r, i) => {
+      const terms = r.map((c, j) => `${c < 0 ? "(" + String(c).replace("-", "−") + ")" : c}·${x[j].n < 0 ? "(" + x[j] + ")" : x[j]}`).join(" + ");
+      return `<div class="check-line">${terms} = ${String(b0[i]).replace("-", "−")} <span class="ok">✓</span></div>`;
+    }).join("");
+  }
+  function render() {
+    const st = states[idx], last = states.length - 1, done = idx === last;
+    els.mat.innerHTML = matHTML(st.M.map(r => r.map(String)), (i, j) => {
+      const c = [];
+      if (j === 3) c.push("aug");
+      if (st.pivot && st.pivot[0] === i && st.pivot[1] === j) c.push("pivot");
+      else if (st.changed.includes(i)) c.push("changed");
+      return c.join(" ");
+    });
+    if (done) {
+      const x = st.M.map(r => r[3]);
+      els.op.innerHTML = `<strong>Solved:</strong> x₁ = ${x[0]}, x₂ = ${x[1]}, x₃ = ${x[2]}`;
+    } else els.op.innerHTML = st.op ? `${opText(st.op)} &nbsp;<span class="muted">${purpose(st.op)}</span>` : `<span class="muted">Start: the coefficients and the right-hand side in one matrix.</span>`;
+    els.cnt.textContent = `· step ${idx} of ${last}`;
+    els.back.disabled = idx === 0;
+    els.next.disabled = els.end.disabled = done;
+    els.watch.hidden = mode === "quiz";
+    // quiz / check panel
+    if (done) {
+      els.qt.textContent = "Check by substituting back";
+      els.choices.innerHTML = checkLines();
+      els.fb.innerHTML = mode === "quiz" ? `First-try accuracy: <strong>${firstTry} of ${last}</strong>. ${firstTry === last ? "Flawless!" : "Try another system to beat it."}` : "";
+      els.quiz.hidden = false;
+    } else if (mode === "quiz") {
+      els.qt.textContent = "Next row operation?";
+      els.choices.innerHTML = "";
+      states[idx + 1].choices.forEach(ch => {
+        const btn = document.createElement("button");
+        btn.type = "button"; btn.className = "choice"; btn.innerHTML = opText(ch.op);
+        btn.addEventListener("click", () => {
+          if (ch.ok) {
+            if (!missed) firstTry++;
+            missed = false; idx++;
+            if (idx === last) { totals.solved++; store.set("gj-totals", totals); }
+            render();
+            els.fb.textContent = idx < last ? "Correct." : els.fb.textContent;
+          } else {
+            missed = true; btn.classList.add("wrong"); btn.disabled = true;
+            els.fb.textContent = whyWrong(ch.op, states[idx].M);
+          }
+        });
+        els.choices.appendChild(btn);
+      });
+      if (idx === 0) els.fb.textContent = "Work column by column: get a pivot of 1, then clear the rest of its column.";
+      els.quiz.hidden = false;
+    } else els.quiz.hidden = true;
+    els.score.textContent = mode === "quiz" ? `Systems solved: ${totals.solved}` : "";
+  }
+  els.next.addEventListener("click", () => { if (idx < states.length - 1) { idx++; render(); } });
+  els.back.addEventListener("click", () => { if (idx > 0) { idx--; render(); } });
+  els.end.addEventListener("click", () => { idx = states.length - 1; render(); });
+  $("gj-new").addEventListener("click", build);
+  const bW = $("gj-mode-watch"), bQ = $("gj-mode-quiz");
+  bW.addEventListener("click", () => { mode = "watch"; setSeg([bW, bQ], bW); render(); });
+  bQ.addEventListener("click", () => { mode = "quiz"; setSeg([bW, bQ], bQ); idx = 0; firstTry = 0; missed = false; render(); });
+  build();
+})();
+
+/* ---------- 4. quadratic forms ---------- */
+(function quad() {
+  const R = 3, eps = 1e-9;
+  const sl = ["a", "b", "c"].map(k => $("qf-" + k));
+  const outs = ["a", "b", "c"].map(k => $(`qf-${k}-out`));
+  const readout = $("qf-readout");
+  const off = document.createElement("canvas");
+  const vals = () => sl.map(s => +s.value);
+  let mode = "explore", answered = false, q = { right: 0, streak: 0 }, bestStreak = store.get("qf-best", 0);
+  const KINDS = { pd: "Positive definite", nd: "Negative definite", ind: "Indefinite", psd: "Positive semidefinite", nsd: "Negative semidefinite", zero: "Zero form" };
+  const SHAPES = { pd: "a bowl. The origin is the strict minimum.", nd: "an upside-down bowl. The origin is the strict maximum.", ind: "a saddle. Q is positive in some directions and negative in others.",
+    psd: "a trough. Q is never negative, and it is zero along a whole line.", nsd: "an upside-down trough. Q is never positive, and it is zero along a line.", zero: "completely flat." };
+  function classify(a, b, c) {
+    const D2 = a * c - b * b;
+    if (a > eps && D2 > eps) return "pd";
+    if (a < -eps && D2 > eps) return "nd";
+    if (D2 < -eps) return "ind";
+    if (a > eps || c > eps) return "psd";
+    if (a < -eps || c < -eps) return "nsd";
+    return "zero";
+  }
+  function axes(a, b, c) {
+    if (Math.abs(b) < eps) return [[a, [1, 0]], [c, [0, 1]]];
+    const m = (a + c) / 2, r = Math.sqrt(((a - c) / 2) ** 2 + b * b);
+    return [m + r, m - r].map(l => [l, [b, l - a]]);
+  }
+  const cv = makeCanvas($("qf-canvas"), (ctx, w, h) => {
+    const [a, b, c] = vals();
+    const P = plane(w, h, R);
+    const res = Math.max(80, Math.min(260, Math.round(w / 2)));
+    off.width = off.height = res;
+    const octx = off.getContext("2d"), img = octx.createImageData(res, res);
+    const Q = (x, y) => a * x * x + 2 * b * x * y + c * y * y;
+    const span = R * w / Math.min(w, h);
+    const vgrid = new Float32Array(res * res);
+    let vmax = 0;
+    for (let j = 0; j < res; j++) for (let i = 0; i < res; i++) {
+      const x = (i / (res - 1) * 2 - 1) * span, y = (1 - j / (res - 1) * 2) * span;
+      const v = Q(x, y); vgrid[j * res + i] = v; vmax = Math.max(vmax, Math.abs(v));
+    }
+    const pos = hexRgb(T.i), neg = hexRgb(T.j), bg = hexRgb(T.surface), ink = hexRgb(T.ink);
+    const step = vmax > 0 ? vmax / 7 : 1;
+    const lvl = v => Math.floor(v / step);
+    for (let j = 0; j < res; j++) for (let i = 0; i < res; i++) {
+      const v = vgrid[j * res + i];
+      const t = vmax > 0 ? Math.pow(Math.abs(v) / vmax, .6) * .78 : 0;
+      const col = v >= 0 ? pos : neg;
+      let rgb = [0, 1, 2].map(n => bg[n] + (col[n] - bg[n]) * t);
+      const r = i < res - 1 ? vgrid[j * res + i + 1] : v, d = j < res - 1 ? vgrid[(j + 1) * res + i] : v;
+      if (vmax > 0) {
+        if ((v > 0) !== (r > 0) || (v > 0) !== (d > 0)) rgb = rgb.map((x, n) => x + (ink[n] - x) * .75);
+        else if (lvl(v) !== lvl(r) || lvl(v) !== lvl(d)) rgb = rgb.map((x, n) => x + (ink[n] - x) * .3);
+      }
+      const o = (j * res + i) * 4;
+      img.data[o] = rgb[0]; img.data[o + 1] = rgb[1]; img.data[o + 2] = rgb[2]; img.data[o + 3] = 255;
+    }
+    octx.putImageData(img, 0, 0);
+    ctx.clearRect(0, 0, w, h);
+    ctx.imageSmoothingEnabled = true;
+    ctx.drawImage(off, 0, 0, w, h);
+    ctx.strokeStyle = rgba(T.ink, .35); ctx.lineWidth = 1;
+    line(ctx, P, [-9, 0], [9, 0]); line(ctx, P, [0, -9], [0, 9]);
+    if (vmax > 0) {
+      axes(a, b, c).forEach(([l, v], k) => {
+        const n = Math.hypot(...v); if (n < 1e-9) return;
+        const u = [v[0] / n, v[1] / n];
+        ctx.setLineDash([7, 6]); ctx.strokeStyle = T.ink; ctx.lineWidth = 1.6;
+        line(ctx, P, [-u[0] * 9, -u[1] * 9], [u[0] * 9, u[1] * 9]); ctx.setLineDash([]);
+        const f = R * .78 / Math.max(Math.abs(u[0]), Math.abs(u[1]), .5);
+        const [X, Y] = P.px(u[0] * Math.min(f, R * .85), u[1] * Math.min(f, R * .85));
+        tag(ctx, X, Y, `λ${k ? "₂" : "₁"} = ${fmt(l)}`);
+      });
+    }
+  });
+  function term(coef, s, first) {
+    if (Math.abs(coef) < eps) return "";
+    const mag = Math.abs(coef) === 1 && s ? "" : fmt(Math.abs(coef));
+    return (first ? (coef < 0 ? "−" : "") : (coef < 0 ? " − " : " + ")) + mag + s;
+  }
+  function poly(ts) { let s = "", first = true; ts.forEach(([c, v]) => { const t = term(c, v, first); if (t) { s += t; first = false; } }); return s || "0"; }
+  function squares(a, b, c) {
+    const D2 = a * c - b * b;
+    if (Math.abs(a) > eps) return `${fmt(a)}·(x ${b / a < 0 ? "−" : "+"} ${fmt(Math.abs(b / a))}y)² ${D2 / a < 0 ? "−" : "+"} ${fmt(Math.abs(D2 / a))}·y²`;
+    if (Math.abs(c) > eps) return `${fmt(c)}·(y ${b / c < 0 ? "−" : "+"} ${fmt(Math.abs(b / c))}x)² ${-b * b / c < 0 ? "−" : "+"} ${fmt(Math.abs(b * b / c))}·x²`;
+    if (Math.abs(b) > eps) return `${fmt(b / 2)}·((x + y)² − (x − y)²)`;
+    return "0";
+  }
+  function update() {
+    const [a, b, c] = vals();
+    outs.forEach((o, k) => { o.textContent = fmt(vals()[k]); });
+    const D2 = a * c - b * b, kind = classify(a, b, c);
+    const qs = poly([[a, "x²"], [2 * b, "xy"], [c, "y²"]]), mat = matHTML([[fmt(a), fmt(b)], [fmt(b), fmt(c)]]);
+    const hide = mode === "quiz" && !answered;
+    $("qf-veil").hidden = !hide;
+    if (hide) { $("qf-veil-q").textContent = "Q(x, y) = " + qs; $("qf-veil-mat").innerHTML = mat; }
+    readout.innerHTML = `<dt>Q(x, y)</dt><dd class="mono">${qs}</dd><dt>Matrix</dt><dd>${mat}</dd>` + (hide ? "" : `
+      <dt>Minors</dt><dd class="mono">D₁ = ${fmt(a)}, &nbsp;D₂ = ${fmt(a)}·${fmt(c)} − ${fmt(b)}² = ${fmt(D2)}</dd>
+      <dt>Squares</dt><dd class="mono" style="overflow-x:auto">${squares(a, b, c)}</dd>
+      <dt>Verdict</dt><dd><div class="verdict ${kind === "ind" ? "bad" : "good"}"><strong>${KINDS[kind]}.</strong> The surface is ${SHAPES[kind]}</div></dd>`);
+    if (!hide) cv.redraw();
+  }
+  sl.forEach(s => s.addEventListener("input", update));
+  const presets = [["Bowl", [1, 0, 1]], ["Dome", [-1, 0, -1]], ["Saddle", [1, 0, -1]], ["Trough", [1, 1, 1]], ["Trap", [1, 2, 1]]];
+  presets.forEach(([label, v]) => {
+    const b = document.createElement("button");
+    b.type = "button"; b.className = "btn ghost small"; b.textContent = label;
+    if (label === "Trap") b.title = "Positive diagonal, but still a saddle";
+    b.addEventListener("click", () => { sl.forEach((s, k) => { s.value = v[k]; }); update(); });
+    $("qf-presets").appendChild(b);
+  });
+
+  function randomForm() {
+    const kind = ["pd", "nd", "ind", "psd", "nsd"][ri(0, 4)];
+    let a, b, c;
+    for (;;) {
+      if (kind === "pd" || kind === "nd") { a = ri(1, 3); c = ri(1, 3); b = ri(-3, 3); if (a * c - b * b <= 0) continue; }
+      else if (kind === "ind") { a = ri(-3, 3); c = ri(-3, 3); b = ri(-3, 3); if (a * c - b * b >= 0) continue; }
+      else { a = ri(1, 3); b = ri(-3, 3); if ((b * b) % a) continue; c = b * b / a; if (c > 3) continue; if (Math.random() < .5) [a, c] = [c, a]; }
+      if ((kind === "nd" || kind === "nsd")) { a = -a; b = -b; c = -c; }
+      break;
+    }
+    return [a, b, c];
+  }
+  function stats(ids = []) { $("qf-right").textContent = q.right; $("qf-streak").textContent = q.streak; $("qf-best").textContent = bestStreak; ids.forEach(id => bump($(id))); }
+  function nextForm() {
+    answered = false;
+    randomForm().forEach((v, k) => { sl[k].value = v; });
+    const box = $("qf-choices"); box.innerHTML = "";
+    ["pd", "nd", "ind", "psd", "nsd"].forEach(k => {
+      const btn = document.createElement("button");
+      btn.type = "button"; btn.className = "choice"; btn.textContent = KINDS[k]; btn.dataset.k = k;
+      btn.addEventListener("click", () => answer(k));
+      box.appendChild(btn);
+    });
+    $("qf-next").hidden = true;
+    stats(); update();
+  }
+  function answer(k) {
+    if (answered) return;
+    answered = true;
+    const truth = classify(...vals());
+    const ok = k === truth;
+    if (ok) { q.right++; q.streak++; if (q.streak > bestStreak) { bestStreak = q.streak; store.set("qf-best", bestStreak); } }
+    else q.streak = 0;
+    $("qf-choices").querySelectorAll(".choice").forEach(b => {
+      b.disabled = true;
+      if (b.dataset.k === truth) b.classList.add("right");
+      else if (b.dataset.k === k) b.classList.add("wrong");
+    });
+    $("qf-next").hidden = false;
+    stats(ok ? ["qf-right", "qf-streak"] : ["qf-streak"]);
+    update();
+  }
+  $("qf-next").addEventListener("click", nextForm);
+  const bE = $("qf-mode-explore"), bQ = $("qf-mode-quiz");
+  bE.addEventListener("click", () => { mode = "explore"; setSeg([bE, bQ], bE); $("qf-explore").hidden = false; $("qf-quiz").hidden = true; update(); });
+  bQ.addEventListener("click", () => { mode = "quiz"; setSeg([bE, bQ], bQ); $("qf-explore").hidden = true; $("qf-quiz").hidden = false; nextForm(); });
+  update();
+})();
+
+/* ---------- 5. matrix powers ---------- */
+(function powers() {
+  const SC = 45, MAX = 100;
+  const MATS = [
+    { name: "Fibonacci", A: [1n, 1n, 1n, 0n], lim: "1.61803398874989484820458683436563811772030917980576", l1: 1.6180339887, l2: -0.6180339887, sym: "φ",
+      story: "A = [[1, 1], [1, 0]] produces the Fibonacci numbers: the top row of Aⁿ is Fₙ₊₁, Fₙ. Its eigenvalues are the golden ratio φ ≈ 1.618 and 1 − φ ≈ −0.618." },
+    { name: "Pell", A: [2n, 1n, 1n, 0n], lim: "2.41421356237309504880168872420969807856967187537694", l1: 2.4142135624, l2: -0.4142135624, sym: "1 + √2",
+      story: "A = [[2, 1], [1, 0]] produces the Pell numbers 1, 2, 5, 12, 29, … Its eigenvalues are the silver ratio 1 + √2 ≈ 2.414 and 1 − √2 ≈ −0.414." },
+    { name: "Jacobsthal", A: [1n, 2n, 1n, 0n], lim: "2.00000000000000000000000000000000000000000000000000", l1: 2, l2: -1, sym: "2",
+      story: "A = [[1, 2], [1, 0]] produces the Jacobsthal numbers 1, 1, 3, 5, 11, 21, … Its eigenvalues are 2 and −1. They are closer in size, so the race is slower and the ratio swings above and below 2." },
+  ];
+  let mi = 0, n = 12, pows = [], errs = [];
+  const mul = (X, Y) => [X[0] * Y[0] + X[1] * Y[2], X[0] * Y[1] + X[1] * Y[3], X[2] * Y[0] + X[3] * Y[2], X[2] * Y[1] + X[3] * Y[3]];
+  const sup = s => String(s).split("").map(ch => "⁰¹²³⁴⁵⁶⁷⁸⁹"[ch]).join("");
+  const SCALE = 10n ** BigInt(SC);
+  function prepare() {
+    const m = MATS[mi];
+    pows = [null, m.A]; for (let k = 2; k <= MAX; k++) pows.push(mul(pows[k - 1], m.A));
+    const L = BigInt(m.lim.replace(".", "").slice(0, SC + 1));
+    errs = [null, null];
+    for (let k = 2; k <= MAX; k++) {
+      const qv = pows[k][0] * SCALE / pows[k - 1][0];
+      let e = qv - L; if (e < 0n) e = -e;
+      errs.push(e === 0n ? SC : Math.max(0, SC - e.toString().length));
+    }
+    $("pw-story").textContent = m.story + " The ratio of neighbouring entries closes in on the bigger eigenvalue, because Aⁿ = P·Dⁿ·P⁻¹ and the smaller eigenvalue’s share fades away. This is the power method that search engines use to compute PageRank.";
+    $("pw-limit").textContent = `${m.sym} = ${m.lim.slice(0, 24)}…`;
+    const rate = Math.log10(Math.abs(m.l1 / m.l2));
+    $("pw-chart-cap").textContent = `Each multiplication gains about log₁₀(|λ₁/λ₂|) ≈ ${rate.toFixed(2)} correct digits. The dashed line is that prediction.`;
+  }
+  const chart = makeCanvas($("pw-chart"), (ctx, w, h) => {
+    if (!errs.length) return;
+    ctx.clearRect(0, 0, w, h);
+    const pad = { l: 34, r: 12, t: 12, b: 26 };
+    const xmax = Math.max(20, n), ymax = SC;
+    const X = k => pad.l + (k - 1) / (xmax - 1) * (w - pad.l - pad.r);
+    const Y = d => h - pad.b - d / ymax * (h - pad.t - pad.b);
+    ctx.font = "11px " + T.mono; ctx.fillStyle = T["ink-2"]; ctx.strokeStyle = T.line; ctx.lineWidth = 1;
+    ctx.textAlign = "right"; ctx.textBaseline = "middle";
+    [0, 15, 30, 45].forEach(d => { ctx.beginPath(); ctx.moveTo(pad.l, Y(d)); ctx.lineTo(w - pad.r, Y(d)); ctx.stroke(); ctx.fillText(d, pad.l - 6, Y(d)); });
+    ctx.textAlign = "center"; ctx.textBaseline = "top";
+    const xt = xmax <= 20 ? 5 : xmax <= 50 ? 10 : 20;
+    for (let k = xt; k <= xmax; k += xt) ctx.fillText(k, X(k), h - pad.b + 6);
+    ctx.textAlign = "left"; ctx.fillText("n", w - pad.r - 8, h - pad.b + 6);
+    ctx.save(); ctx.translate(10, pad.t + 2); ctx.textBaseline = "top"; ctx.fillText("digits", 0, 0); ctx.restore();
+    const m = MATS[mi], rate = Math.log10(Math.abs(m.l1 / m.l2));
+    // prediction line through the first measured point
+    const off = errs[2] - 2 * rate;
+    ctx.setLineDash([5, 4]); ctx.strokeStyle = T["ink-2"]; ctx.beginPath();
+    ctx.moveTo(X(2), Y(Math.max(0, off + 2 * rate)));
+    const kEnd = Math.min(xmax, (SC - off) / rate);
+    ctx.lineTo(X(kEnd), Y(Math.min(SC, off + kEnd * rate))); ctx.stroke(); ctx.setLineDash([]);
+    ctx.fillStyle = T.i;
+    for (let k = 2; k <= n; k++) { ctx.beginPath(); ctx.arc(X(k), Y(errs[k]), k === n ? 4.5 : 2.5, 0, 7); ctx.fill(); }
+  });
+  function render() {
+    const P = pows[n], m = MATS[mi];
+    $("fib-lhs").textContent = `A${sup(n)} =`;
+    $("fib-mat").innerHTML = matHTML([[P[0], P[1]], [P[2], P[3]]].map(r => r.map(String)));
+    if (n < 2) {
+      $("fib-ratio").innerHTML = `<span class="rest">Multiply once more to get a ratio.</span>`;
+      $("fib-agree").textContent = "–";
+    } else {
+      const qs = (P[0] * SCALE / pows[n - 1][0]).toString();
+      const str = qs.slice(0, qs.length - SC) + "." + qs.slice(-SC);
+      let k = 0; while (k < str.length && str[k] === m.lim[k]) k++;
+      const shown = str.slice(0, 24), mm = Math.min(k, shown.length);
+      $("fib-ratio").innerHTML = `(A${sup(n)})₁₁ / (A${sup(n - 1)})₁₁ = <span class="match">${shown.slice(0, mm)}</span><span class="rest">${shown.slice(mm)}…</span>`;
+      const d = errs[n];
+      $("fib-agree").innerHTML = d >= SC ? `below 10<sup>−${SC}</sup>, beyond what this page measures` : `about 10<sup>−${d}</sup>, so roughly <strong>${d}</strong> correct decimal${d === 1 ? "" : "s"}`;
+    }
+    $("fib-step").disabled = $("fib-ten").disabled = n >= MAX;
+    chart.redraw();
+  }
+  const pick = $("pw-pick"), btns = [];
+  MATS.forEach((m, k) => {
+    const b = document.createElement("button");
+    b.type = "button"; b.textContent = m.name; b.setAttribute("aria-pressed", String(k === mi));
+    b.addEventListener("click", () => { mi = k; setSeg(btns, b); prepare(); n = Math.min(n, MAX); render(); });
+    btns.push(b); pick.appendChild(b);
+  });
+  $("fib-step").addEventListener("click", () => { n = Math.min(MAX, n + 1); render(); });
+  $("fib-ten").addEventListener("click", () => { n = Math.min(MAX, n + 10); render(); });
+  $("fib-reset").addEventListener("click", () => { n = 1; render(); });
+  prepare(); render();
+})();
+})();
+</script>
+</body>
+</html>

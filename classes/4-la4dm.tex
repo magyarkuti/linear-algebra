@@ -331,7 +331,13 @@ Since $\mathbf{YA}=\mathbf{B}\Longleftrightarrow \mathbf{A}^\top \mathbf{Y}^\top
 Remembering the partitions of a matrix product $\mathbf{AX}=[\mathbf{Ax_1},\mathbf{Ax_2},\ldots ,\mathbf{Ax_p}],$ where $\mathbf{x_i}\ i=1,2,\ldots ,p$ are the column vectors of the unknown matrix $\mathbf{X}$ it can be recognized that a matrix equation is equivalent to linear systems of equations having the same coefficient matrix:
 $$\mathbf{Ax_1}=\mathbf{b}_1,\mathbf{Ax_2}=\mathbf{b}_2,\ldots ,\mathbf{Ax_p}=\mathbf{b}_p.$$
 \begin{theorem}
-The matrix equation $\mathbf{AX}=\mathbf{B}$ is solvable if and only if each column of $\mathbf{B}$ is a linear combination of columns of $\mathbf{A},$ that is, $\rho(\mathbf{A})=\rho([\mathbf{A},\mathbf{B}]).$
+The matrix equation $\mathbf{AX}=\mathbf{B}$ is solvable 
+if and only if 
+each column of $\mathbf{B}$ is a linear combination of columns of $\mathbf{A},$ 
+that is, 
+\[
+    \col(\mathbf{B})\subseteq \col(\mathbf{A})
+\]
 \end{theorem}
 }
 \begin{frame}\frametitle{Two-sidedness}
